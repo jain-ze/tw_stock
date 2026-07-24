@@ -18,6 +18,7 @@ DEFAULT_OUTDIR = "/home/jrh/桌面/JRH20260720/近5日台股成交金額TOP20深
 FONT_BOLD_PATH = "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
 FONT_REG_PATH = "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"
 RCLONE_BIN = "/home/jrh/.local/bin/rclone"
+GITHUB_REMOTE_URL = "https://github.com/jrh2005/tw_stock.git"
 
 def get_font(path, size):
     try:
@@ -61,12 +62,20 @@ def fetch_json(url, use_ssl_ctx=False):
     except Exception as e:
         return None
 
-def fetch_valid_trading_days(n=5):
-    """Dynamically fetch the most recent N valid trading days, starting from today backward"""
+def fetch_valid_trading_days(n=5, start_date=None):
+    """Dynamically fetch the most recent N valid trading days starting from start_date (default today) backward"""
     ctx = ssl._create_unverified_context()
     headers = {'User-Agent': 'Mozilla/5.0'}
     valid_dates = []
-    curr = datetime.date.today()
+    
+    if start_date:
+        if isinstance(start_date, str):
+            curr = datetime.datetime.strptime(start_date.replace('-', ''), "%Y%m%d").date()
+        else:
+            curr = start_date
+    else:
+        curr = datetime.date.today()
+        
     attempts = 0
 
     while len(valid_dates) < n and attempts < 25:
@@ -84,11 +93,10 @@ def fetch_valid_trading_days(n=5):
         attempts += 1
         time.sleep(0.15)
 
-    print(f"[+] Recent {len(valid_dates)} valid trading days: {valid_dates}")
+    print(f"[+] Recent {len(valid_dates)} valid trading days (Start: {start_date or 'today'}): {valid_dates}")
     return valid_dates
 
 def fetch_market_indices(dates):
-    """Fetch TWSE (FMTQIK) and TPEx (st41) indices for target dates"""
     url_twse = "https://www.twse.com.tw/rwd/zh/afterTrading/FMTQIK?response=json"
     url_tpex = "https://www.tpex.org.tw/web/stock/aftertrading/daily_trading_index/st41_result.php?l=zh-tw"
 
@@ -150,7 +158,6 @@ def fetch_market_indices(dates):
     return market_history
 
 def fetch_bfi82u_data(dates):
-    """Fetch BFI82U Three Major Institutional Investors data"""
     bfi_history = []
     for d in dates:
         url = f"https://www.twse.com.tw/rwd/zh/fund/BFI82U?dayDate={d}&response=json"
@@ -195,7 +202,6 @@ def fetch_bfi82u_data(dates):
     return bfi_history
 
 def fetch_margin_data(dates):
-    """Fetch MI_MARGN Margin Trading / Short Selling data with unreleased detection ('尚未更新')"""
     margin_history = []
     for d in dates:
         url = f"https://www.twse.com.tw/rwd/zh/marginTrading/MI_MARGN?date={d}&selectType=MS&response=json"
@@ -354,7 +360,6 @@ def fetch_top20_stocks_data(dates):
     return final_records
 
 def render_all_6_cards(records, dates, market_history, bfi_history, margin_history, outdir):
-    """Render 6 Dark-Mode 4:5 Infographic Cards with Line & Bar Charts"""
     today_date = dates[0]
     date_formatted = f"{today_date[:4]}-{today_date[4:6]}-{today_date[6:]}"
     
@@ -365,9 +370,7 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
     f_subtext = get_font(FONT_REG_PATH, 16)
     f_badge = get_font(FONT_BOLD_PATH, 15)
 
-    # ----------------------------------------------------
-    # CARD 1: Market Indices Card with 5-Day Line Chart
-    # ----------------------------------------------------
+    # CARD 1: Market Indices Card
     img1 = Image.new('RGB', (1200, 1650), '#0D1117')
     d1 = ImageDraw.Draw(img1)
     d1.rectangle([(0, 0), (1200, 130)], fill='#161B22')
@@ -403,7 +406,6 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
     y_chart += 35
     d1.rectangle([(40, y_chart), (1160, y_chart+320)], fill='#161B22', outline='#30363D', width=1)
     
-    # Draw Dual Line Chart
     history_chrono = list(reversed(market_history))
     tw_indices = [h['twse']['index'] for h in history_chrono]
     tp_indices = [h['tpex']['index'] for h in history_chrono]
@@ -416,7 +418,6 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
 
     x_step = 1000 // (len(history_chrono) - 1 or 1)
     
-    # Draw TWSE Line (Blue) & Points
     for i in range(len(history_chrono) - 1):
         x1 = 90 + i * x_step
         y1 = y_chart + 260 - int(((tw_indices[i] - min_tw) / range_tw) * 200)
@@ -431,7 +432,6 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
         d1.text((x-20, y_pos-24), f"{tw_indices[i]:,.0f}", font=f_subtext, fill='#58A6FF')
         d1.text((x-16, y_chart+285), h['date_short'], font=f_subtext, fill='#8B949E')
 
-    # Draw TPEx Line (Amber) & Points
     for i in range(len(history_chrono) - 1):
         x1 = 90 + i * x_step
         y1 = y_chart + 260 - int(((tp_indices[i] - min_tp) / range_tp) * 200)
@@ -445,14 +445,12 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
         d1.ellipse([(x-5, y_pos-5), (x+5, y_pos+5)], fill='#D29922', outline='#FFFFFF', width=1)
         d1.text((x-15, y_pos+10), f"{tp_indices[i]:,.1f}", font=f_subtext, fill='#D29922')
 
-    # Legend inside chart
     d1.rectangle([(80, y_chart+15), (380, y_chart+45)], fill='#21262D')
     d1.line([(95, y_chart+30), (125, y_chart+30)], fill='#58A6FF', width=4)
     d1.text((135, y_chart+20), "加權指數 (TWSE)", font=f_subtext, fill='#58A6FF')
     d1.line([(245, y_chart+30), (275, y_chart+30)], fill='#D29922', width=3)
     d1.text((285, y_chart+20), "櫃買指數 (TPEx)", font=f_subtext, fill='#D29922')
 
-    # 5-Day Market Index Table
     y_tbl = y_chart + 340
     d1.text((40, y_tbl), "📋 近 5 個交易日大盤與櫃買行情明細表", font=f_bold, fill='#F0F6FC')
     y_tbl += 35
@@ -482,9 +480,7 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
     c1_path = os.path.join(outdir, f"taiwan_stock_card1_market_index_{date_formatted}.png")
     img1.save(c1_path)
 
-    # ----------------------------------------------------
-    # CARD 2: BFI82U Three Major Institutional Investors Card with 4-Series Bar Chart
-    # ----------------------------------------------------
+    # CARD 2: BFI82U Three Major Institutional Investors Card
     img2 = Image.new('RGB', (1200, 1650), '#0D1117')
     d2 = ImageDraw.Draw(img2)
     d2.rectangle([(0, 0), (1200, 130)], fill='#161B22')
@@ -507,13 +503,11 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
         v_clr = '#F85149' if val_b > 0 else ('#3FB950' if val_b < 0 else '#8B949E')
         d2.text((bx+20, by+48), f"{val_b:+.2f} 億元", font=get_font(FONT_BOLD_PATH, 28), fill=v_clr)
 
-    # 4-Series Bar Chart
     y_bchart = y_bfi + 240
     d2.text((40, y_bchart), "📊 近 5 個交易日三大法人與合計獨立買賣超柱狀圖 (億元)", font=f_bold, fill='#F0F6FC')
     y_bchart += 35
     d2.rectangle([(40, y_bchart), (1160, y_bchart+340)], fill='#161B22', outline='#30363D', width=1)
     
-    # Legend
     d2.rectangle([(60, y_bchart+15), (780, y_bchart+45)], fill='#21262D')
     d2.rectangle([(75, y_bchart+23), (95, y_bchart+37)], fill='#58A6FF')
     d2.text((105, y_bchart+20), "外資", font=f_subtext, fill='#8B949E')
@@ -584,9 +578,7 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
     c2_path = os.path.join(outdir, f"taiwan_stock_card2_bfi82u_{date_formatted}.png")
     img2.save(c2_path)
 
-    # ----------------------------------------------------
-    # CARD 3: MI_MARGN Margin Trading Card with Bar Chart & "尚未更新" Handling
-    # ----------------------------------------------------
+    # CARD 3: MI_MARGN Margin Trading Card
     img3 = Image.new('RGB', (1200, 1650), '#0D1117')
     d3 = ImageDraw.Draw(img3)
     d3.rectangle([(0, 0), (1200, 130)], fill='#161B22')
@@ -627,7 +619,6 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
     d3.text((650, y_mrg+55), s_curr_str, font=get_font(FONT_BOLD_PATH, 32), fill='#F0F6FC' if m_latest_margn.get('is_updated') else '#D29922')
     d3.text((650, y_mrg+100), s_diff_str, font=f_bold, fill=s_clr)
 
-    # Margin Bar Chart
     y_mchart = y_mrg + 160
     d3.text((40, y_mchart), "📊 近 5 個交易日融資金額增減變動柱狀圖 (億元)", font=f_bold, fill='#F0F6FC')
     y_mchart += 35
@@ -689,9 +680,7 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
     c3_path = os.path.join(outdir, f"taiwan_stock_card3_margin_{date_formatted}.png")
     img3.save(c3_path)
 
-    # ----------------------------------------------------
     # CARD 4: TOP 20 Overview Card
-    # ----------------------------------------------------
     img4 = Image.new('RGB', (1200, 1600), '#0D1117')
     d4 = ImageDraw.Draw(img4)
     d4.rectangle([(0, 0), (1200, 140)], fill='#161B22')
@@ -745,9 +734,7 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
     c4_path = os.path.join(outdir, f"taiwan_stock_card4_top20_overview_{date_formatted}.png")
     img4.save(c4_path)
 
-    # ----------------------------------------------------
     # CARD 5: Top 1-10 Giants Card
-    # ----------------------------------------------------
     img5 = Image.new('RGB', (1200, 1500), '#0D1117')
     d5 = ImageDraw.Draw(img5)
     d5.rectangle([(0, 0), (1200, 130)], fill='#161B22')
@@ -785,9 +772,7 @@ def render_all_6_cards(records, dates, market_history, bfi_history, margin_histo
     c5_path = os.path.join(outdir, f"taiwan_stock_card5_top1_10_{date_formatted}.png")
     img5.save(c5_path)
 
-    # ----------------------------------------------------
     # CARD 6: Top 11-20 Movers & OTC Card
-    # ----------------------------------------------------
     img6 = Image.new('RGB', (1200, 1500), '#0D1117')
     d6 = ImageDraw.Draw(img6)
     d6.rectangle([(0, 0), (1200, 130)], fill='#161B22')
@@ -857,11 +842,9 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
     total_20_val = sum(r['total_value_yi'] for r in records)
     top_gainer = max(records, key=lambda x: x['change_pct']) if records else {'name':'--', 'change_pct':0}
     top_gainers_list = sorted(records, key=lambda x: x['change_pct'], reverse=True)[:5]
-    otc_stocks = [r for r in records if r['market'] == '上櫃']
 
     stocks_detail_json = json.dumps({r['code']: r for r in records}, ensure_ascii=False)
 
-    # Margn Header Stat Handling
     if m_latest_margn.get('is_updated'):
         m_header_val = f"{m_latest_margn.get('margin_curr_yi',0):,.1f} 億 ({m_latest_margn.get('margin_diff_yi',0):+.2f}億)"
         m_header_clr = 'var(--amber)'
@@ -926,7 +909,6 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
         .analysis-card ul {{ padding-left:18px; margin-top:8px; }}
         .analysis-card li {{ margin-bottom:8px; }}
         
-        /* Modal Popup Design */
         .modal-overlay {{ display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:1000; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(4px); }}
         .modal-card {{ background:var(--bg-card); border:1px solid var(--border); border-radius:16px; max-width:850px; width:100%; padding:24px; box-shadow:0 20px 50px rgba(0,0,0,0.6); position:relative; max-height:90vh; overflow-y:auto; }}
         .modal-close {{ position:absolute; top:18px; right:20px; background:none; border:none; color:var(--muted); font-size:24px; cursor:pointer; transition:color 0.2s; }}
@@ -1102,7 +1084,7 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
             </div>
         </div>
 
-        <!-- SECTION B: CARDS GALLERY (6 CARDS IN TOTAL) -->
+        <!-- SECTION B: CARDS GALLERY -->
         <div id="section-cards-view" style="display:none;">
             <div class="s-header">🖼️ 全套 6 大高解析視覺化圖卡展示區 (含雙折線與獨立柱狀圖)</div>
             <div class="card-tabs">
@@ -1387,6 +1369,40 @@ def sync_to_google_drive(outdir):
         print(f"[!] Google Drive sync error: {e}")
     return False
 
+def sync_to_github(outdir):
+    """Sync all reports and cards to GitHub repository 'tw_stock' with force overwrite if duplicated"""
+    print("[+] Syncing files to GitHub repository 'tw_stock'...")
+    try:
+        os.chdir(outdir)
+        if not os.path.exists(os.path.join(outdir, ".git")):
+            subprocess.run(["git", "init"], check=True)
+            subprocess.run(["git", "config", "user.name", "jrh"], check=True)
+            subprocess.run(["git", "config", "user.email", "jrh2005@gmail.com"], check=True)
+
+        remotes = subprocess.run(["git", "remote"], capture_output=True, text=True).stdout
+        if "origin" not in remotes:
+            subprocess.run(["git", "remote", "add", "origin", GITHUB_REMOTE_URL], check=True)
+        else:
+            subprocess.run(["git", "remote", "set-url", "origin", GITHUB_REMOTE_URL], check=True)
+
+        subprocess.run(["git", "branch", "-M", "main"], check=True)
+        subprocess.run(["git", "add", "."], check=True)
+        
+        status_out = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout
+        if status_out.strip():
+            commit_msg = f"Auto update TW Stock analysis reports & cards: {datetime.date.today().strftime('%Y-%m-%d')}"
+            subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+            
+        push_res = subprocess.run(["git", "push", "-u", "origin", "main", "--force"], capture_output=True, text=True)
+        if push_res.returncode == 0:
+            print("[+] Successfully pushed reports and cards to GitHub repository 'tw_stock'!")
+            return True
+        else:
+            print(f"[!] GitHub push output: {push_res.stdout} {push_res.stderr}")
+    except Exception as e:
+        print(f"[!] GitHub sync error: {e}")
+    return False
+
 def update_index_portal(outdir):
     html_files = sorted(glob.glob(os.path.join(outdir, "20??-??-??.html")), reverse=True)
     
@@ -1415,7 +1431,7 @@ def update_index_portal(outdir):
             <div class="report-card">
                 <div>
                     <div class="card-date">📊 {r['date']} 全方位大數據分析報告</div>
-                    <div class="card-desc">整合雙折線圖與柱狀圖 (6張圖卡)、三大法人籌碼、信用交易 (含尚未更新動態標示) 與 CSV 數據檔</div>
+                    <div class="card-desc">整合雙折線圖與柱狀圖 (6張圖卡)、三大法人籌碼、信用交易與 CSV 數據檔</div>
                 </div>
                 <div class="links-bar">
                     <a href="{r['file']}" class="btn-action primary">開啟完整分析網頁 →</a>
@@ -1544,7 +1560,17 @@ def update_index_portal(outdir):
                 btnCards.classList.remove('active');
                 btnList.classList.add('active');
             }}
+            try {{ localStorage.setItem('tw_stock_portal_view', viewType); }} catch(e){{}}
         }}
+
+        document.addEventListener('DOMContentLoaded', function() {{
+            try {{
+                const savedView = localStorage.getItem('tw_stock_portal_view');
+                if (savedView) {{
+                    setView(savedView);
+                }}
+            }} catch(e){{}}
+        }});
     </script>
 </body>
 </html>"""
@@ -1555,11 +1581,28 @@ def update_index_portal(outdir):
     print(f"[+] Updated index.html portal at {index_path}")
     return index_path
 
+def run_pipeline_for_date(target_date_str, outdir):
+    print(f"[+] Running comprehensive pipeline for target date: {target_date_str}...")
+    dates = fetch_valid_trading_days(5, start_date=target_date_str)
+    if not dates:
+        print(f"[!] Could not fetch valid trading dates for {target_date_str}!")
+        return False
+
+    market_history = fetch_market_indices(dates)
+    bfi_history = fetch_bfi82u_data(dates)
+    margin_history = fetch_margin_data(dates)
+    records = fetch_top20_stocks_data(dates)
+
+    card_paths = render_all_6_cards(records, dates, market_history, bfi_history, margin_history, outdir)
+    build_comprehensive_daily_html(records, dates, market_history, bfi_history, margin_history, outdir, card_paths)
+    return True
+
 def main():
     parser = argparse.ArgumentParser(description="TWSE/TPEx Comprehensive Market & Top 20 Pipeline")
-    parser.add_argument("action", nargs="?", default="pipeline", choices=["pipeline", "index", "sync", "purge"])
+    parser.add_argument("action", nargs="?", default="pipeline", choices=["pipeline", "index", "sync", "purge", "update_all"])
     parser.add_argument("--outdir", default=DEFAULT_OUTDIR, help="Output directory")
     parser.add_argument("--purge-days", type=int, default=30, help="Days threshold for purging old files")
+    parser.add_argument("--target-date", default=None, help="Target date YYYYMMDD or YYYY-MM-DD")
     args = parser.parse_args()
 
     os.makedirs(args.outdir, exist_ok=True)
@@ -1571,28 +1614,29 @@ def main():
 
     if args.action == "pipeline":
         print("[+] Starting comprehensive pipeline...")
-        dates = fetch_valid_trading_days(5)
-        if not dates:
-            print("[!] Could not fetch any valid trading dates!")
-            return
-
-        market_history = fetch_market_indices(dates)
-        bfi_history = fetch_bfi82u_data(dates)
-        margin_history = fetch_margin_data(dates)
-        records = fetch_top20_stocks_data(dates)
-
-        card_paths = render_all_6_cards(records, dates, market_history, bfi_history, margin_history, args.outdir)
-        daily_html = build_comprehensive_daily_html(records, dates, market_history, bfi_history, margin_history, args.outdir, card_paths)
-        
+        target = args.target_date or datetime.date.today().strftime('%Y%m%d')
+        run_pipeline_for_date(target, args.outdir)
         purge_old_files(args.outdir, args.purge_days)
         update_index_portal(args.outdir)
         sync_to_google_drive(args.outdir)
+        sync_to_github(args.outdir)
         print("[+] Comprehensive pipeline completed successfully!")
+
+    elif args.action == "update_all":
+        print("[+] Updating all recent dates (today and 2026-07-23)...")
+        run_pipeline_for_date("2026-07-23", args.outdir)
+        run_pipeline_for_date(datetime.date.today().strftime('%Y%m%d'), args.outdir)
+        purge_old_files(args.outdir, args.purge_days)
+        update_index_portal(args.outdir)
+        sync_to_google_drive(args.outdir)
+        sync_to_github(args.outdir)
+        print("[+] Update all completed successfully!")
 
     elif args.action == "index":
         update_index_portal(args.outdir)
     elif args.action == "sync":
         sync_to_google_drive(args.outdir)
+        sync_to_github(args.outdir)
 
 if __name__ == "__main__":
     main()

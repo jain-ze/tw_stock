@@ -63,7 +63,7 @@
             <div class="report-card">
                 <div>
                     <div class="card-date">📊 2026-07-24 全方位大數據分析報告</div>
-                    <div class="card-desc">整合雙折線圖與柱狀圖 (6張圖卡)、三大法人籌碼、信用交易 (含尚未更新動態標示) 與 CSV 數據檔</div>
+                    <div class="card-desc">整合雙折線圖與柱狀圖 (6張圖卡)、三大法人籌碼、信用交易與 CSV 數據檔</div>
                 </div>
                 <div class="links-bar">
                     <a href="2026-07-24.html" class="btn-action primary">開啟完整分析網頁 →</a>
@@ -77,7 +77,7 @@
             <div class="report-card">
                 <div>
                     <div class="card-date">📊 2026-07-23 全方位大數據分析報告</div>
-                    <div class="card-desc">整合雙折線圖與柱狀圖 (6張圖卡)、三大法人籌碼、信用交易 (含尚未更新動態標示) 與 CSV 數據檔</div>
+                    <div class="card-desc">整合雙折線圖與柱狀圖 (6張圖卡)、三大法人籌碼、信用交易與 CSV 數據檔</div>
                 </div>
                 <div class="links-bar">
                     <a href="2026-07-23.html" class="btn-action primary">開啟完整分析網頁 →</a>
@@ -151,7 +151,17 @@
                 btnCards.classList.remove('active');
                 btnList.classList.add('active');
             }
+            try { localStorage.setItem('tw_stock_portal_view', viewType); } catch(e){}
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                const savedView = localStorage.getItem('tw_stock_portal_view');
+                if (savedView) {
+                    setView(savedView);
+                }
+            } catch(e){}
+        });
     </script>
 </body>
 </html>
