@@ -18,7 +18,7 @@ DEFAULT_OUTDIR = "/home/jrh/桌面/JRH20260720/近5日台股成交金額TOP20深
 FONT_BOLD_PATH = "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
 FONT_REG_PATH = "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"
 RCLONE_BIN = "/home/jrh/.local/bin/rclone"
-GITHUB_REMOTE_URL = "https://github.com/jrh2005/tw_stock.git"
+GITHUB_REMOTE_URL = "https://github.com/jain-ze/tw_stock.git"
 
 def get_font(path, size):
     try:
