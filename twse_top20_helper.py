@@ -316,6 +316,7 @@ def fetch_top20_stocks_data(dates):
 
     ranked = sorted(stocks.values(), key=lambda x: x['total_value'], reverse=True)[:20]
     latest_date_str = dates[0]
+    prev_date_str = dates[1] if len(dates) > 1 else dates[0]
     first_date_str = dates[-1]
 
     final_records = []
@@ -326,6 +327,10 @@ def fetch_top20_stocks_data(dates):
         total_vol_zhang = item['total_volume'] // 1000
         
         latest_close = item['daily_closes'].get(latest_date_str, 0.0)
+        prev_close = item['daily_closes'].get(prev_date_str, 0.0) if prev_date_str in item['daily_closes'] else latest_close
+        today_change_val = latest_close - prev_close
+        today_change_pct = (today_change_val / prev_close * 100) if prev_close > 0 else 0.0
+
         first_close = item['daily_closes'].get(first_date_str, 0.0)
         change_val = latest_close - first_close
         change_pct = (change_val / first_close * 100) if first_close > 0 else 0.0
@@ -347,6 +352,9 @@ def fetch_top20_stocks_data(dates):
             'avg_value_yi': round(avg_val_yi, 2),
             'total_volume_zhang': total_vol_zhang,
             'latest_close': latest_close,
+            'prev_close': prev_close,
+            'today_change_val': round(today_change_val, 2),
+            'today_change_pct': round(today_change_pct, 2),
             'first_close': first_close,
             'change_val': round(change_val, 2),
             'change_pct': round(change_pct, 2),
@@ -857,7 +865,7 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台股全方位盤後大數據深度分析與籌碼動向報告 ({today_formatted})</title>
+    <title>台股盤後大數據與籌碼動向觀測站 ({today_formatted})</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {{ --bg-dark:#0d1117; --bg-card:#161b22; --bg-hover:#1f242d; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --blue:#58a6ff; --green:#3fb950; --red:#f85149; --amber:#d29922; --purple:#bc8cff; }}
@@ -927,8 +935,8 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
         <div class="nav-header">
             <a href="index.html" class="btn-home">🏠 回首頁 (Portal)</a>
         </div>
-        <div class="badge">台股全方位盤後大數據深度報告 ({today_formatted})</div>
-        <h1>台股全方位盤後大數據深度分析與籌碼動向</h1>
+        <div class="badge">台股盤後大數據與籌碼動向觀測站 ({today_formatted})</div>
+        <h1>台股盤後大數據與籌碼動向觀測站</h1>
         <p class="sub">統計資料日期：{today_formatted} (最近5交易日：{date_range_str})  |  整合大盤指數、三大法人買賣超、信用交易與 TOP 20 爆量強勢股</p>
         <div class="metrics">
             <div class="m-card">
@@ -1022,7 +1030,7 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
             <div class="tbl-container">
                 <table>
                     <thead>
-                        <tr><th>名次</th><th>代號 / 股票名稱</th><th>市場</th><th>產業分類</th><th>5日總成交額(億)</th><th>日均成交額(億)</th><th>5日成交量(張)</th><th>最新價</th><th>5日漲跌幅</th><th>走勢明細</th></tr>
+                        <tr><th>名次</th><th>代號 / 股票名稱</th><th>市場</th><th>產業分類</th><th>5日總成交額(億)</th><th>日均成交額(億)</th><th>5日成交量(張)</th><th>最新價</th><th>當日漲跌 (元/%)</th><th>5日漲跌幅</th><th>走勢明細</th></tr>
                     </thead>
                     <tbody>"""
 
@@ -1031,6 +1039,10 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
         m_cls = "m-twse" if s['market'] == "上市" else "m-tpex"
         c_cls = "chg-up" if s['change_pct'] > 0 else ("chg-down" if s['change_pct'] < 0 else "chg-flat")
         c_sign = "+" if s['change_pct'] > 0 else ""
+        
+        today_c_cls = "chg-up" if s['today_change_val'] > 0 else ("chg-down" if s['today_change_val'] < 0 else "chg-flat")
+        today_c_sign = "+" if s['today_change_val'] > 0 else ""
+
         html += f"""
                         <tr class="stock-row" onclick="openStockModal('{s['code']}')">
                             <td><span class="r-badge {r_cls}">{s['rank']}</span></td>
@@ -1041,6 +1053,7 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
                             <td>{s['avg_value_yi']:,.1f} 億</td>
                             <td>{s['total_volume_zhang']:,} 張</td>
                             <td><strong>${s['latest_close']:,.2f}</strong></td>
+                            <td><span class="chg {today_c_cls}">{today_c_sign}${s['today_change_val']:.2f} ({today_c_sign}{s['today_change_pct']:.2f}%)</span></td>
                             <td><span class="chg {c_cls}">{c_sign}{s['change_pct']:.2f}%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>"""
@@ -1117,9 +1130,10 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
                 <span id="m-sector" style="color:var(--muted);font-size:14px;">--</span>
             </div>
             
-            <div class="metrics" style="margin-bottom:15px;">
+            <div class="metrics" style="margin-bottom:15px;grid-template-columns:repeat(auto-fit, minmax(160px,1fr));">
                 <div class="m-card"><div class="m-label">最新收盤價</div><div class="m-val" id="m-price">--</div></div>
-                <div class="m-card"><div class="m-label">5日漲跌幅</div><div class="m-val" id="m-chg">--</div></div>
+                <div class="m-card"><div class="m-label">當日漲跌 (元/%)</div><div class="m-val" id="m-today-chg">--</div></div>
+                <div class="m-card"><div class="m-label">5日波段漲跌</div><div class="m-val" id="m-chg">--</div></div>
                 <div class="m-card"><div class="m-label">5日總成交金額</div><div class="m-val" id="m-total-val">--</div></div>
                 <div class="m-card"><div class="m-label">5日總成交量</div><div class="m-val" id="m-total-vol">--</div></div>
             </div>
@@ -1132,7 +1146,7 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
             <div style="font-weight:700;font-size:16px;margin-top:20px;">📅 近 5 個交易日詳細數據明細表</div>
             <table class="detail-table">
                 <thead>
-                    <tr><th>日期</th><th>收盤價 (元)</th><th>5日累計漲跌</th><th>成交金額 (億元)</th><th>成交量 (張)</th></tr>
+                    <tr><th>日期</th><th>收盤價 (元)</th><th>當日漲跌 (元/%)</th><th>5日累計漲跌</th><th>成交金額 (億元)</th><th>成交量 (張)</th></tr>
                 </thead>
                 <tbody id="m-table-body">
                 </tbody>
@@ -1140,7 +1154,7 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
         </div>
     </div>
 
-    <footer><p>台灣股市全方位盤後大數據分析系統 | <a href="index.html" style="color:var(--blue);text-decoration:none;font-weight:700;">🏠 回首頁 Portal</a> | 產生時間：{today_formatted}</p></footer>
+    <footer><p>台股盤後大數據與籌碼動向觀測站 | <a href="index.html" style="color:var(--blue);text-decoration:none;font-weight:700;">🏠 回首頁 Portal</a> | 產生時間：{today_formatted}</p></footer>
 
     <script>
         const STOCKS_DATA = {stocks_detail_json};
@@ -1182,6 +1196,10 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
             document.getElementById('m-sector').textContent = s.sector;
 
             document.getElementById('m-price').textContent = `$${{s.latest_close.toFixed(2)}}`;
+            const todaySign = s.today_change_val > 0 ? '+' : '';
+            const todayClr = s.today_change_val > 0 ? 'var(--red)' : (s.today_change_val < 0 ? 'var(--green)' : 'var(--muted)');
+            document.getElementById('m-today-chg').innerHTML = `<span style="color:${{todayClr}}">${{todaySign}}$${{s.today_change_val.toFixed(2)}} (${{todaySign}}${{s.today_change_pct.toFixed(2)}}%)</span>`;
+
             const chgSign = s.change_pct > 0 ? '+' : '';
             const chgColor = s.change_pct > 0 ? 'var(--red)' : (s.change_pct < 0 ? 'var(--green)' : 'var(--muted)');
             document.getElementById('m-chg').innerHTML = `<span style="color:${{chgColor}}">${{chgSign}}${{s.change_pct.toFixed(2)}}%</span>`;
@@ -1194,6 +1212,13 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
                 let p = s.daily_closes[i];
                 let v = s.daily_values_yi[i];
                 let vol = s.daily_volumes_zhang[i];
+
+                let prevP = i > 0 ? s.daily_closes[i-1] : (s.prev_close || p);
+                let dayDiff = p - prevP;
+                let dayDiffPct = prevP > 0 ? ((p - prevP) / prevP * 100) : 0;
+                let dClr = dayDiff > 0 ? 'var(--red)' : (dayDiff < 0 ? 'var(--green)' : 'var(--muted)');
+                let dSign = dayDiff > 0 ? '+' : '';
+
                 let firstP = s.first_close;
                 let chgP = p > 0 && firstP > 0 ? ((p - firstP) / firstP * 100).toFixed(2) : '0.00';
                 let cClr = chgP > 0 ? 'var(--red)' : (chgP < 0 ? 'var(--green)' : 'var(--muted)');
@@ -1202,6 +1227,7 @@ def build_comprehensive_daily_html(records, dates, market_history, bfi_history, 
                 tbody += `<tr>
                     <td><strong>${{dateStr}}</strong></td>
                     <td>$${{p.toFixed(2)}}</td>
+                    <td style="color:${{dClr}};font-weight:700;">${{dSign}}$${{dayDiff.toFixed(2)}} (${{dSign}}${{dayDiffPct.toFixed(2)}}%)</td>
                     <td style="color:${{cClr}};font-weight:700;">${{cSign}}${{chgP}}%</td>
                     <td>${{v.toFixed(1)}} 億</td>
                     <td>${{vol.toLocaleString()}} 張</td>
@@ -1465,7 +1491,7 @@ def update_index_portal(outdir):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台股全方位盤後大數據與籌碼動向 - 報告入口總覽 Portal</title>
+    <title>台股盤後大數據與籌碼動向觀測站 - 報告入口總覽 Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {{ --bg-dark:#0d1117; --bg-card:#161b22; --bg-hover:#1f242d; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --blue:#58a6ff; --green:#3fb950; --purple:#bc8cff; }}
@@ -1506,8 +1532,8 @@ def update_index_portal(outdir):
 </head>
 <body>
     <div class="hero">
-        <div class="badge">台股每日全方位盤後 Portal 入口網頁</div>
-        <h1>台股全方位盤後大數據與籌碼動向門戶</h1>
+        <div class="badge">台股盤後大數據與籌碼動向觀測站 Portal 入口網頁</div>
+        <h1>台股盤後大數據與籌碼動向觀測站</h1>
         <p class="sub">自動整合加權與櫃買雙折線圖、三大法人4系列柱狀圖、信用交易與成交金額 TOP 20 爆量強勢股</p>
         <div class="update-time-box">🕒 最新系統資料更新時間：{update_time_str}</div><br>
         <a href="{latest_file}" class="btn-latest">🚀 閱讀最新全方位日報 ({latest_date})</a>

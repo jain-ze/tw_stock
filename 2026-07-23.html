@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台股全方位盤後大數據深度分析與籌碼動向報告 (2026-07-23)</title>
+    <title>台股盤後大數據與籌碼動向觀測站 (2026-07-23)</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root { --bg-dark:#0d1117; --bg-card:#161b22; --bg-hover:#1f242d; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --blue:#58a6ff; --green:#3fb950; --red:#f85149; --amber:#d29922; --purple:#bc8cff; }
@@ -73,8 +73,8 @@
         <div class="nav-header">
             <a href="index.html" class="btn-home">🏠 回首頁 (Portal)</a>
         </div>
-        <div class="badge">台股全方位盤後大數據深度報告 (2026-07-23)</div>
-        <h1>台股全方位盤後大數據深度分析與籌碼動向</h1>
+        <div class="badge">台股盤後大數據與籌碼動向觀測站 (2026-07-23)</div>
+        <h1>台股盤後大數據與籌碼動向觀測站</h1>
         <p class="sub">統計資料日期：2026-07-23 (最近5交易日：2026/07/17 ～ 2026/07/23)  |  整合大盤指數、三大法人買賣超、信用交易與 TOP 20 爆量強勢股</p>
         <div class="metrics">
             <div class="m-card">
@@ -187,7 +187,7 @@
             <div class="tbl-container">
                 <table>
                     <thead>
-                        <tr><th>名次</th><th>代號 / 股票名稱</th><th>市場</th><th>產業分類</th><th>5日總成交額(億)</th><th>日均成交額(億)</th><th>5日成交量(張)</th><th>最新價</th><th>5日漲跌幅</th><th>走勢明細</th></tr>
+                        <tr><th>名次</th><th>代號 / 股票名稱</th><th>市場</th><th>產業分類</th><th>5日總成交額(億)</th><th>日均成交額(億)</th><th>5日成交量(張)</th><th>最新價</th><th>當日漲跌 (元/%)</th><th>5日漲跌幅</th><th>走勢明細</th></tr>
                     </thead>
                     <tbody>
                         <tr class="stock-row" onclick="openStockModal('2330')">
@@ -199,6 +199,7 @@
                             <td>1,154.7 億</td>
                             <td>244,413 張</td>
                             <td><strong>$2,405.00</strong></td>
+                            <td><span class="chg chg-up">+$5.00 (+0.21%)</span></td>
                             <td><span class="chg chg-up">+5.02%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -211,6 +212,7 @@
                             <td>430.7 億</td>
                             <td>317,851 張</td>
                             <td><strong>$696.00</strong></td>
+                            <td><span class="chg chg-down">$-7.00 (-1.00%)</span></td>
                             <td><span class="chg chg-down">-0.43%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -223,6 +225,7 @@
                             <td>367.2 億</td>
                             <td>50,217 張</td>
                             <td><strong>$3,875.00</strong></td>
+                            <td><span class="chg chg-up">+$25.00 (+0.65%)</span></td>
                             <td><span class="chg chg-up">+14.99%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -235,6 +238,7 @@
                             <td>314.5 億</td>
                             <td>380,093 張</td>
                             <td><strong>$426.00</strong></td>
+                            <td><span class="chg chg-down">$-19.50 (-4.38%)</span></td>
                             <td><span class="chg chg-up">+7.71%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -247,6 +251,7 @@
                             <td>301.8 億</td>
                             <td>1,101,469 張</td>
                             <td><strong>$138.50</strong></td>
+                            <td><span class="chg chg-down">$-0.50 (-0.36%)</span></td>
                             <td><span class="chg chg-down">-3.82%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -259,6 +264,7 @@
                             <td>233.8 億</td>
                             <td>588,117 張</td>
                             <td><strong>$197.00</strong></td>
+                            <td><span class="chg chg-down">$-11.00 (-5.29%)</span></td>
                             <td><span class="chg chg-down">-1.01%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -271,6 +277,7 @@
                             <td>233.3 億</td>
                             <td>1,152,785 張</td>
                             <td><strong>$103.90</strong></td>
+                            <td><span class="chg chg-up">+$0.05 (+0.05%)</span></td>
                             <td><span class="chg chg-up">+3.74%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -283,6 +290,7 @@
                             <td>219.7 億</td>
                             <td>131,723 張</td>
                             <td><strong>$896.00</strong></td>
+                            <td><span class="chg chg-down">$-11.00 (-1.21%)</span></td>
                             <td><span class="chg chg-up">+12.85%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -295,6 +303,7 @@
                             <td>210.4 億</td>
                             <td>87,681 張</td>
                             <td><strong>$1,230.00</strong></td>
+                            <td><span class="chg chg-down">$-75.00 (-5.75%)</span></td>
                             <td><span class="chg chg-up">+6.96%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -307,6 +316,7 @@
                             <td>201.4 億</td>
                             <td>195,722 張</td>
                             <td><strong>$506.00</strong></td>
+                            <td><span class="chg chg-down">$-53.00 (-9.48%)</span></td>
                             <td><span class="chg chg-down">-2.88%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -319,6 +329,7 @@
                             <td>198.6 億</td>
                             <td>54,788 張</td>
                             <td><strong>$1,880.00</strong></td>
+                            <td><span class="chg chg-flat">$0.00 (0.00%)</span></td>
                             <td><span class="chg chg-up">+8.05%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -331,6 +342,7 @@
                             <td>191.9 億</td>
                             <td>51,056 張</td>
                             <td><strong>$1,760.00</strong></td>
+                            <td><span class="chg chg-flat">$0.00 (0.00%)</span></td>
                             <td><span class="chg chg-flat">0.00%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -343,6 +355,7 @@
                             <td>184.7 億</td>
                             <td>577,745 張</td>
                             <td><strong>$161.00</strong></td>
+                            <td><span class="chg chg-down">$-10.00 (-5.85%)</span></td>
                             <td><span class="chg chg-up">+3.87%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -355,6 +368,7 @@
                             <td>161.2 億</td>
                             <td>1,546,833 張</td>
                             <td><strong>$51.90</strong></td>
+                            <td><span class="chg chg-down">$-0.60 (-1.14%)</span></td>
                             <td><span class="chg chg-down">-1.33%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -367,6 +381,7 @@
                             <td>147.6 億</td>
                             <td>300,632 張</td>
                             <td><strong>$257.50</strong></td>
+                            <td><span class="chg chg-up">+$6.00 (+2.39%)</span></td>
                             <td><span class="chg chg-up">+10.04%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -379,6 +394,7 @@
                             <td>143.4 億</td>
                             <td>439,538 張</td>
                             <td><strong>$173.50</strong></td>
+                            <td><span class="chg chg-up">+$9.50 (+5.79%)</span></td>
                             <td><span class="chg chg-up">+24.82%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -391,6 +407,7 @@
                             <td>140.4 億</td>
                             <td>111,890 張</td>
                             <td><strong>$649.00</strong></td>
+                            <td><span class="chg chg-down">$-7.00 (-1.07%)</span></td>
                             <td><span class="chg chg-up">+5.70%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -403,6 +420,7 @@
                             <td>128.4 億</td>
                             <td>61,280 張</td>
                             <td><strong>$1,030.00</strong></td>
+                            <td><span class="chg chg-flat">$0.00 (0.00%)</span></td>
                             <td><span class="chg chg-flat">0.00%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -415,6 +433,7 @@
                             <td>124.2 億</td>
                             <td>13,093 張</td>
                             <td><strong>$5,095.00</strong></td>
+                            <td><span class="chg chg-down">$-30.00 (-0.59%)</span></td>
                             <td><span class="chg chg-up">+13.35%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -427,6 +446,7 @@
                             <td>122.2 億</td>
                             <td>1,806,174 張</td>
                             <td><strong>$35.07</strong></td>
+                            <td><span class="chg chg-up">+$0.27 (+0.78%)</span></td>
                             <td><span class="chg chg-up">+9.01%</span></td>
                             <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
                         </tr>
@@ -499,9 +519,10 @@
                 <span id="m-sector" style="color:var(--muted);font-size:14px;">--</span>
             </div>
             
-            <div class="metrics" style="margin-bottom:15px;">
+            <div class="metrics" style="margin-bottom:15px;grid-template-columns:repeat(auto-fit, minmax(160px,1fr));">
                 <div class="m-card"><div class="m-label">最新收盤價</div><div class="m-val" id="m-price">--</div></div>
-                <div class="m-card"><div class="m-label">5日漲跌幅</div><div class="m-val" id="m-chg">--</div></div>
+                <div class="m-card"><div class="m-label">當日漲跌 (元/%)</div><div class="m-val" id="m-today-chg">--</div></div>
+                <div class="m-card"><div class="m-label">5日波段漲跌</div><div class="m-val" id="m-chg">--</div></div>
                 <div class="m-card"><div class="m-label">5日總成交金額</div><div class="m-val" id="m-total-val">--</div></div>
                 <div class="m-card"><div class="m-label">5日總成交量</div><div class="m-val" id="m-total-vol">--</div></div>
             </div>
@@ -514,7 +535,7 @@
             <div style="font-weight:700;font-size:16px;margin-top:20px;">📅 近 5 個交易日詳細數據明細表</div>
             <table class="detail-table">
                 <thead>
-                    <tr><th>日期</th><th>收盤價 (元)</th><th>5日累計漲跌</th><th>成交金額 (億元)</th><th>成交量 (張)</th></tr>
+                    <tr><th>日期</th><th>收盤價 (元)</th><th>當日漲跌 (元/%)</th><th>5日累計漲跌</th><th>成交金額 (億元)</th><th>成交量 (張)</th></tr>
                 </thead>
                 <tbody id="m-table-body">
                 </tbody>
@@ -522,10 +543,10 @@
         </div>
     </div>
 
-    <footer><p>台灣股市全方位盤後大數據分析系統 | <a href="index.html" style="color:var(--blue);text-decoration:none;font-weight:700;">🏠 回首頁 Portal</a> | 產生時間：2026-07-23</p></footer>
+    <footer><p>台股盤後大數據與籌碼動向觀測站 | <a href="index.html" style="color:var(--blue);text-decoration:none;font-weight:700;">🏠 回首頁 Portal</a> | 產生時間：2026-07-23</p></footer>
 
     <script>
-        const STOCKS_DATA = {"2330": {"rank": 1, "code": "2330", "name": "台積電", "market": "上市", "sector": "半導體 / 晶圓代工", "total_value_yi": 5773.38, "avg_value_yi": 1154.68, "total_volume_zhang": 244413, "latest_close": 2405.0, "first_close": 2290.0, "change_val": 115.0, "change_pct": 5.02, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [2290.52, 1298.16, 754.3, 762.06, 668.34], "daily_closes": [2290.0, 2320.0, 2410.0, 2400.0, 2405.0], "daily_volumes_zhang": [97362, 55790, 31605, 31653, 28001]}, "2327": {"rank": 2, "code": "2327", "name": "國巨*", "market": "上市", "sector": "被動元件", "total_value_yi": 2153.42, "avg_value_yi": 430.68, "total_volume_zhang": 317851, "latest_close": 696.0, "first_close": 699.0, "change_val": -3.0, "change_pct": -0.43, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [332.61, 252.11, 622.57, 528.17, 417.95], "daily_closes": [699.0, 630.0, 670.0, 703.0, 696.0], "daily_volumes_zhang": [47311, 39385, 96163, 75283, 59707]}, "2454": {"rank": 3, "code": "2454", "name": "聯發科", "market": "上市", "sector": "半導體 / IC設計", "total_value_yi": 1836.19, "avg_value_yi": 367.24, "total_volume_zhang": 50217, "latest_close": 3875.0, "first_close": 3370.0, "change_val": 505.0, "change_pct": 14.99, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [378.33, 308.5, 275.66, 537.82, 335.88], "daily_closes": [3370.0, 3340.0, 3670.0, 3850.0, 3875.0], "daily_volumes_zhang": [10967, 9227, 7741, 13766, 8514]}, "2408": {"rank": 4, "code": "2408", "name": "南亞科", "market": "上市", "sector": "半導體 / 記憶體", "total_value_yi": 1572.5, "avg_value_yi": 314.5, "total_volume_zhang": 380093, "latest_close": 426.0, "first_close": 395.5, "change_val": 30.5, "change_pct": 7.71, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [331.53, 288.24, 283.18, 281.91, 387.64], "daily_closes": [395.5, 381.0, 405.0, 445.5, 426.0], "daily_volumes_zhang": [82626, 73602, 70570, 63907, 89386]}, "2303": {"rank": 5, "code": "2303", "name": "聯電", "market": "上市", "sector": "半導體 / 晶圓代工", "total_value_yi": 1508.97, "avg_value_yi": 301.79, "total_volume_zhang": 1101469, "latest_close": 138.5, "first_close": 144.0, "change_val": -5.5, "change_pct": -3.82, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [364.2, 390.92, 343.81, 249.93, 160.12], "daily_closes": [144.0, 130.0, 134.5, 139.0, 138.5], "daily_volumes_zhang": [252067, 297589, 259729, 176785, 115296]}, "1303": {"rank": 6, "code": "1303", "name": "南亞", "market": "上市", "sector": "塑膠塑化 / 原料", "total_value_yi": 1169.16, "avg_value_yi": 233.83, "total_volume_zhang": 588117, "latest_close": 197.0, "first_close": 199.0, "change_val": -2.0, "change_pct": -1.01, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [238.52, 211.37, 236.06, 235.05, 248.16], "daily_closes": [199.0, 186.5, 195.5, 208.0, 197.0], "daily_volumes_zhang": [118646, 112072, 122062, 114338, 120996]}, "0050": {"rank": 7, "code": "0050", "name": "元大台灣50", "market": "上市", "sector": "指數型 / ETF", "total_value_yi": 1166.48, "avg_value_yi": 233.3, "total_volume_zhang": 1152785, "latest_close": 103.9, "first_close": 100.15, "change_val": 3.75, "change_pct": 3.74, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [528.23, 372.11, 97.14, 112.31, 56.7], "daily_closes": [100.15, 99.2, 102.5, 103.85, 103.9], "daily_volumes_zhang": [520545, 373784, 95733, 107935, 54786]}, "3037": {"rank": 8, "code": "3037", "name": "欣興", "market": "上市", "sector": "電子 / ABF載板", "total_value_yi": 1098.47, "avg_value_yi": 219.69, "total_volume_zhang": 131723, "latest_close": 896.0, "first_close": 794.0, "change_val": 102.0, "change_pct": 12.85, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [242.95, 235.15, 153.29, 224.01, 243.07], "daily_closes": [794.0, 750.0, 825.0, 907.0, 896.0], "daily_volumes_zhang": [30076, 30661, 18816, 25034, 27135]}, "8046": {"rank": 9, "code": "8046", "name": "南電", "market": "上市", "sector": "電子 / ABF載板", "total_value_yi": 1051.94, "avg_value_yi": 210.39, "total_volume_zhang": 87681, "latest_close": 1230.0, "first_close": 1150.0, "change_val": 80.0, "change_pct": 6.96, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [192.77, 203.83, 201.34, 217.32, 236.67], "daily_closes": [1150.0, 1105.0, 1190.0, 1305.0, 1230.0], "daily_volumes_zhang": [16446, 18077, 16995, 17115, 19046]}, "4958": {"rank": 10, "code": "4958", "name": "臻鼎-KY", "market": "上市", "sector": "電子 / PCB軟板", "total_value_yi": 1006.92, "avg_value_yi": 201.38, "total_volume_zhang": 195722, "latest_close": 506.0, "first_close": 521.0, "change_val": -15.0, "change_pct": -2.88, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [114.53, 174.71, 219.74, 249.76, 248.18], "daily_closes": [521.0, 478.5, 509.0, 559.0, 506.0], "daily_volumes_zhang": [21751, 35909, 44056, 46265, 47739]}, "2308": {"rank": 11, "code": "2308", "name": "台達電", "market": "上市", "sector": "電子 / 電源綠能", "total_value_yi": 992.89, "avg_value_yi": 198.58, "total_volume_zhang": 54788, "latest_close": 1880.0, "first_close": 1740.0, "change_val": 140.0, "change_pct": 8.05, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [253.17, 198.83, 200.04, 225.86, 114.99], "daily_closes": [1740.0, 1705.0, 1835.0, 1880.0, 1880.0], "daily_volumes_zhang": [14248, 11567, 11082, 11813, 6075]}, "3081": {"rank": 12, "code": "3081", "name": "聯亞", "market": "上櫃", "sector": "一般產業", "total_value_yi": 959.32, "avg_value_yi": 191.86, "total_volume_zhang": 51056, "latest_close": 1760.0, "first_close": 1760.0, "change_val": 0.0, "change_pct": 0.0, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [191.86, 191.86, 191.86, 191.86, 191.86], "daily_closes": [1760.0, 1760.0, 1760.0, 1760.0, 1760.0], "daily_volumes_zhang": [10211, 10211, 10211, 10211, 10211]}, "2344": {"rank": 13, "code": "2344", "name": "華邦電", "market": "上市", "sector": "半導體 / 記憶體", "total_value_yi": 923.67, "avg_value_yi": 184.73, "total_volume_zhang": 577745, "latest_close": 161.0, "first_close": 155.0, "change_val": 6.0, "change_pct": 3.87, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [173.18, 163.39, 162.9, 165.01, 259.19], "daily_closes": [155.0, 151.0, 155.5, 171.0, 161.0], "daily_volumes_zhang": [110525, 107223, 104783, 97387, 157825]}, "3481": {"rank": 14, "code": "3481", "name": "群創", "market": "上市", "sector": "光電 / 面板製造", "total_value_yi": 806.0, "avg_value_yi": 161.2, "total_volume_zhang": 1546833, "latest_close": 51.9, "first_close": 52.6, "change_val": -0.7, "change_pct": -1.33, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [184.22, 186.47, 161.45, 152.81, 121.05], "daily_closes": [52.6, 50.4, 50.7, 52.5, 51.9], "daily_volumes_zhang": [343294, 366167, 317037, 288972, 231361]}, "2317": {"rank": 15, "code": "2317", "name": "鴻海", "market": "上市", "sector": "代工 / AI伺服器", "total_value_yi": 738.1, "avg_value_yi": 147.62, "total_volume_zhang": 300632, "latest_close": 257.5, "first_close": 234.0, "change_val": 23.5, "change_pct": 10.04, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [162.81, 114.23, 125.44, 172.05, 163.58], "daily_closes": [234.0, 234.5, 246.0, 251.5, 257.5], "daily_volumes_zhang": [69006, 48579, 51471, 67787, 63787]}, "3231": {"rank": 16, "code": "3231", "name": "緯創", "market": "上市", "sector": "電腦 / AI伺服器", "total_value_yi": 717.26, "avg_value_yi": 143.45, "total_volume_zhang": 439538, "latest_close": 173.5, "first_close": 139.0, "change_val": 34.5, "change_pct": 24.82, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [54.69, 74.83, 53.82, 153.93, 380.0], "daily_closes": [139.0, 143.5, 149.5, 164.0, 173.5], "daily_volumes_zhang": [38762, 51717, 36192, 94856, 218008]}, "3711": {"rank": 17, "code": "3711", "name": "日月光投控", "market": "上市", "sector": "半導體 / 封測龍頭", "total_value_yi": 702.25, "avg_value_yi": 140.45, "total_volume_zhang": 111890, "latest_close": 649.0, "first_close": 614.0, "change_val": 35.0, "change_pct": 5.7, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [173.19, 183.34, 96.99, 150.69, 98.04], "daily_closes": [614.0, 597.0, 633.0, 656.0, 649.0], "daily_volumes_zhang": [27892, 30646, 15573, 22726, 15052]}, "6488": {"rank": 18, "code": "6488", "name": "環球晶", "market": "上櫃", "sector": "一般產業", "total_value_yi": 642.17, "avg_value_yi": 128.43, "total_volume_zhang": 61280, "latest_close": 1030.0, "first_close": 1030.0, "change_val": 0.0, "change_pct": 0.0, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [128.43, 128.43, 128.43, 128.43, 128.43], "daily_closes": [1030.0, 1030.0, 1030.0, 1030.0, 1030.0], "daily_volumes_zhang": [12256, 12256, 12256, 12256, 12256]}, "2383": {"rank": 19, "code": "2383", "name": "台光電", "market": "上市", "sector": "電子 / CCL銅箔基板", "total_value_yi": 621.03, "avg_value_yi": 124.21, "total_volume_zhang": 13093, "latest_close": 5095.0, "first_close": 4495.0, "change_val": 600.0, "change_pct": 13.35, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [146.41, 141.61, 139.43, 118.22, 75.35], "daily_closes": [4495.0, 4395.0, 4830.0, 5125.0, 5095.0], "daily_volumes_zhang": [3166, 3220, 2947, 2287, 1471]}, "00631L": {"rank": 20, "code": "00631L", "name": "元大台灣50正2", "market": "上市", "sector": "槓桿型 / ETF", "total_value_yi": 610.77, "avg_value_yi": 122.15, "total_volume_zhang": 1806174, "latest_close": 35.07, "first_close": 32.17, "change_val": 2.9, "change_pct": 9.01, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [297.96, 106.31, 69.03, 86.56, 50.91], "daily_closes": [32.17, 32.06, 34.34, 34.8, 35.07], "daily_volumes_zhang": [882224, 327989, 204454, 245350, 146154]}};
+        const STOCKS_DATA = {"2330": {"rank": 1, "code": "2330", "name": "台積電", "market": "上市", "sector": "半導體 / 晶圓代工", "total_value_yi": 5773.38, "avg_value_yi": 1154.68, "total_volume_zhang": 244413, "latest_close": 2405.0, "prev_close": 2400.0, "today_change_val": 5.0, "today_change_pct": 0.21, "first_close": 2290.0, "change_val": 115.0, "change_pct": 5.02, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [2290.52, 1298.16, 754.3, 762.06, 668.34], "daily_closes": [2290.0, 2320.0, 2410.0, 2400.0, 2405.0], "daily_volumes_zhang": [97362, 55790, 31605, 31653, 28001]}, "2327": {"rank": 2, "code": "2327", "name": "國巨*", "market": "上市", "sector": "被動元件", "total_value_yi": 2153.42, "avg_value_yi": 430.68, "total_volume_zhang": 317851, "latest_close": 696.0, "prev_close": 703.0, "today_change_val": -7.0, "today_change_pct": -1.0, "first_close": 699.0, "change_val": -3.0, "change_pct": -0.43, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [332.61, 252.11, 622.57, 528.17, 417.95], "daily_closes": [699.0, 630.0, 670.0, 703.0, 696.0], "daily_volumes_zhang": [47311, 39385, 96163, 75283, 59707]}, "2454": {"rank": 3, "code": "2454", "name": "聯發科", "market": "上市", "sector": "半導體 / IC設計", "total_value_yi": 1836.19, "avg_value_yi": 367.24, "total_volume_zhang": 50217, "latest_close": 3875.0, "prev_close": 3850.0, "today_change_val": 25.0, "today_change_pct": 0.65, "first_close": 3370.0, "change_val": 505.0, "change_pct": 14.99, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [378.33, 308.5, 275.66, 537.82, 335.88], "daily_closes": [3370.0, 3340.0, 3670.0, 3850.0, 3875.0], "daily_volumes_zhang": [10967, 9227, 7741, 13766, 8514]}, "2408": {"rank": 4, "code": "2408", "name": "南亞科", "market": "上市", "sector": "半導體 / 記憶體", "total_value_yi": 1572.5, "avg_value_yi": 314.5, "total_volume_zhang": 380093, "latest_close": 426.0, "prev_close": 445.5, "today_change_val": -19.5, "today_change_pct": -4.38, "first_close": 395.5, "change_val": 30.5, "change_pct": 7.71, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [331.53, 288.24, 283.18, 281.91, 387.64], "daily_closes": [395.5, 381.0, 405.0, 445.5, 426.0], "daily_volumes_zhang": [82626, 73602, 70570, 63907, 89386]}, "2303": {"rank": 5, "code": "2303", "name": "聯電", "market": "上市", "sector": "半導體 / 晶圓代工", "total_value_yi": 1508.97, "avg_value_yi": 301.79, "total_volume_zhang": 1101469, "latest_close": 138.5, "prev_close": 139.0, "today_change_val": -0.5, "today_change_pct": -0.36, "first_close": 144.0, "change_val": -5.5, "change_pct": -3.82, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [364.2, 390.92, 343.81, 249.93, 160.12], "daily_closes": [144.0, 130.0, 134.5, 139.0, 138.5], "daily_volumes_zhang": [252067, 297589, 259729, 176785, 115296]}, "1303": {"rank": 6, "code": "1303", "name": "南亞", "market": "上市", "sector": "塑膠塑化 / 原料", "total_value_yi": 1169.16, "avg_value_yi": 233.83, "total_volume_zhang": 588117, "latest_close": 197.0, "prev_close": 208.0, "today_change_val": -11.0, "today_change_pct": -5.29, "first_close": 199.0, "change_val": -2.0, "change_pct": -1.01, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [238.52, 211.37, 236.06, 235.05, 248.16], "daily_closes": [199.0, 186.5, 195.5, 208.0, 197.0], "daily_volumes_zhang": [118646, 112072, 122062, 114338, 120996]}, "0050": {"rank": 7, "code": "0050", "name": "元大台灣50", "market": "上市", "sector": "指數型 / ETF", "total_value_yi": 1166.48, "avg_value_yi": 233.3, "total_volume_zhang": 1152785, "latest_close": 103.9, "prev_close": 103.85, "today_change_val": 0.05, "today_change_pct": 0.05, "first_close": 100.15, "change_val": 3.75, "change_pct": 3.74, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [528.23, 372.11, 97.14, 112.31, 56.7], "daily_closes": [100.15, 99.2, 102.5, 103.85, 103.9], "daily_volumes_zhang": [520545, 373784, 95733, 107935, 54786]}, "3037": {"rank": 8, "code": "3037", "name": "欣興", "market": "上市", "sector": "電子 / ABF載板", "total_value_yi": 1098.47, "avg_value_yi": 219.69, "total_volume_zhang": 131723, "latest_close": 896.0, "prev_close": 907.0, "today_change_val": -11.0, "today_change_pct": -1.21, "first_close": 794.0, "change_val": 102.0, "change_pct": 12.85, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [242.95, 235.15, 153.29, 224.01, 243.07], "daily_closes": [794.0, 750.0, 825.0, 907.0, 896.0], "daily_volumes_zhang": [30076, 30661, 18816, 25034, 27135]}, "8046": {"rank": 9, "code": "8046", "name": "南電", "market": "上市", "sector": "電子 / ABF載板", "total_value_yi": 1051.94, "avg_value_yi": 210.39, "total_volume_zhang": 87681, "latest_close": 1230.0, "prev_close": 1305.0, "today_change_val": -75.0, "today_change_pct": -5.75, "first_close": 1150.0, "change_val": 80.0, "change_pct": 6.96, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [192.77, 203.83, 201.34, 217.32, 236.67], "daily_closes": [1150.0, 1105.0, 1190.0, 1305.0, 1230.0], "daily_volumes_zhang": [16446, 18077, 16995, 17115, 19046]}, "4958": {"rank": 10, "code": "4958", "name": "臻鼎-KY", "market": "上市", "sector": "電子 / PCB軟板", "total_value_yi": 1006.92, "avg_value_yi": 201.38, "total_volume_zhang": 195722, "latest_close": 506.0, "prev_close": 559.0, "today_change_val": -53.0, "today_change_pct": -9.48, "first_close": 521.0, "change_val": -15.0, "change_pct": -2.88, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [114.53, 174.71, 219.74, 249.76, 248.18], "daily_closes": [521.0, 478.5, 509.0, 559.0, 506.0], "daily_volumes_zhang": [21751, 35909, 44056, 46265, 47739]}, "2308": {"rank": 11, "code": "2308", "name": "台達電", "market": "上市", "sector": "電子 / 電源綠能", "total_value_yi": 992.89, "avg_value_yi": 198.58, "total_volume_zhang": 54788, "latest_close": 1880.0, "prev_close": 1880.0, "today_change_val": 0.0, "today_change_pct": 0.0, "first_close": 1740.0, "change_val": 140.0, "change_pct": 8.05, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [253.17, 198.83, 200.04, 225.86, 114.99], "daily_closes": [1740.0, 1705.0, 1835.0, 1880.0, 1880.0], "daily_volumes_zhang": [14248, 11567, 11082, 11813, 6075]}, "3081": {"rank": 12, "code": "3081", "name": "聯亞", "market": "上櫃", "sector": "一般產業", "total_value_yi": 959.32, "avg_value_yi": 191.86, "total_volume_zhang": 51056, "latest_close": 1760.0, "prev_close": 1760.0, "today_change_val": 0.0, "today_change_pct": 0.0, "first_close": 1760.0, "change_val": 0.0, "change_pct": 0.0, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [191.86, 191.86, 191.86, 191.86, 191.86], "daily_closes": [1760.0, 1760.0, 1760.0, 1760.0, 1760.0], "daily_volumes_zhang": [10211, 10211, 10211, 10211, 10211]}, "2344": {"rank": 13, "code": "2344", "name": "華邦電", "market": "上市", "sector": "半導體 / 記憶體", "total_value_yi": 923.67, "avg_value_yi": 184.73, "total_volume_zhang": 577745, "latest_close": 161.0, "prev_close": 171.0, "today_change_val": -10.0, "today_change_pct": -5.85, "first_close": 155.0, "change_val": 6.0, "change_pct": 3.87, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [173.18, 163.39, 162.9, 165.01, 259.19], "daily_closes": [155.0, 151.0, 155.5, 171.0, 161.0], "daily_volumes_zhang": [110525, 107223, 104783, 97387, 157825]}, "3481": {"rank": 14, "code": "3481", "name": "群創", "market": "上市", "sector": "光電 / 面板製造", "total_value_yi": 806.0, "avg_value_yi": 161.2, "total_volume_zhang": 1546833, "latest_close": 51.9, "prev_close": 52.5, "today_change_val": -0.6, "today_change_pct": -1.14, "first_close": 52.6, "change_val": -0.7, "change_pct": -1.33, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [184.22, 186.47, 161.45, 152.81, 121.05], "daily_closes": [52.6, 50.4, 50.7, 52.5, 51.9], "daily_volumes_zhang": [343294, 366167, 317037, 288972, 231361]}, "2317": {"rank": 15, "code": "2317", "name": "鴻海", "market": "上市", "sector": "代工 / AI伺服器", "total_value_yi": 738.1, "avg_value_yi": 147.62, "total_volume_zhang": 300632, "latest_close": 257.5, "prev_close": 251.5, "today_change_val": 6.0, "today_change_pct": 2.39, "first_close": 234.0, "change_val": 23.5, "change_pct": 10.04, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [162.81, 114.23, 125.44, 172.05, 163.58], "daily_closes": [234.0, 234.5, 246.0, 251.5, 257.5], "daily_volumes_zhang": [69006, 48579, 51471, 67787, 63787]}, "3231": {"rank": 16, "code": "3231", "name": "緯創", "market": "上市", "sector": "電腦 / AI伺服器", "total_value_yi": 717.26, "avg_value_yi": 143.45, "total_volume_zhang": 439538, "latest_close": 173.5, "prev_close": 164.0, "today_change_val": 9.5, "today_change_pct": 5.79, "first_close": 139.0, "change_val": 34.5, "change_pct": 24.82, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [54.69, 74.83, 53.82, 153.93, 380.0], "daily_closes": [139.0, 143.5, 149.5, 164.0, 173.5], "daily_volumes_zhang": [38762, 51717, 36192, 94856, 218008]}, "3711": {"rank": 17, "code": "3711", "name": "日月光投控", "market": "上市", "sector": "半導體 / 封測龍頭", "total_value_yi": 702.25, "avg_value_yi": 140.45, "total_volume_zhang": 111890, "latest_close": 649.0, "prev_close": 656.0, "today_change_val": -7.0, "today_change_pct": -1.07, "first_close": 614.0, "change_val": 35.0, "change_pct": 5.7, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [173.19, 183.34, 96.99, 150.69, 98.04], "daily_closes": [614.0, 597.0, 633.0, 656.0, 649.0], "daily_volumes_zhang": [27892, 30646, 15573, 22726, 15052]}, "6488": {"rank": 18, "code": "6488", "name": "環球晶", "market": "上櫃", "sector": "一般產業", "total_value_yi": 642.17, "avg_value_yi": 128.43, "total_volume_zhang": 61280, "latest_close": 1030.0, "prev_close": 1030.0, "today_change_val": 0.0, "today_change_pct": 0.0, "first_close": 1030.0, "change_val": 0.0, "change_pct": 0.0, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [128.43, 128.43, 128.43, 128.43, 128.43], "daily_closes": [1030.0, 1030.0, 1030.0, 1030.0, 1030.0], "daily_volumes_zhang": [12256, 12256, 12256, 12256, 12256]}, "2383": {"rank": 19, "code": "2383", "name": "台光電", "market": "上市", "sector": "電子 / CCL銅箔基板", "total_value_yi": 621.03, "avg_value_yi": 124.21, "total_volume_zhang": 13093, "latest_close": 5095.0, "prev_close": 5125.0, "today_change_val": -30.0, "today_change_pct": -0.59, "first_close": 4495.0, "change_val": 600.0, "change_pct": 13.35, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [146.41, 141.61, 139.43, 118.22, 75.35], "daily_closes": [4495.0, 4395.0, 4830.0, 5125.0, 5095.0], "daily_volumes_zhang": [3166, 3220, 2947, 2287, 1471]}, "00631L": {"rank": 20, "code": "00631L", "name": "元大台灣50正2", "market": "上市", "sector": "槓桿型 / ETF", "total_value_yi": 610.77, "avg_value_yi": 122.15, "total_volume_zhang": 1806174, "latest_close": 35.07, "prev_close": 34.8, "today_change_val": 0.27, "today_change_pct": 0.78, "first_close": 32.17, "change_val": 2.9, "change_pct": 9.01, "daily_dates": ["07/17", "07/20", "07/21", "07/22", "07/23"], "daily_values_yi": [297.96, 106.31, 69.03, 86.56, 50.91], "daily_closes": [32.17, 32.06, 34.34, 34.8, 35.07], "daily_volumes_zhang": [882224, 327989, 204454, 245350, 146154]}};
 
         function switchMainView(viewName) {
             const tblSec = document.getElementById('section-table-view');
@@ -564,6 +585,10 @@
             document.getElementById('m-sector').textContent = s.sector;
 
             document.getElementById('m-price').textContent = `$${s.latest_close.toFixed(2)}`;
+            const todaySign = s.today_change_val > 0 ? '+' : '';
+            const todayClr = s.today_change_val > 0 ? 'var(--red)' : (s.today_change_val < 0 ? 'var(--green)' : 'var(--muted)');
+            document.getElementById('m-today-chg').innerHTML = `<span style="color:${todayClr}">${todaySign}$${s.today_change_val.toFixed(2)} (${todaySign}${s.today_change_pct.toFixed(2)}%)</span>`;
+
             const chgSign = s.change_pct > 0 ? '+' : '';
             const chgColor = s.change_pct > 0 ? 'var(--red)' : (s.change_pct < 0 ? 'var(--green)' : 'var(--muted)');
             document.getElementById('m-chg').innerHTML = `<span style="color:${chgColor}">${chgSign}${s.change_pct.toFixed(2)}%</span>`;
@@ -576,6 +601,13 @@
                 let p = s.daily_closes[i];
                 let v = s.daily_values_yi[i];
                 let vol = s.daily_volumes_zhang[i];
+
+                let prevP = i > 0 ? s.daily_closes[i-1] : (s.prev_close || p);
+                let dayDiff = p - prevP;
+                let dayDiffPct = prevP > 0 ? ((p - prevP) / prevP * 100) : 0;
+                let dClr = dayDiff > 0 ? 'var(--red)' : (dayDiff < 0 ? 'var(--green)' : 'var(--muted)');
+                let dSign = dayDiff > 0 ? '+' : '';
+
                 let firstP = s.first_close;
                 let chgP = p > 0 && firstP > 0 ? ((p - firstP) / firstP * 100).toFixed(2) : '0.00';
                 let cClr = chgP > 0 ? 'var(--red)' : (chgP < 0 ? 'var(--green)' : 'var(--muted)');
@@ -584,6 +616,7 @@
                 tbody += `<tr>
                     <td><strong>${dateStr}</strong></td>
                     <td>$${p.toFixed(2)}</td>
+                    <td style="color:${dClr};font-weight:700;">${dSign}$${dayDiff.toFixed(2)} (${dSign}${dayDiffPct.toFixed(2)}%)</td>
                     <td style="color:${cClr};font-weight:700;">${cSign}${chgP}%</td>
                     <td>${v.toFixed(1)} 億</td>
                     <td>${vol.toLocaleString()} 張</td>
