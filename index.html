@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台股全方位盤後大數據與籌碼動向 - 報告入口總覽 Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-dark:#0d1117; --bg-card:#161b22; --bg-hover:#1f242d; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --blue:#58a6ff; --green:#3fb950; --purple:#bc8cff; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { font-family:'Noto Sans TC','Inter',sans-serif; background-color:var(--bg-dark); color:var(--text); line-height:1.6; padding-bottom:60px; }
+        .hero { background:linear-gradient(135deg, #161b22 0%, #0d1117 100%); border-bottom:1px solid var(--border); padding:45px 20px 35px; text-align:center; position:relative; }
+        .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #58a6ff, #bc8cff, #3fb950); }
+        .badge { display:inline-block; background:rgba(188,140,255,0.15); color:var(--purple); padding:6px 16px; border-radius:20px; font-size:14px; font-weight:700; margin-bottom:12px; border:1px solid rgba(188,140,255,0.3); }
+        h1 { font-size:34px; font-weight:900; margin-bottom:10px; background:linear-gradient(90deg, #ffffff, #c9d1d9); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .sub { color:var(--muted); font-size:16px; margin-bottom:25px; }
+        .btn-latest { display:inline-block; background:var(--blue); color:#000; font-weight:800; font-size:16px; padding:12px 28px; border-radius:8px; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 15px rgba(88,166,255,0.3); }
+        .btn-latest:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(88,166,255,0.5); }
+        .container { max-width:1100px; margin:40px auto; padding:0 20px; }
+        .view-controls { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px; }
+        .s-title { border-left:4px solid var(--blue); padding-left:12px; font-size:22px; font-weight:800; }
+        .toggle-group { display:flex; gap:6px; background:#161b22; padding:4px; border-radius:8px; border:1px solid var(--border); }
+        .toggle-btn { background:transparent; border:none; color:var(--muted); padding:6px 14px; border-radius:6px; font-weight:700; font-size:14px; cursor:pointer; transition:all 0.2s; }
+        .toggle-btn.active { background:var(--blue); color:#000; }
+        .grid-view { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:20px; }
+        .report-card { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:22px; transition:transform 0.2s, border-color 0.2s; display:flex; flex-direction:column; justify-content:space-between; }
+        .report-card:hover { transform:translateY(-3px); border-color:var(--blue); }
+        .card-date { font-size:18px; font-weight:800; color:var(--blue); margin-bottom:8px; }
+        .card-desc { font-size:13px; color:var(--muted); margin-bottom:16px; }
+        .links-bar { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+        .btn-action { display:inline-block; font-weight:700; font-size:13px; text-align:center; padding:7px 12px; border-radius:6px; text-decoration:none; transition:all 0.2s; }
+        .btn-action.primary { background:var(--blue); color:#000; }
+        .btn-action.secondary { background:#21262d; color:var(--text); border:1px solid var(--border); }
+        .btn-action.secondary:hover { background:var(--bg-hover); border-color:var(--blue); }
+        .btn-action.csv { background:rgba(63,185,80,0.15); color:var(--green); border:1px solid rgba(63,185,80,0.4); }
+        .btn-action.csv:hover { background:var(--green); color:#000; }
+        .list-view { width:100%; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; overflow:hidden; border-collapse:collapse; font-size:14px; text-align:left; }
+        .list-view th, .list-view td { padding:14px 18px; border-bottom:1px solid var(--border); }
+        .list-view th { background:#161b22; color:var(--muted); }
+        .list-view tr:hover { background:var(--bg-hover); }
+        footer { text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--border); padding-top:30px; margin-top:60px; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="badge">台股每日全方位盤後 Portal 入口網頁</div>
+        <h1>台股全方位盤後大數據與籌碼動向門戶</h1>
+        <p class="sub">自動整合加權與櫃買雙折線圖、三大法人4系列柱狀圖、信用交易與成交金額 TOP 20 爆量強勢股</p>
+        <a href="2026-07-24.html" class="btn-latest">🚀 閱讀最新全方位日報 (2026-07-24)</a>
+    </div>
+
+    <div class="container">
+        <div class="view-controls">
+            <div class="s-title">📅 歷日分析報告典藏歸檔 (日期由新到舊排序)</div>
+            <div class="toggle-group">
+                <button id="btn-cards" class="toggle-btn active" onclick="setView('cards')">🎴 卡片檢視</button>
+                <button id="btn-list" class="toggle-btn" onclick="setView('list')">📋 條列檢視</button>
+            </div>
+        </div>
+
+        <div id="cards-container" class="grid-view">
+            
+            <div class="report-card">
+                <div>
+                    <div class="card-date">📊 2026-07-24 全方位大數據分析報告</div>
+                    <div class="card-desc">整合雙折線圖與柱狀圖 (6張圖卡)、三大法人籌碼、信用交易 (含尚未更新動態標示) 與 CSV 數據檔</div>
+                </div>
+                <div class="links-bar">
+                    <a href="2026-07-24.html" class="btn-action primary">開啟完整分析網頁 →</a>
+                    <a href="taiwan_stock_card1_market_index_2026-07-24.png" class="btn-action secondary" target="_blank">雙折線圖卡</a>
+                    <a href="taiwan_stock_card2_bfi82u_2026-07-24.png" class="btn-action secondary" target="_blank">法人柱狀圖卡</a>
+                    <a href="taiwan_stock_card3_margin_2026-07-24.png" class="btn-action secondary" target="_blank">融資柱狀圖卡</a>
+                    <a href="taiwan_stock_card4_top20_overview_2026-07-24.png" class="btn-action secondary" target="_blank">TOP20圖卡</a>
+                    <a href="taiwan_stock_top20_trading_value_5days_2026-07-24.csv" class="btn-action csv">下載 CSV</a>
+                </div>
+            </div>
+            <div class="report-card">
+                <div>
+                    <div class="card-date">📊 2026-07-23 全方位大數據分析報告</div>
+                    <div class="card-desc">整合雙折線圖與柱狀圖 (6張圖卡)、三大法人籌碼、信用交易 (含尚未更新動態標示) 與 CSV 數據檔</div>
+                </div>
+                <div class="links-bar">
+                    <a href="2026-07-23.html" class="btn-action primary">開啟完整分析網頁 →</a>
+                    <a href="taiwan_stock_card1_market_index_2026-07-23.png" class="btn-action secondary" target="_blank">雙折線圖卡</a>
+                    <a href="taiwan_stock_card2_bfi82u_2026-07-23.png" class="btn-action secondary" target="_blank">法人柱狀圖卡</a>
+                    <a href="taiwan_stock_card3_margin_2026-07-23.png" class="btn-action secondary" target="_blank">融資柱狀圖卡</a>
+                    <a href="taiwan_stock_card4_top20_overview_2026-07-23.png" class="btn-action secondary" target="_blank">TOP20圖卡</a>
+                    <a href="taiwan_stock_top20_trading_value_5days_2026-07-23.csv" class="btn-action csv">下載 CSV</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="list-container" style="display:none;">
+            <table class="list-view">
+                <thead>
+                    <tr>
+                        <th>報告日期</th>
+                        <th>報告標題</th>
+                        <th>操作與下載</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td><strong>2026-07-24</strong></td>
+                <td>台股全方位盤後大數據深度分析與籌碼動向報告 (含雙折線與柱狀統計圖)</td>
+                <td>
+                    <a href="2026-07-24.html" class="btn-action primary">開啟網頁</a>
+                    <a href="taiwan_stock_card1_market_index_2026-07-24.png" class="btn-action secondary" target="_blank">雙折線圖卡</a>
+                    <a href="taiwan_stock_card2_bfi82u_2026-07-24.png" class="btn-action secondary" target="_blank">法人柱狀圖卡</a>
+                    <a href="taiwan_stock_card3_margin_2026-07-24.png" class="btn-action secondary" target="_blank">融資柱狀圖卡</a>
+                    <a href="taiwan_stock_card4_top20_overview_2026-07-24.png" class="btn-action secondary" target="_blank">TOP20圖卡</a>
+                    <a href="taiwan_stock_top20_trading_value_5days_2026-07-24.csv" class="btn-action csv">CSV</a>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>2026-07-23</strong></td>
+                <td>台股全方位盤後大數據深度分析與籌碼動向報告 (含雙折線與柱狀統計圖)</td>
+                <td>
+                    <a href="2026-07-23.html" class="btn-action primary">開啟網頁</a>
+                    <a href="taiwan_stock_card1_market_index_2026-07-23.png" class="btn-action secondary" target="_blank">雙折線圖卡</a>
+                    <a href="taiwan_stock_card2_bfi82u_2026-07-23.png" class="btn-action secondary" target="_blank">法人柱狀圖卡</a>
+                    <a href="taiwan_stock_card3_margin_2026-07-23.png" class="btn-action secondary" target="_blank">融資柱狀圖卡</a>
+                    <a href="taiwan_stock_card4_top20_overview_2026-07-23.png" class="btn-action secondary" target="_blank">TOP20圖卡</a>
+                    <a href="taiwan_stock_top20_trading_value_5days_2026-07-23.csv" class="btn-action csv">CSV</a>
+                </td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <p>自動化系統排程：每個工作日下午 15:30 自動更新 | 自動清理 30 天前舊資料 | 數據來源：TWSE / TPEx</p>
+    </footer>
+
+    <script>
+        function setView(viewType) {
+            const cardsView = document.getElementById('cards-container');
+            const listView = document.getElementById('list-container');
+            const btnCards = document.getElementById('btn-cards');
+            const btnList = document.getElementById('btn-list');
+
+            if (viewType === 'cards') {
+                cardsView.style.display = 'grid';
+                listView.style.display = 'none';
+                btnCards.classList.add('active');
+                btnList.classList.remove('active');
+            } else {
+                cardsView.style.display = 'none';
+                listView.style.display = 'block';
+                btnCards.classList.remove('active');
+                btnList.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
