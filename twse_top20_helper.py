@@ -1404,6 +1404,7 @@ def sync_to_github(outdir):
     return False
 
 def update_index_portal(outdir):
+    update_time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     html_files = sorted(glob.glob(os.path.join(outdir, "20??-??-??.html")), reverse=True)
     
     reports = []
@@ -1474,7 +1475,8 @@ def update_index_portal(outdir):
         .hero::before {{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #58a6ff, #bc8cff, #3fb950); }}
         .badge {{ display:inline-block; background:rgba(188,140,255,0.15); color:var(--purple); padding:6px 16px; border-radius:20px; font-size:14px; font-weight:700; margin-bottom:12px; border:1px solid rgba(188,140,255,0.3); }}
         h1 {{ font-size:34px; font-weight:900; margin-bottom:10px; background:linear-gradient(90deg, #ffffff, #c9d1d9); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }}
-        .sub {{ color:var(--muted); font-size:16px; margin-bottom:25px; }}
+        .sub {{ color:var(--muted); font-size:16px; margin-bottom:15px; }}
+        .update-time-box {{ display:inline-block; background:#21262d; border:1px solid var(--border); border-radius:8px; padding:6px 14px; font-size:14px; color:var(--blue); font-weight:700; margin-bottom:20px; }}
         .btn-latest {{ display:inline-block; background:var(--blue); color:#000; font-weight:800; font-size:16px; padding:12px 28px; border-radius:8px; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 15px rgba(88,166,255,0.3); }}
         .btn-latest:hover {{ transform:translateY(-2px); box-shadow:0 6px 20px rgba(88,166,255,0.5); }}
         .container {{ max-width:1100px; margin:40px auto; padding:0 20px; }}
@@ -1507,6 +1509,7 @@ def update_index_portal(outdir):
         <div class="badge">台股每日全方位盤後 Portal 入口網頁</div>
         <h1>台股全方位盤後大數據與籌碼動向門戶</h1>
         <p class="sub">自動整合加權與櫃買雙折線圖、三大法人4系列柱狀圖、信用交易與成交金額 TOP 20 爆量強勢股</p>
+        <div class="update-time-box">🕒 最新系統資料更新時間：{update_time_str}</div><br>
         <a href="{latest_file}" class="btn-latest">🚀 閱讀最新全方位日報 ({latest_date})</a>
     </div>
 
@@ -1539,7 +1542,7 @@ def update_index_portal(outdir):
         </div>
     </div>
     <footer>
-        <p>自動化系統排程：每個工作日下午 15:30 自動更新 | 自動清理 30 天前舊資料 | 數據來源：TWSE / TPEx</p>
+        <p>自動化系統排程：每週一至週五 16:00 (盤後初版) 與 21:00 (信用交易完整版) 每日自動更新 2 次 | 🕒 最新資料更新時間：{update_time_str} | 數據來源：TWSE / TPEx</p>
     </footer>
 
     <script>
