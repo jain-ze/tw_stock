@@ -2,8 +2,8 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TWSE 台灣證券交易所 ETF 5日大數據與四大前100名排行榜觀測站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TWSE 台灣證券交易所 ETF 5日大數據與前100名排行榜觀測站</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -30,6 +30,7 @@
             color: var(--text);
             line-height: 1.5;
             padding-bottom: 60px;
+            overflow-x: hidden;
         }
 
         /* Header / Hero */
@@ -238,6 +239,8 @@
             border-bottom: 2px solid var(--border);
             margin-bottom: 20px;
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 4px;
         }
         .tab-btn {
             background: transparent;
@@ -253,6 +256,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            flex-shrink: 0;
         }
         .tab-btn:hover {
             color: var(--text);
@@ -278,7 +282,7 @@
             border-bottom-color: var(--purple);
         }
 
-        /* Table Design */
+        /* Responsive Table Container Fixes */
         .table-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -286,8 +290,14 @@
             overflow: hidden;
             box-shadow: var(--shadow);
         }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
         .etf-table {
             width: 100%;
+            min-width: 920px;
             border-collapse: collapse;
             text-align: left;
             font-size: 14px;
@@ -304,6 +314,7 @@
             padding: 14px 16px;
             border-bottom: 1px solid var(--border);
             vertical-align: middle;
+            white-space: nowrap;
         }
         .etf-table tr:last-child td {
             border-bottom: none;
@@ -387,12 +398,12 @@
             color: #000;
         }
 
-        /* Modal Details Window */
+        /* Modal Details Window Mobile Optimized */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -400,7 +411,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.25s ease;
-            padding: 20px;
+            padding: 16px;
         }
         .modal-overlay.active {
             opacity: 1;
@@ -414,6 +425,7 @@
             max-width: 950px;
             max-height: 90vh;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             position: relative;
             transform: scale(0.95);
@@ -423,7 +435,7 @@
             transform: scale(1);
         }
         .modal-header {
-            padding: 24px 28px;
+            padding: 20px 24px;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
@@ -431,18 +443,23 @@
             background: #1c2128;
             border-top-left-radius: 16px;
             border-top-right-radius: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
         .modal-title-box h2 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         .modal-subtitle {
             color: var(--muted);
             font-size: 13px;
             margin-top: 4px;
+            word-break: break-word;
         }
         .btn-close {
             background: #21262d;
@@ -458,6 +475,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
+            flex-shrink: 0;
         }
         .btn-close:hover {
             background: var(--red);
@@ -465,12 +483,13 @@
             border-color: var(--red);
         }
         .modal-body {
-            padding: 28px;
+            padding: 24px;
         }
 
         .btn-twse-official {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             background: linear-gradient(135deg, rgba(88,166,255,0.15) 0%, rgba(188,140,255,0.15) 100%);
             color: var(--blue);
@@ -482,6 +501,8 @@
             font-weight: 800;
             margin-bottom: 24px;
             transition: all 0.2s;
+            width: auto;
+            max-width: 100%;
         }
         .btn-twse-official:hover {
             background: var(--blue);
@@ -491,7 +512,7 @@
         .detail-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 25px;
         }
         .detail-card {
@@ -506,8 +527,9 @@
             margin-bottom: 4px;
         }
         .detail-card .d-val {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
+            word-break: break-word;
         }
         .detail-card.highlight {
             border-color: var(--gold);
@@ -515,14 +537,16 @@
         }
 
         .section-heading {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             border-left: 4px solid var(--blue);
             padding-left: 10px;
-            margin: 28px 0 14px;
+            margin: 24px 0 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
         /* Chart Canvas */
@@ -530,18 +554,20 @@
             background: #0d1117;
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 20px;
+            padding: 16px;
             margin-bottom: 20px;
             position: relative;
+            overflow-x: auto;
         }
         .chart-canvas {
             width: 100%;
-            height: 250px;
+            height: 240px;
         }
 
         /* Daily Breakdown Table */
         .daily-table {
             width: 100%;
+            min-width: 720px;
             border-collapse: collapse;
             font-size: 13px;
             margin-bottom: 25px;
@@ -557,12 +583,14 @@
             text-align: right;
             font-weight: 700;
             border-bottom: 1px solid var(--border);
+            white-space: nowrap;
         }
         .daily-table th:first-child { text-align: left; }
         .daily-table td {
             padding: 10px 12px;
             text-align: right;
             border-bottom: 1px solid var(--border);
+            white-space: nowrap;
         }
         .daily-table td:first-child { text-align: left; font-weight: 700; color: var(--blue); }
 
@@ -581,6 +609,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 13px;
+            gap: 10px;
         }
         .info-item.fee-highlight {
             border-color: var(--gold);
@@ -589,18 +618,20 @@
         .info-item .i-key {
             color: var(--muted);
             font-weight: 600;
+            flex-shrink: 0;
         }
         .info-item .i-val {
             color: var(--text);
             font-weight: 700;
             text-align: right;
-            max-width: 60%;
+            max-width: 65%;
             word-break: break-word;
+            overflow-wrap: anywhere;
         }
         .fee-badge {
             color: var(--gold);
             font-weight: 900;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         footer {
@@ -612,11 +643,47 @@
             border-top: 1px solid var(--border);
         }
 
+        /* Mobile Specific Overrides (Screen Width <= 768px) */
         @media (max-width: 768px) {
-            .hero-container { flex-direction: column; align-items: flex-start; }
-            .controls-card { flex-direction: column; align-items: stretch; }
-            .search-box { width: 100%; }
-            .detail-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero { padding: 24px 16px 20px; }
+            .hero-text h1 { font-size: 20px; line-height: 1.3; }
+            .hero-container { flex-direction: column; align-items: stretch; gap: 12px; }
+            .btn-back { width: 100%; justify-content: center; text-align: center; font-size: 13px; }
+
+            .container { padding: 0 12px; margin: 20px auto; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .kpi-card { padding: 14px 12px; }
+            .kpi-card .kpi-value { font-size: 18px; }
+
+            .controls-card { padding: 14px 12px; flex-direction: column; align-items: stretch; gap: 12px; }
+            .filter-group { flex-wrap: wrap; gap: 6px; }
+            .filter-label { width: 100%; margin-bottom: 2px; }
+            .btn-chip { font-size: 12px; padding: 6px 12px; flex: 1 1 auto; text-align: center; }
+            .search-box { width: 100%; min-width: 100%; }
+
+            .tabs-header { gap: 6px; padding-bottom: 6px; }
+            .tab-btn { padding: 10px 14px; font-size: 14px; }
+
+            .modal-overlay { padding: 8px; align-items: flex-end; }
+            .modal-container { max-height: 94vh; border-radius: 16px 16px 0 0; }
+            .modal-header { padding: 16px; }
+            .modal-title-box h2 { font-size: 18px; }
+            .modal-body { padding: 16px 12px; }
+
+            .btn-twse-official { width: 100%; font-size: 12px; padding: 10px; text-align: center; }
+
+            .detail-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .detail-card { padding: 10px; }
+            .detail-card .d-val { font-size: 15px; }
+
+            .info-grid { grid-template-columns: 1fr; gap: 8px; }
+            .info-item { padding: 10px 12px; flex-direction: column; align-items: flex-start; gap: 4px; }
+            .info-item .i-val { max-width: 100%; text-align: left; font-size: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .kpi-grid { grid-template-columns: 1fr; }
+            .detail-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -685,28 +752,30 @@
             <button class="tab-btn gold-tab" onclick="switchTab('count')">📊 4. 成交筆數排行榜 (前100名)</button>
         </div>
 
-        <!-- Table Display -->
+        <!-- Table Display (Wrapped in table-responsive for mobile scrolling) -->
         <div class="table-card">
-            <table class="etf-table">
-                <thead>
-                    <tr>
-                        <th style="width: 75px; text-align: center;">名次</th>
-                        <th style="width: 100px;">代號</th>
-                        <th>ETF 名稱</th>
-                        <th style="width: 110px;">分類標籤</th>
-                        <th style="width: 100px; text-align: right;">最新收盤價</th>
-                        <th style="width: 100px; text-align: right;">最新漲跌</th>
-                        <th style="width: 110px; text-align: right;">近5日漲跌幅</th>
-                        <th style="width: 130px; text-align: right;">5日成交金額</th>
-                        <th style="width: 120px; text-align: right;">5日成交筆數</th>
-                        <th style="width: 100px; text-align: center;">5日走勢</th>
-                        <th style="width: 110px; text-align: center;">詳細資訊</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body">
-                    <!-- Dynamic rendering -->
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="etf-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 75px; text-align: center;">名次</th>
+                            <th style="width: 100px;">代號</th>
+                            <th>ETF 名稱</th>
+                            <th style="width: 110px;">分類標籤</th>
+                            <th style="width: 100px; text-align: right;">最新收盤價</th>
+                            <th style="width: 100px; text-align: right;">最新漲跌</th>
+                            <th style="width: 110px; text-align: right;">近5日漲跌幅</th>
+                            <th style="width: 130px; text-align: right;">5日成交金額</th>
+                            <th style="width: 120px; text-align: right;">5日成交筆數</th>
+                            <th style="width: 100px; text-align: center;">5日走勢</th>
+                            <th style="width: 110px; text-align: center;">詳細資訊</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Dynamic rendering -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <footer>
@@ -752,11 +821,11 @@
                     </div>
                     <div class="detail-card highlight">
                         <div class="d-label">💼 TWSE 官方管理費 (經理費)</div>
-                        <div class="d-val fee-badge" id="m-mgmt-summary" style="font-size:14px; line-height:1.3;">0.30%</div>
+                        <div class="d-val fee-badge" id="m-mgmt-summary" style="font-size:13px; line-height:1.4;">0.30%</div>
                     </div>
                     <div class="detail-card highlight">
                         <div class="d-label">🏦 TWSE 官方保管費率</div>
-                        <div class="d-val fee-badge" id="m-cust-summary" style="font-size:14px; line-height:1.3;">0.035%</div>
+                        <div class="d-val fee-badge" id="m-cust-summary" style="font-size:13px; line-height:1.4;">0.035%</div>
                     </div>
                 </div>
 
@@ -769,28 +838,30 @@
                     <canvas id="detail-chart" class="chart-canvas"></canvas>
                 </div>
 
-                <!-- 5-Day Daily Trading Breakdown Table -->
+                <!-- 5-Day Daily Trading Breakdown Table (Wrapped in table-responsive) -->
                 <div class="section-heading">
                     <span>📋 近五個交易日【單日成交金額與成交筆數】明細表</span>
                 </div>
-                <table class="daily-table">
-                    <thead>
-                        <tr>
-                            <th>交易日期</th>
-                            <th>開盤價</th>
-                            <th>最高價</th>
-                            <th>最低價</th>
-                            <th>收盤價</th>
-                            <th>漲跌價差</th>
-                            <th style="color:var(--purple)">💰 單日成交金額</th>
-                            <th style="color:var(--gold)">📊 單日成交筆數</th>
-                            <th>成交張數(千股)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="m-daily-tbody">
-                        <!-- Dynamic rendering -->
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="daily-table">
+                        <thead>
+                            <tr>
+                                <th>交易日期</th>
+                                <th>開盤價</th>
+                                <th>最高價</th>
+                                <th>最低價</th>
+                                <th>收盤價</th>
+                                <th>漲跌價差</th>
+                                <th style="color:var(--purple)">💰 單日成交金額</th>
+                                <th style="color:var(--gold)">📊 單日成交筆數</th>
+                                <th>成交張數(千股)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="m-daily-tbody">
+                            <!-- Dynamic rendering -->
+                        </tbody>
+                    </table>
+                </div>
 
                 <!-- Product Information (MUST INCLUDE Management Fee & Custodian Fee according to TWSE Specification) -->
                 <div class="section-heading">
@@ -922,7 +993,7 @@
                 else if (chgStr.includes('-')) chgClass = 'val-down';
 
                 const tradeValYi = (item.total_trade_val_5d / 100000000.0).toFixed(2);
-                const tradeCntWan = (item.total_trade_cnt_5d / 10000.0).toFixed(1);
+                const tradeCntWan = (item.total_trade_cnt_5d / 10004.0).toFixed(1);
 
                 // Mini Sparkline SVG
                 const sparkSvg = createSparklineSvg(item.history);
@@ -1102,8 +1173,8 @@
 
             const maxVal = Math.max(...tradeValuesYi) || 1;
 
-            const paddingLeft = 45;
-            const paddingRight = 20;
+            const paddingLeft = 40;
+            const paddingRight = 15;
             const paddingTop = 25;
             const paddingBottom = 40;
             const chartW = w - paddingLeft - paddingRight;
@@ -1122,9 +1193,9 @@
                 // Y-axis label
                 const val = (maxPrice - (priceRange / 4) * i).toFixed(2);
                 ctx.fillStyle = '#8b949e';
-                ctx.font = '11px sans-serif';
+                ctx.font = '10px sans-serif';
                 ctx.textAlign = 'right';
-                ctx.fillText('$' + val, paddingLeft - 6, y + 4);
+                ctx.fillText('$' + val, paddingLeft - 4, y + 3);
             }
 
             // Calculate x and y points
@@ -1143,7 +1214,7 @@
             // Draw Single-day Trade Value Bars (Background)
             points.forEach(p => {
                 const barH = (p.valYi / maxVal) * (chartH * 0.4);
-                const barW = 28;
+                const barW = Math.min(26, chartW / 6);
                 ctx.fillStyle = 'rgba(188, 140, 255, 0.25)';
                 ctx.fillRect(p.x - barW/2, paddingTop + chartH - barH, barW, barH);
                 ctx.strokeStyle = 'rgba(188, 140, 255, 0.5)';
@@ -1180,10 +1251,10 @@
             ctx.lineWidth = 3;
             ctx.stroke();
 
-            // Dots & Multi-metric Labels (Display Close Price, Single-day Trade Value & Transaction Count)
+            // Dots & Multi-metric Labels
             points.forEach(p => {
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, 5, 0, Math.PI * 2);
+                ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
                 ctx.fillStyle = lineColor;
                 ctx.fill();
                 ctx.strokeStyle = '#161b22';
@@ -1192,24 +1263,23 @@
 
                 // Top Label: Close Price
                 ctx.fillStyle = '#ffffff';
-                ctx.font = 'bold 11px sans-serif';
+                ctx.font = 'bold 10px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('$' + p.price.toFixed(2), p.x, p.y - 10);
+                ctx.fillText('$' + p.price.toFixed(2), p.x, p.y - 8);
 
                 // Bottom Labels: Date, Single-day Trade Value & Transaction Count
                 ctx.fillStyle = '#8b949e';
-                ctx.font = '10px sans-serif';
-                ctx.fillText(p.date, p.x, h - 25);
+                ctx.font = '9px sans-serif';
+                ctx.fillText(p.date, p.x, h - 22);
 
-                // Display Single-day Value (億) & Count (筆/萬筆) on Chart Bottom
-                const cntStr = p.cnt >= 10000 ? (p.cnt / 10000.0).toFixed(1) + '萬筆' : p.cnt.toLocaleString() + '筆';
+                const cntStr = p.cnt >= 10000 ? (p.cnt / 10000.0).toFixed(1) + '萬' : p.cnt.toLocaleString();
                 ctx.fillStyle = '#bc8cff';
-                ctx.font = 'bold 10px sans-serif';
-                ctx.fillText(p.valYi.toFixed(1) + '億', p.x, h - 14);
+                ctx.font = 'bold 9px sans-serif';
+                ctx.fillText(p.valYi.toFixed(1) + '億', p.x, h - 12);
 
                 ctx.fillStyle = '#f1e05a';
-                ctx.font = '9px sans-serif';
-                ctx.fillText(cntStr, p.x, h - 4);
+                ctx.font = '8px sans-serif';
+                ctx.fillText(cntStr, p.x, h - 3);
             });
         }
     </script>
