@@ -710,23 +710,23 @@
         <div class="kpi-grid">
             <div class="kpi-card blue">
                 <div class="kpi-label">🔍 股票型 ETF 總檔數</div>
-                <div class="kpi-value" id="kpi-total-etf">236 檔</div>
-                <div class="kpi-sub">國內成分股 91 檔 / 國外成分股 145 檔</div>
+                <div class="kpi-value" id="kpi-total-etf">-- 檔</div>
+                <div class="kpi-sub" id="kpi-total-etf-sub">載入中...</div>
             </div>
             <div class="kpi-card green">
                 <div class="kpi-label">🚀 近5日最大漲幅 ETF (前100強)</div>
-                <div class="kpi-value val-up" id="kpi-top-gainer">+9.40%</div>
-                <div class="kpi-sub" id="kpi-top-gainer-name">00951 台新日本半導體</div>
+                <div class="kpi-value val-up" id="kpi-top-gainer">--</div>
+                <div class="kpi-sub" id="kpi-top-gainer-name">--</div>
             </div>
             <div class="kpi-card purple">
                 <div class="kpi-label">💰 5日成交金額冠軍 (前100強)</div>
-                <div class="kpi-value" id="kpi-top-value" style="color:var(--purple)">1,774 億元</div>
-                <div class="kpi-sub" id="kpi-top-value-name">0050 元大台灣50</div>
+                <div class="kpi-value" id="kpi-top-value" style="color:var(--purple)">--</div>
+                <div class="kpi-sub" id="kpi-top-value-name">--</div>
             </div>
             <div class="kpi-card gold">
                 <div class="kpi-label">📊 5日成交筆數冠軍 (前100強)</div>
-                <div class="kpi-value" id="kpi-top-count" style="color:var(--gold)">255.1 萬筆</div>
-                <div class="kpi-sub" id="kpi-top-count-name">0050 元大台灣50</div>
+                <div class="kpi-value" id="kpi-top-count" style="color:var(--gold)">--</div>
+                <div class="kpi-sub" id="kpi-top-count-name">--</div>
             </div>
         </div>
 
@@ -958,10 +958,67 @@
             return list;
         }
 
+        function updateKpiCards(allList) {
+            if (!allList || allList.length === 0) return;
+
+            // Card 1: Total & Category Counts
+            const totalCount = allList.length;
+            const domCount = allList.filter(item => item.meta.cat_group === '國內成分股').length;
+            const forCount = allList.filter(item => item.meta.cat_group === '國外成分股').length;
+
+            const elTotal = document.getElementById('kpi-total-etf');
+            const elTotalSub = document.getElementById('kpi-total-etf-sub');
+            if (elTotal) elTotal.innerText = `${totalCount} 檔`;
+            if (elTotalSub) elTotalSub.innerText = `國內成分股 ${domCount} 檔 / 國外成分股 ${forCount} 檔`;
+
+            // Card 2: Top 5-Day Gainer
+            const sortedGainers = allList.slice().sort((a, b) => b.return_5d - a.return_5d);
+            if (sortedGainers.length > 0) {
+                const topGainer = sortedGainers[0];
+                const elGainer = document.getElementById('kpi-top-gainer');
+                const elGainerName = document.getElementById('kpi-top-gainer-name');
+                if (elGainer) {
+                    const ret = topGainer.return_5d;
+                    elGainer.innerText = (ret > 0 ? '+' : '') + ret.toFixed(2) + '%';
+                    elGainer.className = 'kpi-value ' + (ret > 0 ? 'val-up' : (ret < 0 ? 'val-down' : 'val-flat'));
+                }
+                if (elGainerName) elGainerName.innerText = `${topGainer.meta.code} ${topGainer.meta.name}`;
+            }
+
+            // Card 3: Top 5-Day Trade Value
+            const sortedValue = allList.slice().sort((a, b) => b.total_trade_val_5d - a.total_trade_val_5d);
+            if (sortedValue.length > 0) {
+                const topVal = sortedValue[0];
+                const elValue = document.getElementById('kpi-top-value');
+                const elValueName = document.getElementById('kpi-top-value-name');
+                if (elValue) {
+                    const valYi = (topVal.total_trade_val_5d / 100000000.0).toFixed(2);
+                    elValue.innerText = `${Number(valYi).toLocaleString()} 億元`;
+                }
+                if (elValueName) elValueName.innerText = `${topVal.meta.code} ${topVal.meta.name}`;
+            }
+
+            // Card 4: Top 5-Day Trade Count
+            const sortedCount = allList.slice().sort((a, b) => b.total_trade_cnt_5d - a.total_trade_cnt_5d);
+            if (sortedCount.length > 0) {
+                const topCnt = sortedCount[0];
+                const elCount = document.getElementById('kpi-top-count');
+                const elCountName = document.getElementById('kpi-top-count-name');
+                if (elCount) {
+                    const cntWan = (topCnt.total_trade_cnt_5d / 10000.0).toFixed(1);
+                    elCount.innerText = `${Number(cntWan).toLocaleString()} 萬筆`;
+                }
+                if (elCountName) elCountName.innerText = `${topCnt.meta.code} ${topCnt.meta.name}`;
+            }
+        }
+
         function renderDashboard() {
             const list = getFilteredData();
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = '';
+
+            // Dynamically update top KPI summary cards based on filtered list
+            updateKpiCards(list);
 
             // Update Dynamic Date Range Badge in Hero Subtitle
             if (window.RAW_DATASET && window.RAW_DATASET.length > 0) {
