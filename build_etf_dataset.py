@@ -284,9 +284,41 @@ for item in raw_info:
         'issuer_address': item.get('經理公司地址', '').strip(),
     }
 
-# Historical 5 trading days
-dates = ['20260803', '20260731', '20260730', '20260729', '20260728']
-print(f"2. Fetching ETFDaily data for 5 days: {dates}")
+import datetime
+import time
+
+def fetch_valid_trading_days(n=5, start_date=None):
+    valid_dates = []
+    if start_date:
+        if isinstance(start_date, str):
+            curr = datetime.datetime.strptime(start_date.replace('-', ''), "%Y%m%d").date()
+        else:
+            curr = start_date
+    else:
+        curr = datetime.date.today()
+        
+    attempts = 0
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    while len(valid_dates) < n and attempts < 25:
+        d_str = curr.strftime('%Y%m%d')
+        url = f"https://www.twse.com.tw/rwd/zh/ETFReport/ETFDaily?date={d_str}&response=json"
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=6) as resp:
+                data = json.loads(resp.read().decode('utf-8'))
+                if data.get('stat') == 'OK' and data.get('data'):
+                    valid_dates.append(d_str)
+        except Exception:
+            pass
+        curr -= datetime.timedelta(days=1)
+        attempts += 1
+        time.sleep(0.15)
+
+    return valid_dates
+
+# Historical 5 valid trading days dynamically fetched from TWSE
+dates = fetch_valid_trading_days(5)
+print(f"2. Dynamically fetched recent 5 valid TWSE trading days: {dates}")
 
 etf_daily_history = {} # code -> list of daily records sorted by date asc
 
