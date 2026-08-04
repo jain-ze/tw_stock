@@ -97,53 +97,61 @@ def fetch_valid_trading_days(n=5, start_date=None):
     return valid_dates
 
 def fetch_market_indices(dates):
-    url_twse = "https://www.twse.com.tw/rwd/zh/afterTrading/FMTQIK?response=json"
-    url_tpex = "https://www.tpex.org.tw/web/stock/aftertrading/daily_trading_index/st41_result.php?l=zh-tw"
-
-    res_twse = fetch_json(url_twse)
-    res_tpex = fetch_json(url_tpex, use_ssl_ctx=True)
-
+    unique_yms = sorted(list(set(d[:6] for d in dates if len(d) >= 6)), reverse=True)
     twse_map = {}
-    if res_twse and res_twse.get("data"):
-        for r in res_twse["data"]:
-            try:
-                parts = r[0].split("/")
-                y = int(parts[0]) + 1911
-                m = int(parts[1])
-                d = int(parts[2])
-                d_str = f"{y:04d}{m:02d}{d:02d}"
-                amount = int(r[2].replace(",", ""))
-                idx_val = float(r[4].replace(",", ""))
-                chg_val = float(r[5].replace(",", ""))
-                twse_map[d_str] = {
-                    "amount_yi": round(amount / 1e8, 2),
-                    "index": idx_val,
-                    "change": chg_val,
-                    "change_pct": round((chg_val / (idx_val - chg_val)) * 100, 2)
-                }
-            except Exception:
-                pass
-
     tpex_map = {}
-    if res_tpex and res_tpex.get("tables") and res_tpex["tables"][0].get("data"):
-        for r in res_tpex["tables"][0]["data"]:
-            try:
-                parts = r[0].split("/")
-                y = int(parts[0]) + 1911
-                m = int(parts[1])
-                d = int(parts[2])
-                d_str = f"{y:04d}{m:02d}{d:02d}"
-                amount = int(r[2].replace(",", "")) * 1000
-                idx_val = float(r[4]) if isinstance(r[4], (int, float)) else float(r[4].replace(",", ""))
-                chg_val = float(r[5]) if isinstance(r[5], (int, float)) else float(r[5].replace(",", ""))
-                tpex_map[d_str] = {
-                    "amount_yi": round(amount / 1e8, 2),
-                    "index": idx_val,
-                    "change": chg_val,
-                    "change_pct": round((chg_val / (idx_val - chg_val)) * 100, 2)
-                }
-            except Exception:
-                pass
+
+    for ym in unique_yms:
+        url_twse = f"https://www.twse.com.tw/rwd/zh/afterTrading/FMTQIK?date={ym}01&response=json"
+        res_twse = fetch_json(url_twse)
+        if res_twse and res_twse.get("data"):
+            for r in res_twse["data"]:
+                try:
+                    parts = r[0].split("/")
+                    y = int(parts[0]) + 1911
+                    m = int(parts[1])
+                    d = int(parts[2])
+                    d_str = f"{y:04d}{m:02d}{d:02d}"
+                    amount = int(r[2].replace(",", ""))
+                    idx_val = float(r[4].replace(",", ""))
+                    chg_val = float(r[5].replace(",", ""))
+                    denom = idx_val - chg_val
+                    twse_map[d_str] = {
+                        "amount_yi": round(amount / 1e8, 2),
+                        "index": idx_val,
+                        "change": chg_val,
+                        "change_pct": round((chg_val / denom) * 100, 2) if denom != 0 else 0
+                    }
+                except Exception:
+                    pass
+
+        try:
+            roc_y = int(ym[:4]) - 1911
+            m = int(ym[4:])
+            url_tpex = f"https://www.tpex.org.tw/web/stock/aftertrading/daily_trading_index/st41_result.php?l=zh-tw&d={roc_y}/{m:02d}"
+            res_tpex = fetch_json(url_tpex, use_ssl_ctx=True)
+            if res_tpex and res_tpex.get("tables") and res_tpex["tables"][0].get("data"):
+                for r in res_tpex["tables"][0]["data"]:
+                    try:
+                        parts = r[0].split("/")
+                        y = int(parts[0]) + 1911
+                        m_val = int(parts[1])
+                        d_val = int(parts[2])
+                        d_str = f"{y:04d}{m_val:02d}{d_val:02d}"
+                        amount = int(r[2].replace(",", "")) * 1000
+                        idx_val = float(r[4]) if isinstance(r[4], (int, float)) else float(r[4].replace(",", ""))
+                        chg_val = float(r[5]) if isinstance(r[5], (int, float)) else float(r[5].replace(",", ""))
+                        denom = idx_val - chg_val
+                        tpex_map[d_str] = {
+                            "amount_yi": round(amount / 1e8, 2),
+                            "index": idx_val,
+                            "change": chg_val,
+                            "change_pct": round((chg_val / denom) * 100, 2) if denom != 0 else 0
+                        }
+                    except Exception:
+                        pass
+        except Exception:
+            pass
 
     market_history = []
     for d in dates:
@@ -1536,7 +1544,10 @@ def update_index_portal(outdir):
         <h1>台股盤後大數據與籌碼動向觀測站</h1>
         <p class="sub">自動整合加權與櫃買雙折線圖、三大法人4系列柱狀圖、信用交易與成交金額 TOP 20 爆量強勢股</p>
         <div class="update-time-box">🕒 最新系統資料更新時間：{update_time_str}</div><br>
-        <a href="{latest_file}" class="btn-latest">🚀 閱讀最新全方位日報 ({latest_date})</a>
+        <div style="margin-top: 15px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="{latest_file}" class="btn-latest">🚀 閱讀最新全方位日報 ({latest_date})</a>
+            <a href="etf_dashboard.html" class="btn-latest" style="background: linear-gradient(135deg, #bc8cff 0%, #58a6ff 100%); color: #000; box-shadow: 0 4px 15px rgba(188,140,255,0.4);">📊 進入 ETF 5日大數據與排行榜觀測站 →</a>
+        </div>
     </div>
 
     <div class="container">
@@ -1624,6 +1635,26 @@ def run_pipeline_for_date(target_date_str, outdir):
 
     card_paths = render_all_6_cards(records, dates, market_history, bfi_history, margin_history, outdir)
     build_comprehensive_daily_html(records, dates, market_history, bfi_history, margin_history, outdir, card_paths)
+
+    # Automatically trigger ETF 5-Day Data Pipeline & Dashboard Builder
+    print("[+] Triggering ETF 5-day dataset & ranking dashboard synchronization...")
+    try:
+        root_dir = "/home/jrh/桌面/JRH20260720"
+        b_etf = os.path.join(root_dir, "build_etf_dataset.py")
+        b_strict = os.path.join(root_dir, "build_twse_strict_dataset.py")
+        b_dash = os.path.join(root_dir, "build_etf_dashboard.py")
+        s_portal = os.path.join(root_dir, "sync_etf_portal.py")
+        
+        if os.path.exists(b_etf):
+            subprocess.run([sys.executable, b_etf], check=False)
+        if os.path.exists(b_strict):
+            subprocess.run([sys.executable, b_strict], check=False)
+        if os.path.exists(b_dash):
+            subprocess.run([sys.executable, b_dash], check=False)
+        if os.path.exists(s_portal):
+            subprocess.run([sys.executable, s_portal], check=False)
+    except Exception as e:
+        print(f"[!] Warning syncing ETF pipeline: {e}")
     return True
 
 def main():
