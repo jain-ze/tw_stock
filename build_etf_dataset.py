@@ -278,12 +278,17 @@ for code in all_codes:
     for d_str in reversed(valid_days):
         records = daily_reports.get(d_str, [])
         record = next((r for r in records if r[0].strip() == code), None)
-        if record:
-            close_price = safe_float(record[2])
-            change_str = record[3].strip() if len(record) > 3 else '0.0'
-            trade_volume = safe_int(record[4]) if len(record) > 4 else 0
-            trade_value = safe_int(record[5]) if len(record) > 5 else 0
-            trade_count = safe_int(record[6]) if len(record) > 6 else 0
+        if record and len(record) >= 10:
+            # TWSE ETFDaily Fields:
+            # 0: 證券代號, 1: 證券名稱, 2: 成交金額, 3: 成交股數, 4: 成交筆數, 5: 開盤價, 6: 最高價, 7: 最低價, 8: 收盤價, 9: 漲跌價差
+            trade_value = safe_int(record[2])
+            trade_volume = safe_int(record[3])
+            trade_count = safe_int(record[4])
+            open_price = safe_float(record[5])
+            high_price = safe_float(record[6])
+            low_price = safe_float(record[7])
+            close_price = safe_float(record[8])
+            change_str = record[9].strip()
             
             clean_chg = re.sub(r'<[^>]+>', '', change_str).strip()
             if '+' in change_str or (not clean_chg.startswith('-') and float(re.sub(r'[^\d.]', '', clean_chg) or 0) > 0):
@@ -295,6 +300,9 @@ for code in all_codes:
 
             history.append({
                 'date': d_str,
+                'open': open_price,
+                'high': high_price,
+                'low': low_price,
                 'close': close_price,
                 'change': clean_chg,
                 'trade_volume': trade_volume,
@@ -341,9 +349,9 @@ for code in all_codes:
         'premium_discount_pct': premium_discount_pct
     })
 
-print(f"Compiled {len(compiled_etfs)} Equity ETF items with full 5-day history successfully.")
+print(f"Compiled {len(compiled_etfs)} Equity ETF items with accurate TWSE 5-day history successfully.")
 
 with open(out_json_path, 'w', encoding='utf-8') as f:
     json.dump(compiled_etfs, f, ensure_ascii=False, indent=2)
 
-print(f"Saved 5-day dataset to {out_json_path}")
+print(f"Saved verified 5-day dataset to {out_json_path}")
