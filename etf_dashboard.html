@@ -1117,6 +1117,26 @@
             </svg>`;
         }
 
+        function makeTwseLinkHtml(code, text) {
+            const label = text || '依證交所公告 ↗';
+            const url = `https://accessibility.twse.com.tw/zh/products/securities/etf/products/content.html?${code}`;
+            return `<a href="${url}" target="_blank" style="color:var(--primary); text-decoration:underline; font-weight:600;">${label}</a>`;
+        }
+
+        function renderSpecVal(val, code) {
+            if (!val || val === '--' || val === '依證交所公告' || val.trim() === '') {
+                return makeTwseLinkHtml(code, '依證交所公告 ↗');
+            }
+            return val;
+        }
+
+        function renderSummaryFeeVal(summaryVal, fullVal, code) {
+            if ((!summaryVal || summaryVal === '--') && (!fullVal || fullVal.trim() === '')) {
+                return makeTwseLinkHtml(code, '依證交所公告 ↗');
+            }
+            return summaryVal || fullVal || makeTwseLinkHtml(code, '依證交所公告 ↗');
+        }
+
         function openModal(code) {
             const item = window.RAW_DATASET.find(e => e.meta.code === code);
             if (!item) return;
@@ -1125,8 +1145,8 @@
             document.getElementById('m-name').innerText = item.meta.name;
             document.getElementById('m-fullname').innerText = item.meta.full_name || item.meta.name;
 
-            // Direct TWSE official link
-            const twseLink = item.meta.twse_official_url || `https://www.twse.com.tw/zh/products/securities/etf/products/content.html?${code}#domestic`;
+            // Direct TWSE official accessibility link
+            const twseLink = `https://accessibility.twse.com.tw/zh/products/securities/etf/products/content.html?${code}`;
             document.getElementById('m-twse-link').href = twseLink;
 
             document.getElementById('m-close').innerText = '$' + item.latest.close.toFixed(2);
@@ -1149,23 +1169,23 @@
             retEl.innerText = (item.return_5d > 0 ? '+' : '') + item.return_5d.toFixed(2) + '%';
             retEl.style.color = item.return_5d > 0 ? 'var(--red)' : (item.return_5d < 0 ? 'var(--green)' : 'var(--muted)');
 
-            // Fee Highlights in summary cards (TWSE Official Specs)
-            document.getElementById('m-mgmt-summary').innerText = item.meta.mgmt_fee_summary || item.meta.mgmt_fee || '0.30%';
-            document.getElementById('m-cust-summary').innerText = item.meta.cust_fee_summary || item.meta.cust_fee || '0.035%';
+            // Fee Highlights in summary cards (TWSE Official Specs with Accessibility Link fallback)
+            document.getElementById('m-mgmt-summary').innerHTML = renderSummaryFeeVal(item.meta.mgmt_fee_summary, item.meta.mgmt_fee, code);
+            document.getElementById('m-cust-summary').innerHTML = renderSummaryFeeVal(item.meta.cust_fee_summary, item.meta.cust_fee, code);
 
-            // Product Details (TWSE Official Specifications)
-            document.getElementById('m-mgmt').innerText = item.meta.mgmt_fee || '依證交所公告';
-            document.getElementById('m-cust').innerText = item.meta.cust_fee || '依證交所公告';
-            document.getElementById('m-freq').innerText = item.meta.freq || '依證交所公告';
-            document.getElementById('m-issuer').innerText = item.meta.issuer || '元大投信';
-            document.getElementById('m-index').innerText = item.meta.underlying_index || '標的指數';
-            document.getElementById('m-type').innerText = item.meta.type || '國內成分股ETF';
-            document.getElementById('m-tax').innerText = item.meta.tax_rate || '千分之一';
-            document.getElementById('m-unit').innerText = item.meta.trade_unit || '1,000個受益權單位';
-            document.getElementById('m-foreign').innerText = item.meta.is_foreign ? '是' : '否';
-            document.getElementById('m-manager').innerText = item.meta.manager || '專任經理人';
-            document.getElementById('m-custodian').innerText = item.meta.custodian || '集中保管結算所';
-            document.getElementById('m-listing').innerText = item.meta.listing_date || '--';
+            // Product Details (TWSE Official Specifications with Accessibility Link fallback)
+            document.getElementById('m-mgmt').innerHTML = renderSpecVal(item.meta.mgmt_fee, code);
+            document.getElementById('m-cust').innerHTML = renderSpecVal(item.meta.cust_fee, code);
+            document.getElementById('m-freq').innerHTML = renderSpecVal(item.meta.freq, code);
+            document.getElementById('m-issuer').innerHTML = renderSpecVal(item.meta.issuer, code);
+            document.getElementById('m-index').innerHTML = renderSpecVal(item.meta.underlying_index, code);
+            document.getElementById('m-type').innerHTML = renderSpecVal(item.meta.type, code);
+            document.getElementById('m-tax').innerHTML = renderSpecVal(item.meta.tax_rate, code);
+            document.getElementById('m-unit').innerHTML = renderSpecVal(item.meta.trade_unit, code);
+            document.getElementById('m-foreign').innerHTML = item.meta.is_foreign ? '是' : '否';
+            document.getElementById('m-manager').innerHTML = renderSpecVal(item.meta.manager, code);
+            document.getElementById('m-custodian').innerHTML = renderSpecVal(item.meta.custodian, code);
+            document.getElementById('m-listing').innerHTML = renderSpecVal(item.meta.listing_date, code);
 
             // Populate Daily Breakdown Table (Single-day Trade Value & Transactions)
             renderDailyTable(item.history);
