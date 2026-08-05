@@ -171,42 +171,12 @@ EXACT_ETF_FEES = {
 def resolve_dividend_freq(code, name, is_foreign):
     if code in DIVIDEND_FREQUENCIES:
         return DIVIDEND_FREQUENCIES[code]
-    if code.endswith('L') or code.endswith('R') or '正2' in name or '反1' in name:
-        return '不分配收益 (槓反型)'
-    if code == '009816' or 'TOP50' in name or '累積' in name:
-        return '不分配收益 (不配息)'
-    if '主動' in name or '主動' in code:
-        if '高息' in name or '收益' in name or '優息' in name or '股息' in name:
-            return '季配息 (3, 6, 9, 12月)'
-        else:
-            return '不分配收益 / 累積型'
-    if is_foreign or '海外' in name or '國外' in name:
-        if '高息' in name or '股息' in name:
-            return '季配息'
-        else:
-            return '不分配收益 (累積型)'
-    if '月' in name or '月配' in name:
-        return '月配息 (每月)'
-    elif '高息' in name or '高股息' in name or '優息' in name:
-        return '季配息 (3, 6, 9, 12月)'
-    elif '50' in name or '市值' in name or '低碳' in name:
-        return '半年配 / 年配'
-    return '不分配收益 / 年配'
+    return ''
 
 def resolve_etf_fees(code, name, cat_group, is_foreign):
     if code in EXACT_ETF_FEES:
         return EXACT_ETF_FEES[code]
-    if '主動' in name or '主動' in code:
-        return {'mgmt': '0.75%', 'cust': '0.10%'}
-    if code.endswith('L') or code.endswith('R') or '正2' in name or '反1' in name:
-        return {'mgmt': '1.00%', 'cust': '0.10%' if cat_group == '國內成分股' else '0.15%'}
-    if cat_group == '國外成分股' or is_foreign or '海外' in name:
-        return {'mgmt': '0.45%', 'cust': '0.15%'}
-    if '高息' in name or '高股息' in name or '優息' in name:
-        return {'mgmt': '0.30%', 'cust': '0.03%'}
-    elif '50' in name or '市值' in name or '低碳' in name:
-        return {'mgmt': '0.20%', 'cust': '0.035%'}
-    return {'mgmt': '0.30%', 'cust': '0.035%'}
+    return {'mgmt': '', 'cust': ''}
 
 def safe_float(val):
     if not val:
