@@ -150,6 +150,35 @@ info_url = 'https://openapi.twse.com.tw/v1/opendata/t187ap47_L'
 raw_info = fetch_json(info_url)
 print(f"Loaded {len(raw_info)} ETF metadata records.")
 
+# Load existing cached specs if available to avoid unnecessary network delay
+existing_specs = {}
+out_json_path = '/home/jrh/桌面/JRH20260720/etf_data.json'
+if os.path.exists(out_json_path):
+    try:
+        with open(out_json_path, 'r', encoding='utf-8') as f:
+            old_data = json.load(f)
+            for item in old_data:
+                c = item['meta']['code']
+                existing_specs[c] = {
+                    'mgmt_fee': item['meta'].get('mgmt_fee', ''),
+                    'mgmt_fee_summary': item['meta'].get('mgmt_fee_summary', '--'),
+                    'cust_fee': item['meta'].get('cust_fee', ''),
+                    'cust_fee_summary': item['meta'].get('cust_fee_summary', '--'),
+                    'freq': item['meta'].get('freq', ''),
+                    'issuer': item['meta'].get('issuer', ''),
+                    'underlying_index': item['meta'].get('underlying_index', ''),
+                    'type': item['meta'].get('type', ''),
+                    'listing_date': item['meta'].get('listing_date', ''),
+                    'official_url': item['meta'].get('official_url', ''),
+                    'tax_rate': item['meta'].get('tax_rate', ''),
+                    'trade_unit': item['meta'].get('trade_unit', '')
+                }
+    except Exception:
+        pass
+
+is_friday = datetime.date.today().weekday() == 4
+force_spec_fetch = os.environ.get('FORCE_SPEC_FETCH') == '1' or is_friday
+
 etf_meta = {}
 for item in raw_info:
     code = item.get('基金代號', '').strip()
@@ -170,8 +199,11 @@ for item in raw_info:
     if any(k in name for k in ['美債', '公債', '公司債', '投等債', '高收益債', '金融債', '債']):
         continue
 
-    # Fetch 100% official TWSE specification
-    twse_spec = fetch_twse_official_spec(code)
+    # Fetch 100% official TWSE specification if force or missing, else use cached spec
+    if force_spec_fetch or code not in existing_specs:
+        twse_spec = fetch_twse_official_spec(code)
+    else:
+        twse_spec = existing_specs[code]
 
     etf_meta[code] = {
         'code': code,
