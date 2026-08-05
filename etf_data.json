@@ -24,7 +24,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路2段39號6樓"
+      "issuer_address": "台北市大安區敦化南路2段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00400A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -48,8 +49,8 @@
     "total_trade_val_5d": 694186747,
     "total_trade_cnt_5d": 8255,
     "total_trade_vol_5d": 51523177,
-    "nav_est": 13.52,
-    "premium_discount_pct": 0.37
+    "nav_est": 13.6,
+    "premium_discount_pct": -0.22
   },
   {
     "meta": {
@@ -76,7 +77,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8726-8686",
-      "issuer_address": "台北市信義區松智路1號20樓"
+      "issuer_address": "台北市信義區松智路1號20樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00401A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -100,8 +102,8 @@
     "total_trade_val_5d": 115278735,
     "total_trade_cnt_5d": 936,
     "total_trade_vol_5d": 8958108,
-    "nav_est": 12.94,
-    "premium_discount_pct": -0.15
+    "nav_est": 12.89,
+    "premium_discount_pct": 0.23
   },
   {
     "meta": {
@@ -128,7 +130,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8770-9888",
-      "issuer_address": "台北市中山北路2段42號8樓"
+      "issuer_address": "台北市中山北路2段42號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00402A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -152,8 +155,8 @@
     "total_trade_val_5d": 107017871,
     "total_trade_cnt_5d": 743,
     "total_trade_vol_5d": 11195799,
-    "nav_est": 9.54,
-    "premium_discount_pct": 0.31
+    "nav_est": 9.53,
+    "premium_discount_pct": 0.42
   },
   {
     "meta": {
@@ -180,7 +183,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2747-8388",
-      "issuer_address": "台北市松山區東興路8號8樓"
+      "issuer_address": "台北市松山區東興路8號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00403A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -204,8 +208,8 @@
     "total_trade_val_5d": 1965391322,
     "total_trade_cnt_5d": 28575,
     "total_trade_vol_5d": 206742476,
-    "nav_est": 9.53,
-    "premium_discount_pct": 0.1
+    "nav_est": 9.56,
+    "premium_discount_pct": -0.21
   },
   {
     "meta": {
@@ -232,7 +236,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8758-3888",
-      "issuer_address": "台北市信義路五段7 號81 樓及81 樓之1"
+      "issuer_address": "台北市信義路五段7 號81 樓及81 樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00404A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -256,8 +261,8 @@
     "total_trade_val_5d": 83458548,
     "total_trade_cnt_5d": 893,
     "total_trade_vol_5d": 9021090,
-    "nav_est": 9.24,
-    "premium_discount_pct": 0.22
+    "nav_est": 9.22,
+    "premium_discount_pct": 0.43
   },
   {
     "meta": {
@@ -284,7 +289,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000 受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00405A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -308,8 +314,8 @@
     "total_trade_val_5d": 970240374,
     "total_trade_cnt_5d": 11214,
     "total_trade_vol_5d": 123162578,
-    "nav_est": 7.86,
-    "premium_discount_pct": 0.51
+    "nav_est": 7.92,
+    "premium_discount_pct": -0.25
   },
   {
     "meta": {
@@ -336,7 +342,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00406A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -360,8 +367,8 @@
     "total_trade_val_5d": 725525546,
     "total_trade_cnt_5d": 8717,
     "total_trade_vol_5d": 81075174,
-    "nav_est": 8.97,
-    "premium_discount_pct": 0.0
+    "nav_est": 8.98,
+    "premium_discount_pct": -0.11
   },
   {
     "meta": {
@@ -388,7 +395,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2181-5678",
-      "issuer_address": "台北市中山區明水路698號"
+      "issuer_address": "台北市中山區明水路698號",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00407A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -412,8 +420,8 @@
     "total_trade_val_5d": 388021185,
     "total_trade_cnt_5d": 5773,
     "total_trade_vol_5d": 43444534,
-    "nav_est": 9.02,
-    "premium_discount_pct": -0.33
+    "nav_est": 8.97,
+    "premium_discount_pct": 0.22
   },
   {
     "meta": {
@@ -440,7 +448,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2504-1000",
-      "issuer_address": "台北市10477民權東路三段6號7樓"
+      "issuer_address": "台北市10477民權東路三段6號7樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00408A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -464,8 +473,8 @@
     "total_trade_val_5d": 43840303,
     "total_trade_cnt_5d": 392,
     "total_trade_vol_5d": 4401791,
-    "nav_est": 9.88,
-    "premium_discount_pct": 0.3
+    "nav_est": 9.93,
+    "premium_discount_pct": -0.2
   },
   {
     "meta": {
@@ -492,7 +501,8 @@
       "tax_rate": "0.1%",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2361-8110",
-      "issuer_address": "100台北市博愛路17號13樓及14樓"
+      "issuer_address": "100台北市博愛路17號13樓及14樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00410A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -516,8 +526,8 @@
     "total_trade_val_5d": 392481960,
     "total_trade_cnt_5d": 1504,
     "total_trade_vol_5d": 37946054,
-    "nav_est": 10.46,
-    "premium_discount_pct": -0.48
+    "nav_est": 10.38,
+    "premium_discount_pct": 0.29
   },
   {
     "meta": {
@@ -535,16 +545,17 @@
       "inception_date": "0920625",
       "listing_date": "2003.06.30",
       "issued_units": "22487000000",
-      "mgmt_fee": "按基金淨資產價值每年依下列費率逐日累計計算： ｜ 規模1,000億（含）以下之部分：0.15% ｜ 規模逾1,000億（不含）至5,000億（含）之部分：0.10% ｜ 規模逾5,000億（不含）至1兆（含）之部分：0.08% ｜ 規模逾1兆（不含）之部分：0.05%",
+      "mgmt_fee": "規模1,000億(含)以下: 0.15% ｜ 1,000億~5,000億: 0.10% ｜ 5,000億~1兆: 0.08% ｜ 1兆以上: 0.05%",
       "mgmt_fee_summary": "0.05% ~ 0.15%",
-      "cust_fee": "按基金淨資產價值每年依下列費率逐日累計計算： ｜ 規模1兆元（含）以下之部分：0.03% ｜ 規模逾1兆（不含）之部分：0.025%",
+      "cust_fee": "規模1兆(含)以下: 0.03% ｜ 1兆以上: 0.025%",
       "cust_fee_summary": "0.03% ~ 0.03%",
-      "freq": "每年6月30日及12月31日為收益分配評價日，進行收益分配評價計算，並於收益分配評價日後45個營業日內分配。",
+      "freq": "半年配 (每年6月30日及12月31日評價)",
       "official_url": "https://www.yuantaetfs.com",
       "tax_rate": "千分之一",
-      "trade_unit": "1,000受益權單位",
+      "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?0050#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -568,8 +579,8 @@
     "total_trade_val_5d": 12269605488,
     "total_trade_cnt_5d": 146200,
     "total_trade_vol_5d": 121774200,
-    "nav_est": 100.25,
-    "premium_discount_pct": 0.4
+    "nav_est": 101.01,
+    "premium_discount_pct": -0.36
   },
   {
     "meta": {
@@ -596,7 +607,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?0051#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -620,8 +632,8 @@
     "total_trade_val_5d": 10390917,
     "total_trade_cnt_5d": 466,
     "total_trade_vol_5d": 76587,
-    "nav_est": 135.67,
-    "premium_discount_pct": 0.17
+    "nav_est": 136.21,
+    "premium_discount_pct": -0.23
   },
   {
     "meta": {
@@ -648,7 +660,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?0052#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -672,8 +685,8 @@
     "total_trade_val_5d": 1796402160,
     "total_trade_cnt_5d": 16095,
     "total_trade_vol_5d": 30596726,
-    "nav_est": 58.5,
-    "premium_discount_pct": 0.26
+    "nav_est": 58.93,
+    "premium_discount_pct": -0.48
   },
   {
     "meta": {
@@ -700,7 +713,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?0053#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -724,8 +738,8 @@
     "total_trade_val_5d": 7983381,
     "total_trade_cnt_5d": 1194,
     "total_trade_vol_5d": 35138,
-    "nav_est": 226.46,
-    "premium_discount_pct": 0.15
+    "nav_est": 226.69,
+    "premium_discount_pct": 0.05
   },
   {
     "meta": {
@@ -752,7 +766,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?0055#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -776,8 +791,8 @@
     "total_trade_val_5d": 13968697,
     "total_trade_cnt_5d": 1694,
     "total_trade_vol_5d": 316149,
-    "nav_est": 43.79,
-    "premium_discount_pct": 0.3
+    "nav_est": 43.8,
+    "premium_discount_pct": 0.27
   },
   {
     "meta": {
@@ -788,23 +803,24 @@
       "type": "國內成分股ETF",
       "cat_group": "國內成分股",
       "is_foreign": false,
-      "underlying_index": "臺灣高股息指數",
+      "underlying_index": "富時臺灣證券交易所臺灣高股息指數",
       "issuer": "元大證券投資信託股份有限公司",
       "manager": "陳威志",
       "custodian": "臺灣集中保管結算所股份有限公司",
       "inception_date": "0961213",
       "listing_date": "2007.12.26",
       "issued_units": "14357534000",
-      "mgmt_fee": "100億以下(含)：0.40% ｜ 100億以上~300億(含)：0.34% ｜ 300億以上:0.30%",
+      "mgmt_fee": "0.30%",
       "mgmt_fee_summary": "0.30% ~ 0.40%",
       "cust_fee": "0.035%",
       "cust_fee_summary": "0.04%",
-      "freq": "每年3月底、6月底、9月底、12月底為收益分配評價日，進行收益分配評價計算。",
+      "freq": "季配 (每年1、4、7、10月評價分配)",
       "official_url": "http://www.yuantaetfs.com",
       "tax_rate": "千分之一",
-      "trade_unit": "1,000受益權單位",
+      "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?0056#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -828,8 +844,8 @@
     "total_trade_val_5d": 1880552388,
     "total_trade_cnt_5d": 19241,
     "total_trade_vol_5d": 37286568,
-    "nav_est": 50.66,
-    "premium_discount_pct": -0.12
+    "nav_est": 50.78,
+    "premium_discount_pct": -0.35
   },
   {
     "meta": {
@@ -856,7 +872,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?0057#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -880,8 +897,8 @@
     "total_trade_val_5d": 12890049,
     "total_trade_cnt_5d": 911,
     "total_trade_vol_5d": 42956,
-    "nav_est": 302.68,
-    "premium_discount_pct": -0.34
+    "nav_est": 302.92,
+    "premium_discount_pct": -0.42
   },
   {
     "meta": {
@@ -908,7 +925,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?0061#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -932,8 +950,8 @@
     "total_trade_val_5d": 2265970,
     "total_trade_cnt_5d": 159,
     "total_trade_vol_5d": 92247,
-    "nav_est": 24.65,
-    "premium_discount_pct": -0.04
+    "nav_est": 24.54,
+    "premium_discount_pct": 0.41
   },
   {
     "meta": {
@@ -960,7 +978,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?006203#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -984,8 +1003,8 @@
     "total_trade_val_5d": 3967018,
     "total_trade_cnt_5d": 291,
     "total_trade_vol_5d": 21661,
-    "nav_est": 182.05,
-    "premium_discount_pct": 0.3
+    "nav_est": 182.07,
+    "premium_discount_pct": 0.29
   },
   {
     "meta": {
@@ -1012,7 +1031,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2361-8110",
-      "issuer_address": "100台北市博愛路17號13樓"
+      "issuer_address": "100台北市博愛路17號13樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?006204#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1036,8 +1056,8 @@
     "total_trade_val_5d": 1396011,
     "total_trade_cnt_5d": 108,
     "total_trade_vol_5d": 6470,
-    "nav_est": 216.89,
-    "premium_discount_pct": -0.41
+    "nav_est": 216.26,
+    "premium_discount_pct": -0.12
   },
   {
     "meta": {
@@ -1064,7 +1084,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?006205#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1116,7 +1137,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?006206#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1140,8 +1162,8 @@
     "total_trade_val_5d": 415621,
     "total_trade_cnt_5d": 132,
     "total_trade_vol_5d": 10940,
-    "nav_est": 37.78,
-    "premium_discount_pct": 0.08
+    "nav_est": 37.98,
+    "premium_discount_pct": -0.45
   },
   {
     "meta": {
@@ -1168,7 +1190,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8161-6800",
-      "issuer_address": "台北市八德路二段308號8樓"
+      "issuer_address": "台北市八德路二段308號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?006207#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1211,16 +1234,17 @@
       "inception_date": "1010622",
       "listing_date": "2012.07.17",
       "issued_units": "1866040000",
-      "mgmt_fee": "按本基金淨資產價值依下列所訂比率，逐日累計計算： ｜ 1,000億(含)以下之部分：0.15% ｜ 逾1,000億(不含)~5,000億(含)之部分：0.10% ｜ 逾5,000億(不含)~1兆(含)之部分：0.08% ｜ 逾1兆(不含)之部分：0.05%",
+      "mgmt_fee": "規模1,000億(含)以下: 0.15% ｜ 1,000億~5,000億: 0.10% ｜ 5,000億~1兆: 0.08% ｜ 1兆以上: 0.05%",
       "mgmt_fee_summary": "0.05% ~ 0.15%",
-      "cust_fee": "按本基金淨資產價值依下列所訂比率，逐日累計計算： ｜ 1兆元(含)以下之部分：0.030% ｜ 逾1兆元(不含)之部分：0.025%",
+      "cust_fee": "規模1兆(含)以下: 0.030% ｜ 1兆以上: 0.025%",
       "cust_fee_summary": "0.03% ~ 0.03%",
-      "freq": "本基金成立日後，經理公司應於收益評價日(即每年6月30日、10月31日)之本基金淨資產價值進行當年度收益分配之評價。(收益分配標準請詳閱本基金公開說明書)",
+      "freq": "半年配 (每年6月30日、10月31日評價)",
       "official_url": "https://websys.fsit.com.tw/FubonETF/index.aspx",
       "tax_rate": "千分之一",
-      "trade_unit": "1,000受益權單位",
+      "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?006208#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1244,8 +1268,8 @@
     "total_trade_val_5d": 550302864,
     "total_trade_cnt_5d": 10172,
     "total_trade_vol_5d": 2389289,
-    "nav_est": 230.33,
-    "premium_discount_pct": -0.08
+    "nav_est": 231.0,
+    "premium_discount_pct": -0.37
   },
   {
     "meta": {
@@ -1272,7 +1296,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00625K#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1324,7 +1349,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00631L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1348,8 +1374,8 @@
     "total_trade_val_5d": 7842130311,
     "total_trade_cnt_5d": 73843,
     "total_trade_vol_5d": 243711676,
-    "nav_est": 32.1,
-    "premium_discount_pct": 0.16
+    "nav_est": 32.01,
+    "premium_discount_pct": 0.44
   },
   {
     "meta": {
@@ -1376,7 +1402,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00632R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1400,8 +1427,8 @@
     "total_trade_val_5d": 3176632056,
     "total_trade_cnt_5d": 17387,
     "total_trade_vol_5d": 298831127,
-    "nav_est": 10.62,
-    "premium_discount_pct": 0.09
+    "nav_est": 10.64,
+    "premium_discount_pct": -0.09
   },
   {
     "meta": {
@@ -1428,7 +1455,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00633L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1452,8 +1480,8 @@
     "total_trade_val_5d": 44581094,
     "total_trade_cnt_5d": 245,
     "total_trade_vol_5d": 918814,
-    "nav_est": 48.74,
-    "premium_discount_pct": 0.35
+    "nav_est": 49.04,
+    "premium_discount_pct": -0.27
   },
   {
     "meta": {
@@ -1480,7 +1508,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00634R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1504,8 +1533,8 @@
     "total_trade_val_5d": 1918800,
     "total_trade_cnt_5d": 10,
     "total_trade_vol_5d": 614000,
-    "nav_est": 3.12,
-    "premium_discount_pct": 0.0
+    "nav_est": 3.11,
+    "premium_discount_pct": 0.32
   },
   {
     "meta": {
@@ -1532,7 +1561,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位(新臺幣)/100個受益權單位(美元)",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路2段39號6樓"
+      "issuer_address": "台北市大安區敦化南路2段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00636#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1584,7 +1614,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位(新臺幣)/100個受益權單位(美元)",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路2段39號6樓"
+      "issuer_address": "台北市大安區敦化南路2段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00636K#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1608,8 +1639,8 @@
     "total_trade_val_5d": 1742,
     "total_trade_cnt_5d": 2,
     "total_trade_vol_5d": 200,
-    "nav_est": 8.72,
-    "premium_discount_pct": -0.11
+    "nav_est": 8.69,
+    "premium_discount_pct": 0.23
   },
   {
     "meta": {
@@ -1636,7 +1667,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00637L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1660,8 +1692,8 @@
     "total_trade_val_5d": 193087343,
     "total_trade_cnt_5d": 1402,
     "total_trade_vol_5d": 9535468,
-    "nav_est": 20.48,
-    "premium_discount_pct": -0.44
+    "nav_est": 20.3,
+    "premium_discount_pct": 0.44
   },
   {
     "meta": {
@@ -1688,7 +1720,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00638R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1712,8 +1745,8 @@
     "total_trade_val_5d": 3547885,
     "total_trade_cnt_5d": 11,
     "total_trade_vol_5d": 527100,
-    "nav_est": 6.74,
-    "premium_discount_pct": -0.15
+    "nav_est": 6.71,
+    "premium_discount_pct": 0.3
   },
   {
     "meta": {
@@ -1740,7 +1773,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00639#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1764,8 +1798,8 @@
     "total_trade_val_5d": 7602434,
     "total_trade_cnt_5d": 255,
     "total_trade_vol_5d": 452816,
-    "nav_est": 16.91,
-    "premium_discount_pct": 0.24
+    "nav_est": 16.95,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -1792,7 +1826,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00640L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1816,8 +1851,8 @@
     "total_trade_val_5d": 7370952,
     "total_trade_cnt_5d": 81,
     "total_trade_vol_5d": 73377,
-    "nav_est": 100.54,
-    "premium_discount_pct": 0.41
+    "nav_est": 100.77,
+    "premium_discount_pct": 0.18
   },
   {
     "meta": {
@@ -1844,7 +1879,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00641R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1868,8 +1904,8 @@
     "total_trade_val_5d": 2714354,
     "total_trade_cnt_5d": 45,
     "total_trade_vol_5d": 710030,
-    "nav_est": 3.81,
-    "premium_discount_pct": 0.26
+    "nav_est": 3.83,
+    "premium_discount_pct": -0.26
   },
   {
     "meta": {
@@ -1896,7 +1932,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00643#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -1920,8 +1957,8 @@
     "total_trade_val_5d": 55541709,
     "total_trade_cnt_5d": 170,
     "total_trade_vol_5d": 3034629,
-    "nav_est": 18.42,
-    "premium_discount_pct": -0.11
+    "nav_est": 18.35,
+    "premium_discount_pct": 0.27
   },
   {
     "meta": {
@@ -1948,7 +1985,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "臺北市大安區敦化南路二段69號15樓"
+      "issuer_address": "臺北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00643K#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2000,7 +2038,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00645#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2024,8 +2063,8 @@
     "total_trade_val_5d": 8360367,
     "total_trade_cnt_5d": 228,
     "total_trade_vol_5d": 150033,
-    "nav_est": 55.78,
-    "premium_discount_pct": 0.3
+    "nav_est": 55.68,
+    "premium_discount_pct": 0.48
   },
   {
     "meta": {
@@ -2052,7 +2091,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00646#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2076,8 +2116,8 @@
     "total_trade_val_5d": 183209456,
     "total_trade_cnt_5d": 2405,
     "total_trade_vol_5d": 2359393,
-    "nav_est": 77.37,
-    "premium_discount_pct": 0.43
+    "nav_est": 77.64,
+    "premium_discount_pct": 0.08
   },
   {
     "meta": {
@@ -2104,7 +2144,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00647L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2128,8 +2169,8 @@
     "total_trade_val_5d": 7198525,
     "total_trade_cnt_5d": 119,
     "total_trade_vol_5d": 51901,
-    "nav_est": 139.75,
-    "premium_discount_pct": -0.43
+    "nav_est": 138.5,
+    "premium_discount_pct": 0.47
   },
   {
     "meta": {
@@ -2156,7 +2197,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00648R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2180,8 +2222,8 @@
     "total_trade_val_5d": 16201983,
     "total_trade_cnt_5d": 214,
     "total_trade_vol_5d": 4075127,
-    "nav_est": 3.99,
-    "premium_discount_pct": -0.25
+    "nav_est": 3.97,
+    "premium_discount_pct": 0.25
   },
   {
     "meta": {
@@ -2208,7 +2250,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8161-6800",
-      "issuer_address": "台北市八德路二段308號8樓"
+      "issuer_address": "台北市八德路二段308號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00650L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2232,8 +2275,8 @@
     "total_trade_val_5d": 51627804,
     "total_trade_cnt_5d": 554,
     "total_trade_vol_5d": 2858094,
-    "nav_est": 17.87,
-    "premium_discount_pct": 0.22
+    "nav_est": 17.96,
+    "premium_discount_pct": -0.28
   },
   {
     "meta": {
@@ -2260,7 +2303,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8161-6800",
-      "issuer_address": "台北市八德路二段308號8樓"
+      "issuer_address": "台北市八德路二段308號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00651R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2284,8 +2328,8 @@
     "total_trade_val_5d": 3005676,
     "total_trade_cnt_5d": 38,
     "total_trade_vol_5d": 593821,
-    "nav_est": 5.12,
-    "premium_discount_pct": 0.0
+    "nav_est": 5.1,
+    "premium_discount_pct": 0.39
   },
   {
     "meta": {
@@ -2312,7 +2356,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00652#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2336,8 +2381,8 @@
     "total_trade_val_5d": 18061811,
     "total_trade_cnt_5d": 281,
     "total_trade_vol_5d": 525667,
-    "nav_est": 34.49,
-    "premium_discount_pct": -0.23
+    "nav_est": 34.57,
+    "premium_discount_pct": -0.46
   },
   {
     "meta": {
@@ -2364,7 +2409,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00653L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2388,8 +2434,8 @@
     "total_trade_val_5d": 19066522,
     "total_trade_cnt_5d": 90,
     "total_trade_vol_5d": 391216,
-    "nav_est": 48.8,
-    "premium_discount_pct": -0.12
+    "nav_est": 48.5,
+    "premium_discount_pct": 0.49
   },
   {
     "meta": {
@@ -2416,7 +2462,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00654R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2440,8 +2487,8 @@
     "total_trade_val_5d": 894960,
     "total_trade_cnt_5d": 9,
     "total_trade_vol_5d": 135000,
-    "nav_est": 6.65,
-    "premium_discount_pct": -0.15
+    "nav_est": 6.64,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -2468,7 +2515,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00655L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2492,8 +2540,8 @@
     "total_trade_val_5d": 29774412,
     "total_trade_cnt_5d": 182,
     "total_trade_vol_5d": 880881,
-    "nav_est": 34.29,
-    "premium_discount_pct": -0.35
+    "nav_est": 34.06,
+    "premium_discount_pct": 0.32
   },
   {
     "meta": {
@@ -2520,7 +2568,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00656R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2572,7 +2621,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位(新臺幣)/100個受益權單位(美元)",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00657#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2596,8 +2646,8 @@
     "total_trade_val_5d": 27979791,
     "total_trade_cnt_5d": 84,
     "total_trade_vol_5d": 372044,
-    "nav_est": 75.55,
-    "premium_discount_pct": -0.07
+    "nav_est": 75.64,
+    "premium_discount_pct": -0.19
   },
   {
     "meta": {
@@ -2624,7 +2674,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位(新臺幣)/100個受益權單位(美元)",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00657K#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2648,8 +2699,8 @@
     "total_trade_val_5d": 4672,
     "total_trade_cnt_5d": 2,
     "total_trade_vol_5d": 200,
-    "nav_est": 23.24,
-    "premium_discount_pct": 0.52
+    "nav_est": 23.25,
+    "premium_discount_pct": 0.47
   },
   {
     "meta": {
@@ -2676,7 +2727,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00660#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2700,8 +2752,8 @@
     "total_trade_val_5d": 241313,
     "total_trade_cnt_5d": 97,
     "total_trade_vol_5d": 5143,
-    "nav_est": 46.97,
-    "premium_discount_pct": 0.3
+    "nav_est": 47.07,
+    "premium_discount_pct": 0.08
   },
   {
     "meta": {
@@ -2728,7 +2780,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00661#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2752,8 +2805,8 @@
     "total_trade_val_5d": 2933710,
     "total_trade_cnt_5d": 144,
     "total_trade_vol_5d": 35759,
-    "nav_est": 82.04,
-    "premium_discount_pct": 0.38
+    "nav_est": 81.96,
+    "premium_discount_pct": 0.48
   },
   {
     "meta": {
@@ -2780,7 +2833,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00662#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2804,8 +2858,8 @@
     "total_trade_val_5d": 462680882,
     "total_trade_cnt_5d": 2271,
     "total_trade_vol_5d": 3851715,
-    "nav_est": 120.35,
-    "premium_discount_pct": 0.0
+    "nav_est": 120.07,
+    "premium_discount_pct": 0.23
   },
   {
     "meta": {
@@ -2832,7 +2886,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00663L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2856,8 +2911,8 @@
     "total_trade_val_5d": 841853462,
     "total_trade_cnt_5d": 3833,
     "total_trade_vol_5d": 9158399,
-    "nav_est": 92.27,
-    "premium_discount_pct": -0.24
+    "nav_est": 91.93,
+    "premium_discount_pct": 0.13
   },
   {
     "meta": {
@@ -2884,7 +2939,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00664R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2936,7 +2992,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00665L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -2960,8 +3017,8 @@
     "total_trade_val_5d": 167313543,
     "total_trade_cnt_5d": 1359,
     "total_trade_vol_5d": 16910536,
-    "nav_est": 9.8,
-    "premium_discount_pct": -0.41
+    "nav_est": 9.75,
+    "premium_discount_pct": 0.1
   },
   {
     "meta": {
@@ -2988,7 +3045,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00666R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3012,8 +3070,8 @@
     "total_trade_val_5d": 2242590,
     "total_trade_cnt_5d": 15,
     "total_trade_vol_5d": 253000,
-    "nav_est": 8.96,
-    "premium_discount_pct": -0.11
+    "nav_est": 8.95,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -3040,7 +3098,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位(新臺幣)/100個受益權單位(美元)",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00668#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3064,8 +3123,8 @@
     "total_trade_val_5d": 1207157,
     "total_trade_cnt_5d": 98,
     "total_trade_vol_5d": 19171,
-    "nav_est": 63.09,
-    "premium_discount_pct": -0.06
+    "nav_est": 62.87,
+    "premium_discount_pct": 0.29
   },
   {
     "meta": {
@@ -3092,7 +3151,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位(新臺幣)/100個受益權單位(美元)",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00668K#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3116,8 +3176,8 @@
     "total_trade_val_5d": 3886,
     "total_trade_cnt_5d": 2,
     "total_trade_vol_5d": 200,
-    "nav_est": 19.46,
-    "premium_discount_pct": -0.15
+    "nav_est": 19.34,
+    "premium_discount_pct": 0.47
   },
   {
     "meta": {
@@ -3144,7 +3204,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00669R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3196,7 +3257,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00670L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3220,8 +3282,8 @@
     "total_trade_val_5d": 133253668,
     "total_trade_cnt_5d": 741,
     "total_trade_vol_5d": 689963,
-    "nav_est": 194.11,
-    "premium_discount_pct": -0.08
+    "nav_est": 194.67,
+    "premium_discount_pct": -0.37
   },
   {
     "meta": {
@@ -3248,7 +3310,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00671R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3272,8 +3335,8 @@
     "total_trade_val_5d": 10776983,
     "total_trade_cnt_5d": 235,
     "total_trade_vol_5d": 4331941,
-    "nav_est": 2.5,
-    "premium_discount_pct": -0.4
+    "nav_est": 2.49,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -3300,7 +3363,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00673R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3324,8 +3388,8 @@
     "total_trade_val_5d": 120992931,
     "total_trade_cnt_5d": 1184,
     "total_trade_vol_5d": 9201949,
-    "nav_est": 13.07,
-    "premium_discount_pct": 0.46
+    "nav_est": 13.18,
+    "premium_discount_pct": -0.38
   },
   {
     "meta": {
@@ -3352,7 +3416,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00674R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3376,8 +3441,8 @@
     "total_trade_val_5d": 826266,
     "total_trade_cnt_5d": 16,
     "total_trade_vol_5d": 27234,
-    "nav_est": 30.33,
-    "premium_discount_pct": -0.16
+    "nav_est": 30.42,
+    "premium_discount_pct": -0.46
   },
   {
     "meta": {
@@ -3404,7 +3469,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00675L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3428,8 +3494,8 @@
     "total_trade_val_5d": 471649928,
     "total_trade_cnt_5d": 1632,
     "total_trade_vol_5d": 1703434,
-    "nav_est": 278.18,
-    "premium_discount_pct": -0.03
+    "nav_est": 279.35,
+    "premium_discount_pct": -0.45
   },
   {
     "meta": {
@@ -3456,7 +3522,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00676R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3480,8 +3547,8 @@
     "total_trade_val_5d": 57955524,
     "total_trade_cnt_5d": 837,
     "total_trade_vol_5d": 9872714,
-    "nav_est": 5.88,
-    "premium_discount_pct": -0.17
+    "nav_est": 5.86,
+    "premium_discount_pct": 0.17
   },
   {
     "meta": {
@@ -3508,7 +3575,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00678#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3532,8 +3600,8 @@
     "total_trade_val_5d": 17110428,
     "total_trade_cnt_5d": 117,
     "total_trade_vol_5d": 428403,
-    "nav_est": 40.02,
-    "premium_discount_pct": -0.1
+    "nav_est": 39.83,
+    "premium_discount_pct": 0.38
   },
   {
     "meta": {
@@ -3560,7 +3628,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00683L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3584,8 +3653,8 @@
     "total_trade_val_5d": 2467180,
     "total_trade_cnt_5d": 13,
     "total_trade_vol_5d": 114000,
-    "nav_est": 21.68,
-    "premium_discount_pct": -0.18
+    "nav_est": 21.55,
+    "premium_discount_pct": 0.42
   },
   {
     "meta": {
@@ -3612,7 +3681,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00684R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3664,7 +3734,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00685L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3688,8 +3759,8 @@
     "total_trade_val_5d": 2722845135,
     "total_trade_cnt_5d": 41918,
     "total_trade_vol_5d": 260070333,
-    "nav_est": 10.52,
-    "premium_discount_pct": -0.29
+    "nav_est": 10.49,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -3716,7 +3787,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00686R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3768,7 +3840,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2175-8388",
-      "issuer_address": "台北市松山區復興北路167號17樓"
+      "issuer_address": "台北市松山區復興北路167號17樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00690#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3792,8 +3865,8 @@
     "total_trade_val_5d": 22711661,
     "total_trade_cnt_5d": 731,
     "total_trade_vol_5d": 308773,
-    "nav_est": 73.77,
-    "premium_discount_pct": -0.43
+    "nav_est": 73.16,
+    "premium_discount_pct": 0.4
   },
   {
     "meta": {
@@ -3820,7 +3893,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00692#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3844,8 +3918,8 @@
     "total_trade_val_5d": 111911665,
     "total_trade_cnt_5d": 1164,
     "total_trade_vol_5d": 1291965,
-    "nav_est": 86.96,
-    "premium_discount_pct": -0.36
+    "nav_est": 86.83,
+    "premium_discount_pct": -0.21
   },
   {
     "meta": {
@@ -3872,7 +3946,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00700#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3896,8 +3971,8 @@
     "total_trade_val_5d": 7135901,
     "total_trade_cnt_5d": 136,
     "total_trade_vol_5d": 395701,
-    "nav_est": 17.97,
-    "premium_discount_pct": -0.33
+    "nav_est": 17.87,
+    "premium_discount_pct": 0.22
   },
   {
     "meta": {
@@ -3924,7 +3999,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00701#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -3948,8 +4024,8 @@
     "total_trade_val_5d": 21094100,
     "total_trade_cnt_5d": 661,
     "total_trade_vol_5d": 543481,
-    "nav_est": 38.63,
-    "premium_discount_pct": 0.13
+    "nav_est": 38.53,
+    "premium_discount_pct": 0.39
   },
   {
     "meta": {
@@ -3976,7 +4052,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00702#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4000,8 +4077,8 @@
     "total_trade_val_5d": 5018177,
     "total_trade_cnt_5d": 76,
     "total_trade_vol_5d": 199261,
-    "nav_est": 25.13,
-    "premium_discount_pct": 0.36
+    "nav_est": 25.31,
+    "premium_discount_pct": -0.36
   },
   {
     "meta": {
@@ -4028,7 +4105,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00703#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4052,8 +4130,8 @@
     "total_trade_val_5d": 101383,
     "total_trade_cnt_5d": 111,
     "total_trade_vol_5d": 4997,
-    "nav_est": 20.31,
-    "premium_discount_pct": 0.39
+    "nav_est": 20.48,
+    "premium_discount_pct": -0.44
   },
   {
     "meta": {
@@ -4080,7 +4158,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00706L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4132,7 +4211,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00707R#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4156,8 +4236,8 @@
     "total_trade_val_5d": 112170,
     "total_trade_cnt_5d": 5,
     "total_trade_vol_5d": 3510,
-    "nav_est": 31.8,
-    "premium_discount_pct": 0.5
+    "nav_est": 32.03,
+    "premium_discount_pct": -0.22
   },
   {
     "meta": {
@@ -4184,7 +4264,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00708L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4208,8 +4289,8 @@
     "total_trade_val_5d": 86550061,
     "total_trade_cnt_5d": 729,
     "total_trade_vol_5d": 1231259,
-    "nav_est": 70.23,
-    "premium_discount_pct": 0.46
+    "nav_est": 70.25,
+    "premium_discount_pct": 0.43
   },
   {
     "meta": {
@@ -4236,7 +4317,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00709#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4260,8 +4342,8 @@
     "total_trade_val_5d": 1482760,
     "total_trade_cnt_5d": 121,
     "total_trade_vol_5d": 36105,
-    "nav_est": 41.18,
-    "premium_discount_pct": -0.05
+    "nav_est": 40.97,
+    "premium_discount_pct": 0.46
   },
   {
     "meta": {
@@ -4288,7 +4370,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8161-6800",
-      "issuer_address": "台北市八德路二段308號8樓"
+      "issuer_address": "台北市八德路二段308號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00712#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4312,8 +4395,8 @@
     "total_trade_val_5d": 87061911,
     "total_trade_cnt_5d": 2158,
     "total_trade_vol_5d": 9847571,
-    "nav_est": 8.82,
-    "premium_discount_pct": 0.11
+    "nav_est": 8.86,
+    "premium_discount_pct": -0.34
   },
   {
     "meta": {
@@ -4331,16 +4414,17 @@
       "inception_date": "1060919",
       "listing_date": "2017.09.27",
       "issued_units": "1712512000",
-      "mgmt_fee": "淨資產價值<=20億為0.45%，20億<淨資產價值<=50億為0.35%，50億<淨資產價值為0.3%",
+      "mgmt_fee": "0.30%",
       "mgmt_fee_summary": "0.30% ~ 0.45%",
       "cust_fee": "0.035%",
       "cust_fee_summary": "0.04%",
-      "freq": "每年2月底、5月底、8月底、11月底為收益分配評價日，進行收益分配評價計算",
+      "freq": "季配 (每年3、6、9、12月評價分配)",
       "official_url": "http://www.yuantaetfs.com",
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00713#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4364,8 +4448,8 @@
     "total_trade_val_5d": 188932766,
     "total_trade_cnt_5d": 2310,
     "total_trade_vol_5d": 3107622,
-    "nav_est": 60.59,
-    "premium_discount_pct": 0.35
+    "nav_est": 60.94,
+    "premium_discount_pct": -0.23
   },
   {
     "meta": {
@@ -4392,7 +4476,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00714#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4416,8 +4501,8 @@
     "total_trade_val_5d": 8629254,
     "total_trade_cnt_5d": 43,
     "total_trade_vol_5d": 380594,
-    "nav_est": 22.71,
-    "premium_discount_pct": 0.0
+    "nav_est": 22.73,
+    "premium_discount_pct": -0.09
   },
   {
     "meta": {
@@ -4444,7 +4529,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2750-5555",
-      "issuer_address": "105404臺北市松山區長安東路二段225號9樓"
+      "issuer_address": "105404臺北市松山區長安東路二段225號9樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00715L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4468,8 +4554,8 @@
     "total_trade_val_5d": 234559380,
     "total_trade_cnt_5d": 1646,
     "total_trade_vol_5d": 5268654,
-    "nav_est": 45.2,
-    "premium_discount_pct": -0.4
+    "nav_est": 45.07,
+    "premium_discount_pct": -0.11
   },
   {
     "meta": {
@@ -4496,7 +4582,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00717#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4520,8 +4607,8 @@
     "total_trade_val_5d": 11665657,
     "total_trade_cnt_5d": 238,
     "total_trade_vol_5d": 777951,
-    "nav_est": 15.02,
-    "premium_discount_pct": -0.07
+    "nav_est": 15.08,
+    "premium_discount_pct": -0.46
   },
   {
     "meta": {
@@ -4548,7 +4635,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2504-1000",
-      "issuer_address": "台北市10477民權東路三段6號7樓"
+      "issuer_address": "台北市10477民權東路三段6號7樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00728#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4572,8 +4660,8 @@
     "total_trade_val_5d": 21926135,
     "total_trade_cnt_5d": 281,
     "total_trade_vol_5d": 360144,
-    "nav_est": 60.87,
-    "premium_discount_pct": 0.38
+    "nav_est": 60.85,
+    "premium_discount_pct": 0.41
   },
   {
     "meta": {
@@ -4600,7 +4688,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00730#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4624,8 +4713,8 @@
     "total_trade_val_5d": 4465135,
     "total_trade_cnt_5d": 208,
     "total_trade_vol_5d": 158687,
-    "nav_est": 28.29,
-    "premium_discount_pct": 0.39
+    "nav_est": 28.44,
+    "premium_discount_pct": -0.14
   },
   {
     "meta": {
@@ -4652,7 +4741,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8161-6800",
-      "issuer_address": "台北市中山區八德路二段308號8樓"
+      "issuer_address": "台北市中山區八德路二段308號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00731#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4676,8 +4766,8 @@
     "total_trade_val_5d": 108525710,
     "total_trade_cnt_5d": 241,
     "total_trade_vol_5d": 1200471,
-    "nav_est": 90.35,
-    "premium_discount_pct": -0.06
+    "nav_est": 90.43,
+    "premium_discount_pct": -0.14
   },
   {
     "meta": {
@@ -4704,7 +4794,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00733#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4728,8 +4819,8 @@
     "total_trade_val_5d": 53262621,
     "total_trade_cnt_5d": 664,
     "total_trade_vol_5d": 874987,
-    "nav_est": 61.75,
-    "premium_discount_pct": -0.49
+    "nav_est": 61.68,
+    "premium_discount_pct": -0.37
   },
   {
     "meta": {
@@ -4756,7 +4847,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00735#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4780,8 +4872,8 @@
     "total_trade_val_5d": 371303264,
     "total_trade_cnt_5d": 3530,
     "total_trade_vol_5d": 3924617,
-    "nav_est": 95.17,
-    "premium_discount_pct": -0.44
+    "nav_est": 94.52,
+    "premium_discount_pct": 0.24
   },
   {
     "meta": {
@@ -4808,7 +4900,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00736#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4832,8 +4925,8 @@
     "total_trade_val_5d": 3382411,
     "total_trade_cnt_5d": 79,
     "total_trade_vol_5d": 107047,
-    "nav_est": 31.49,
-    "premium_discount_pct": 0.35
+    "nav_est": 31.57,
+    "premium_discount_pct": 0.1
   },
   {
     "meta": {
@@ -4860,7 +4953,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00737#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4884,8 +4978,8 @@
     "total_trade_val_5d": 5686626,
     "total_trade_cnt_5d": 216,
     "total_trade_vol_5d": 142777,
-    "nav_est": 40.1,
-    "premium_discount_pct": -0.5
+    "nav_est": 39.72,
+    "premium_discount_pct": 0.45
   },
   {
     "meta": {
@@ -4912,7 +5006,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00739#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4936,8 +5031,8 @@
     "total_trade_val_5d": 4361016,
     "total_trade_cnt_5d": 108,
     "total_trade_vol_5d": 157178,
-    "nav_est": 27.93,
-    "premium_discount_pct": -0.11
+    "nav_est": 27.9,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -4964,7 +5059,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00752#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -4988,8 +5084,8 @@
     "total_trade_val_5d": 62293574,
     "total_trade_cnt_5d": 1192,
     "total_trade_vol_5d": 2550326,
-    "nav_est": 24.25,
-    "premium_discount_pct": -0.08
+    "nav_est": 24.33,
+    "premium_discount_pct": -0.41
   },
   {
     "meta": {
@@ -5016,7 +5112,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00753L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5040,8 +5137,8 @@
     "total_trade_val_5d": 113946788,
     "total_trade_cnt_5d": 1623,
     "total_trade_vol_5d": 11355681,
-    "nav_est": 9.94,
-    "premium_discount_pct": 0.0
+    "nav_est": 9.93,
+    "premium_discount_pct": 0.1
   },
   {
     "meta": {
@@ -5063,12 +5160,13 @@
       "mgmt_fee_summary": "0.85%",
       "cust_fee": "0.18%",
       "cust_fee_summary": "0.18%",
-      "freq": "無",
+      "freq": "無收益分配 (累積型)",
       "official_url": "https://www.ezmoney.com.tw/",
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2747-8388",
-      "issuer_address": "台北市東興路8號8樓"
+      "issuer_address": "台北市東興路8號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00757#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5092,8 +5190,8 @@
     "total_trade_val_5d": 285909406,
     "total_trade_cnt_5d": 3273,
     "total_trade_vol_5d": 2086359,
-    "nav_est": 137.41,
-    "premium_discount_pct": -0.01
+    "nav_est": 136.81,
+    "premium_discount_pct": 0.43
   },
   {
     "meta": {
@@ -5120,7 +5218,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00762#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5144,8 +5243,8 @@
     "total_trade_val_5d": 12951513,
     "total_trade_cnt_5d": 350,
     "total_trade_vol_5d": 117105,
-    "nav_est": 110.92,
-    "premium_discount_pct": 0.07
+    "nav_est": 111.42,
+    "premium_discount_pct": -0.38
   },
   {
     "meta": {
@@ -5172,7 +5271,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00770#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5196,8 +5296,8 @@
     "total_trade_val_5d": 20818084,
     "total_trade_cnt_5d": 358,
     "total_trade_vol_5d": 307276,
-    "nav_est": 67.81,
-    "premium_discount_pct": 0.06
+    "nav_est": 67.73,
+    "premium_discount_pct": 0.18
   },
   {
     "meta": {
@@ -5224,7 +5324,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00771#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5248,8 +5349,8 @@
     "total_trade_val_5d": 73778,
     "total_trade_cnt_5d": 63,
     "total_trade_vol_5d": 4694,
-    "nav_est": 15.72,
-    "premium_discount_pct": 0.06
+    "nav_est": 15.75,
+    "premium_discount_pct": -0.13
   },
   {
     "meta": {
@@ -5276,7 +5377,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00783#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5300,8 +5402,8 @@
     "total_trade_val_5d": 859846,
     "total_trade_cnt_5d": 75,
     "total_trade_vol_5d": 31458,
-    "nav_est": 27.82,
-    "premium_discount_pct": -0.04
+    "nav_est": 27.78,
+    "premium_discount_pct": 0.11
   },
   {
     "meta": {
@@ -5312,23 +5414,24 @@
       "type": "國外成分股ETF(含連結式ETF)",
       "cat_group": "國外成分股",
       "is_foreign": true,
-      "underlying_index": "美國費城半導體指數",
+      "underlying_index": "PHLX Semiconductor Sector Index",
       "issuer": "國泰證券投資信託股份有限公司",
       "manager": "李翰林",
       "custodian": "台灣集中保管結算所股份有限公司",
       "inception_date": "1080423",
       "listing_date": "2019.05.03",
       "issued_units": "816465000",
-      "mgmt_fee": "30億(含)以下，0.45% ｜ 30億~ 100億(含)，0.40% ｜ 超過100億，0.35%",
+      "mgmt_fee": "0.45%",
       "mgmt_fee_summary": "0.35% ~ 0.45%",
-      "cust_fee": "未達50億，0.11% ｜ 50億(含)~ 100億，0.10% ｜ 100億(含)~200億，0.08% ｜ 200億(含)以上，0.06%",
+      "cust_fee": "0.15%",
       "cust_fee_summary": "0.06% ~ 0.11%",
-      "freq": "以每年十二月最後一個日曆日為評價日",
+      "freq": "無收益分配 (累積型)",
       "official_url": "https://www.cathaysite.com.tw/ETF",
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00830#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5352,8 +5455,8 @@
     "total_trade_val_5d": 385261317,
     "total_trade_cnt_5d": 8497,
     "total_trade_vol_5d": 4683325,
-    "nav_est": 82.9,
-    "premium_discount_pct": -0.42
+    "nav_est": 82.33,
+    "premium_discount_pct": 0.27
   },
   {
     "meta": {
@@ -5380,7 +5483,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00850#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5432,7 +5536,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00851#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5456,8 +5561,8 @@
     "total_trade_val_5d": 211594,
     "total_trade_cnt_5d": 92,
     "total_trade_vol_5d": 3046,
-    "nav_est": 69.69,
-    "premium_discount_pct": 0.44
+    "nav_est": 70.25,
+    "premium_discount_pct": -0.36
   },
   {
     "meta": {
@@ -5484,7 +5589,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00852L#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5508,8 +5614,8 @@
     "total_trade_val_5d": 2050431,
     "total_trade_cnt_5d": 41,
     "total_trade_vol_5d": 56709,
-    "nav_est": 36.31,
-    "premium_discount_pct": -0.47
+    "nav_est": 36.05,
+    "premium_discount_pct": 0.25
   },
   {
     "meta": {
@@ -5536,7 +5642,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00861#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5560,8 +5667,8 @@
     "total_trade_val_5d": 7696939,
     "total_trade_cnt_5d": 1640,
     "total_trade_vol_5d": 90959,
-    "nav_est": 84.64,
-    "premium_discount_pct": 0.13
+    "nav_est": 85.01,
+    "premium_discount_pct": -0.31
   },
   {
     "meta": {
@@ -5588,7 +5695,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00875#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5612,8 +5720,8 @@
     "total_trade_val_5d": 20410436,
     "total_trade_cnt_5d": 358,
     "total_trade_vol_5d": 381609,
-    "nav_est": 53.77,
-    "premium_discount_pct": -0.22
+    "nav_est": 53.6,
+    "premium_discount_pct": 0.09
   },
   {
     "meta": {
@@ -5640,7 +5748,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00876#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5664,8 +5773,8 @@
     "total_trade_val_5d": 11401343,
     "total_trade_cnt_5d": 1968,
     "total_trade_vol_5d": 134510,
-    "nav_est": 84.55,
-    "premium_discount_pct": 0.47
+    "nav_est": 84.95,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -5676,23 +5785,24 @@
       "type": "國內成分股ETF",
       "cat_group": "國內成分股",
       "is_foreign": false,
-      "underlying_index": "MSCI臺灣ESG永續高股息精選30指數",
+      "underlying_index": "MSCI臺灣永續高股息精選30指數",
       "issuer": "國泰證券投資信託股份有限公司",
       "manager": "江宇騰",
       "custodian": "台灣集中保管結算所股份有限公司",
       "inception_date": "1090710",
       "listing_date": "2020.07.20",
       "issued_units": "18436790000",
-      "mgmt_fee": "50億(含)以下，0.30%，超過50億，0.25%",
+      "mgmt_fee": "規模50億(含)以下: 0.30% ｜ 逾50億: 0.25%",
       "mgmt_fee_summary": "0.25% ~ 0.30%",
       "cust_fee": "0.035%",
       "cust_fee_summary": "0.04%",
-      "freq": "季分配 (成立日起屆滿60日（含）後，以每年1，4，7，10月最後⼀個日曆日為評價日-於每年2、5、8及11月起第45個營業日前（含）進行分配)",
+      "freq": "季配 (每年2、5、8、11月評價分配)",
       "official_url": "https://www.cathaysite.com.tw/ETF",
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00878#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5716,8 +5826,8 @@
     "total_trade_val_5d": 1864958457,
     "total_trade_cnt_5d": 23995,
     "total_trade_vol_5d": 57183322,
-    "nav_est": 32.67,
-    "premium_discount_pct": -0.31
+    "nav_est": 32.69,
+    "premium_discount_pct": -0.37
   },
   {
     "meta": {
@@ -5744,7 +5854,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00881#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5768,8 +5879,8 @@
     "total_trade_val_5d": 1805723560,
     "total_trade_cnt_5d": 16873,
     "total_trade_vol_5d": 35521278,
-    "nav_est": 50.77,
-    "premium_discount_pct": 0.26
+    "nav_est": 51.1,
+    "premium_discount_pct": -0.39
   },
   {
     "meta": {
@@ -5796,7 +5907,8 @@
       "tax_rate": "同上市證券，由證券商訂定，但不得超過千分之一點四二五",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00882#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5820,8 +5932,8 @@
     "total_trade_val_5d": 67224637,
     "total_trade_cnt_5d": 1616,
     "total_trade_vol_5d": 4422069,
-    "nav_est": 15.21,
-    "premium_discount_pct": -0.39
+    "nav_est": 15.19,
+    "premium_discount_pct": -0.26
   },
   {
     "meta": {
@@ -5848,7 +5960,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00885#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5872,8 +5985,8 @@
     "total_trade_val_5d": 47691344,
     "total_trade_cnt_5d": 858,
     "total_trade_vol_5d": 2596568,
-    "nav_est": 18.47,
-    "premium_discount_pct": -0.49
+    "nav_est": 18.34,
+    "premium_discount_pct": 0.22
   },
   {
     "meta": {
@@ -5900,7 +6013,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00891#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5924,8 +6038,8 @@
     "total_trade_val_5d": 885082283,
     "total_trade_cnt_5d": 10114,
     "total_trade_vol_5d": 26180754,
-    "nav_est": 33.72,
-    "premium_discount_pct": 0.42
+    "nav_est": 33.95,
+    "premium_discount_pct": -0.27
   },
   {
     "meta": {
@@ -5952,7 +6066,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00892#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -5976,8 +6091,8 @@
     "total_trade_val_5d": 159810144,
     "total_trade_cnt_5d": 968,
     "total_trade_vol_5d": 4109522,
-    "nav_est": 38.74,
-    "premium_discount_pct": 0.44
+    "nav_est": 39.09,
+    "premium_discount_pct": -0.46
   },
   {
     "meta": {
@@ -6004,7 +6119,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00893#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6028,8 +6144,8 @@
     "total_trade_val_5d": 57794039,
     "total_trade_cnt_5d": 409,
     "total_trade_vol_5d": 1342556,
-    "nav_est": 43.01,
-    "premium_discount_pct": 0.23
+    "nav_est": 43.24,
+    "premium_discount_pct": -0.3
   },
   {
     "meta": {
@@ -6056,7 +6172,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00894#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6080,8 +6197,8 @@
     "total_trade_val_5d": 60000796,
     "total_trade_cnt_5d": 867,
     "total_trade_vol_5d": 1322531,
-    "nav_est": 45.24,
-    "premium_discount_pct": 0.27
+    "nav_est": 45.18,
+    "premium_discount_pct": 0.4
   },
   {
     "meta": {
@@ -6108,7 +6225,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00895#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6132,8 +6250,8 @@
     "total_trade_val_5d": 48906549,
     "total_trade_cnt_5d": 321,
     "total_trade_vol_5d": 991416,
-    "nav_est": 49.08,
-    "premium_discount_pct": 0.35
+    "nav_est": 49.21,
+    "premium_discount_pct": 0.08
   },
   {
     "meta": {
@@ -6160,7 +6278,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00896#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6184,8 +6303,8 @@
     "total_trade_val_5d": 41330977,
     "total_trade_cnt_5d": 809,
     "total_trade_vol_5d": 1584879,
-    "nav_est": 26.02,
-    "premium_discount_pct": 0.38
+    "nav_est": 26.08,
+    "premium_discount_pct": 0.15
   },
   {
     "meta": {
@@ -6212,7 +6331,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00897#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6236,8 +6356,8 @@
     "total_trade_val_5d": 2907532,
     "total_trade_cnt_5d": 167,
     "total_trade_vol_5d": 263234,
-    "nav_est": 11.1,
-    "premium_discount_pct": -0.36
+    "nav_est": 11.07,
+    "premium_discount_pct": -0.09
   },
   {
     "meta": {
@@ -6264,7 +6384,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00898#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6288,8 +6409,8 @@
     "total_trade_val_5d": 6518266,
     "total_trade_cnt_5d": 134,
     "total_trade_vol_5d": 691190,
-    "nav_est": 9.45,
-    "premium_discount_pct": -0.11
+    "nav_est": 9.39,
+    "premium_discount_pct": 0.53
   },
   {
     "meta": {
@@ -6316,7 +6437,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位為基準",
       "issuer_phone": "(02)2781-9599",
-      "issuer_address": "106台北市大安區忠孝東路四段87號12樓"
+      "issuer_address": "106台北市大安區忠孝東路四段87號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00899#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6340,8 +6462,8 @@
     "total_trade_val_5d": 859124,
     "total_trade_cnt_5d": 170,
     "total_trade_vol_5d": 36095,
-    "nav_est": 23.81,
-    "premium_discount_pct": -0.04
+    "nav_est": 23.72,
+    "premium_discount_pct": 0.34
   },
   {
     "meta": {
@@ -6368,7 +6490,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00900#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6392,8 +6515,8 @@
     "total_trade_val_5d": 101123974,
     "total_trade_cnt_5d": 1341,
     "total_trade_vol_5d": 5502783,
-    "nav_est": 18.45,
-    "premium_discount_pct": -0.38
+    "nav_est": 18.4,
+    "premium_discount_pct": -0.11
   },
   {
     "meta": {
@@ -6420,7 +6543,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000受益權單位",
       "issuer_phone": "(02)2361-8110",
-      "issuer_address": "100台北市博愛路17號13樓及14樓"
+      "issuer_address": "100台北市博愛路17號13樓及14樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00901#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6444,8 +6568,8 @@
     "total_trade_val_5d": 62828238,
     "total_trade_cnt_5d": 197,
     "total_trade_vol_5d": 1462449,
-    "nav_est": 42.86,
-    "premium_discount_pct": 0.14
+    "nav_est": 42.74,
+    "premium_discount_pct": 0.42
   },
   {
     "meta": {
@@ -6472,7 +6596,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00902#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6496,8 +6621,8 @@
     "total_trade_val_5d": 6475171,
     "total_trade_cnt_5d": 294,
     "total_trade_vol_5d": 504367,
-    "nav_est": 12.9,
-    "premium_discount_pct": 0.16
+    "nav_est": 12.87,
+    "premium_discount_pct": 0.39
   },
   {
     "meta": {
@@ -6524,7 +6649,8 @@
       "tax_rate": "千分之一",
       "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00903#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6548,8 +6674,8 @@
     "total_trade_val_5d": 3457757,
     "total_trade_cnt_5d": 135,
     "total_trade_vol_5d": 164273,
-    "nav_est": 21.12,
-    "premium_discount_pct": -0.19
+    "nav_est": 21.09,
+    "premium_discount_pct": -0.05
   },
   {
     "meta": {
@@ -6576,7 +6702,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00904#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6600,8 +6727,8 @@
     "total_trade_val_5d": 30145606,
     "total_trade_cnt_5d": 593,
     "total_trade_vol_5d": 790988,
-    "nav_est": 38.09,
-    "premium_discount_pct": 0.11
+    "nav_est": 38.15,
+    "premium_discount_pct": -0.05
   },
   {
     "meta": {
@@ -6628,7 +6755,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2781-9599",
-      "issuer_address": "106台北市大安區忠孝東路四段87號12樓"
+      "issuer_address": "106台北市大安區忠孝東路四段87號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00905#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6652,8 +6780,8 @@
     "total_trade_val_5d": 28150931,
     "total_trade_cnt_5d": 837,
     "total_trade_vol_5d": 1142924,
-    "nav_est": 24.65,
-    "premium_discount_pct": 0.16
+    "nav_est": 24.79,
+    "premium_discount_pct": -0.4
   },
   {
     "meta": {
@@ -6680,7 +6808,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2361-8110",
-      "issuer_address": "100台北市博愛路17號13樓及14樓"
+      "issuer_address": "100台北市博愛路17號13樓及14樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00907#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6704,8 +6833,8 @@
     "total_trade_val_5d": 10551261,
     "total_trade_cnt_5d": 271,
     "total_trade_vol_5d": 628579,
-    "nav_est": 16.75,
-    "premium_discount_pct": 0.12
+    "nav_est": 16.72,
+    "premium_discount_pct": 0.3
   },
   {
     "meta": {
@@ -6732,7 +6861,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00908#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6756,8 +6886,8 @@
     "total_trade_val_5d": 5086360,
     "total_trade_cnt_5d": 36,
     "total_trade_vol_5d": 320899,
-    "nav_est": 15.77,
-    "premium_discount_pct": 0.32
+    "nav_est": 15.75,
+    "premium_discount_pct": 0.44
   },
   {
     "meta": {
@@ -6784,7 +6914,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00909#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6808,8 +6939,8 @@
     "total_trade_val_5d": 15552477,
     "total_trade_cnt_5d": 581,
     "total_trade_vol_5d": 341424,
-    "nav_est": 45.74,
-    "premium_discount_pct": -0.26
+    "nav_est": 45.44,
+    "premium_discount_pct": 0.4
   },
   {
     "meta": {
@@ -6836,7 +6967,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2504-1000",
-      "issuer_address": "台北市10477民權東路三段6號7樓"
+      "issuer_address": "台北市10477民權東路三段6號7樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00910#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6860,8 +6992,8 @@
     "total_trade_val_5d": 70634208,
     "total_trade_cnt_5d": 1991,
     "total_trade_vol_5d": 1206613,
-    "nav_est": 59.08,
-    "premium_discount_pct": -0.14
+    "nav_est": 58.9,
+    "premium_discount_pct": 0.17
   },
   {
     "meta": {
@@ -6888,7 +7020,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2175-8388",
-      "issuer_address": "台北市松山區復興北路167號17樓"
+      "issuer_address": "台北市松山區復興北路167號17樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00911#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6912,8 +7045,8 @@
     "total_trade_val_5d": 9808388,
     "total_trade_cnt_5d": 2506,
     "total_trade_vol_5d": 187357,
-    "nav_est": 52.33,
-    "premium_discount_pct": 0.23
+    "nav_est": 52.41,
+    "premium_discount_pct": 0.08
   },
   {
     "meta": {
@@ -6940,7 +7073,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00912#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -6964,8 +7098,8 @@
     "total_trade_val_5d": 17431605,
     "total_trade_cnt_5d": 201,
     "total_trade_vol_5d": 545837,
-    "nav_est": 31.89,
-    "premium_discount_pct": 0.5
+    "nav_est": 32.09,
+    "premium_discount_pct": -0.12
   },
   {
     "meta": {
@@ -6992,7 +7126,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2175-8388",
-      "issuer_address": "台北市松山區復興北路167號17樓"
+      "issuer_address": "台北市松山區復興北路167號17樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00913#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7016,8 +7151,8 @@
     "total_trade_val_5d": 61888949,
     "total_trade_cnt_5d": 643,
     "total_trade_vol_5d": 1356482,
-    "nav_est": 45.8,
-    "premium_discount_pct": 0.17
+    "nav_est": 46.05,
+    "premium_discount_pct": -0.37
   },
   {
     "meta": {
@@ -7028,23 +7163,24 @@
       "type": "國內成分證券指數股票型基金",
       "cat_group": "國內成分股",
       "is_foreign": false,
-      "underlying_index": "臺灣指數公司特選臺灣上市上櫃多因子優選高股息30指數",
-      "issuer": "凱基投信",
+      "underlying_index": "臺灣指數公司特選臺灣上市上櫃高股息30指數",
+      "issuer": "凱基證券投資信託股份有限公司",
       "manager": "李郁馨",
       "custodian": "彰化商業銀行",
       "inception_date": "1110801",
-      "listing_date": "1110809",
+      "listing_date": "2022.08.09",
       "issued_units": "515983000",
-      "mgmt_fee": "",
+      "mgmt_fee": "0.30%",
       "mgmt_fee_summary": "--",
-      "cust_fee": "",
+      "cust_fee": "0.035%",
       "cust_fee_summary": "--",
-      "freq": "",
+      "freq": "季配 (每年3、6、9、12月評價分配)",
       "official_url": "",
-      "tax_rate": "",
-      "trade_unit": "",
+      "tax_rate": "千分之一",
+      "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8502-2299",
-      "issuer_address": "台北市中山區明水路698號"
+      "issuer_address": "台北市中山區明水路698號",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00915#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7068,8 +7204,8 @@
     "total_trade_val_5d": 155341808,
     "total_trade_cnt_5d": 579,
     "total_trade_vol_5d": 4951905,
-    "nav_est": 31.44,
-    "premium_discount_pct": 0.32
+    "nav_est": 31.41,
+    "premium_discount_pct": 0.41
   },
   {
     "meta": {
@@ -7096,7 +7232,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00916#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7120,8 +7257,8 @@
     "total_trade_val_5d": 42040485,
     "total_trade_cnt_5d": 725,
     "total_trade_vol_5d": 1546731,
-    "nav_est": 27.07,
-    "premium_discount_pct": 0.48
+    "nav_est": 27.33,
+    "premium_discount_pct": -0.48
   },
   {
     "meta": {
@@ -7148,7 +7285,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00917#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7172,8 +7310,8 @@
     "total_trade_val_5d": 10804562,
     "total_trade_cnt_5d": 335,
     "total_trade_vol_5d": 445809,
-    "nav_est": 24.33,
-    "premium_discount_pct": -0.29
+    "nav_est": 24.36,
+    "premium_discount_pct": -0.41
   },
   {
     "meta": {
@@ -7200,7 +7338,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2719-7005",
-      "issuer_address": "臺北市松山區民生東路三段109號16樓"
+      "issuer_address": "臺北市松山區民生東路三段109號16樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00918#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7224,8 +7363,8 @@
     "total_trade_val_5d": 809993088,
     "total_trade_cnt_5d": 6336,
     "total_trade_vol_5d": 24432034,
-    "nav_est": 33.35,
-    "premium_discount_pct": -0.3
+    "nav_est": 33.25,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -7237,22 +7376,23 @@
       "cat_group": "國內成分股",
       "is_foreign": false,
       "underlying_index": "臺灣指數公司特選臺灣上市上櫃精選高息指數",
-      "issuer": "群益投信",
+      "issuer": "群益證券投資信託股份有限公司",
       "manager": "謝明志",
       "custodian": "臺灣集中保管結算所股份有限公司",
       "inception_date": "1111013",
-      "listing_date": "1111020",
+      "listing_date": "2022.10.20",
       "issued_units": "18184635000",
-      "mgmt_fee": "",
+      "mgmt_fee": "0.30%",
       "mgmt_fee_summary": "--",
-      "cust_fee": "",
+      "cust_fee": "0.030%",
       "cust_fee_summary": "--",
-      "freq": "",
+      "freq": "季配 (每年3、6、9、12月評價分配)",
       "official_url": "",
-      "tax_rate": "",
-      "trade_unit": "",
+      "tax_rate": "千分之一",
+      "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00919#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7276,8 +7416,8 @@
     "total_trade_val_5d": 1290552498,
     "total_trade_cnt_5d": 16132,
     "total_trade_vol_5d": 43726869,
-    "nav_est": 29.5,
-    "premium_discount_pct": 0.03
+    "nav_est": 29.49,
+    "premium_discount_pct": 0.07
   },
   {
     "meta": {
@@ -7304,7 +7444,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00920#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7328,8 +7469,8 @@
     "total_trade_val_5d": 5006423,
     "total_trade_cnt_5d": 259,
     "total_trade_vol_5d": 207902,
-    "nav_est": 24.22,
-    "premium_discount_pct": -0.41
+    "nav_est": 24.01,
+    "premium_discount_pct": 0.46
   },
   {
     "meta": {
@@ -7356,7 +7497,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2175-8388",
-      "issuer_address": "台北市松山區復興北路167號17樓"
+      "issuer_address": "台北市松山區復興北路167號17樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00921#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7380,8 +7522,8 @@
     "total_trade_val_5d": 8028386,
     "total_trade_cnt_5d": 108,
     "total_trade_vol_5d": 348765,
-    "nav_est": 22.9,
-    "premium_discount_pct": 0.39
+    "nav_est": 22.88,
+    "premium_discount_pct": 0.48
   },
   {
     "meta": {
@@ -7408,7 +7550,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00922#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7432,8 +7575,8 @@
     "total_trade_val_5d": 283888832,
     "total_trade_cnt_5d": 3849,
     "total_trade_vol_5d": 7306249,
-    "nav_est": 38.7,
-    "premium_discount_pct": 0.18
+    "nav_est": 38.72,
+    "premium_discount_pct": 0.13
   },
   {
     "meta": {
@@ -7460,7 +7603,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00923#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7484,8 +7628,8 @@
     "total_trade_val_5d": 529495933,
     "total_trade_cnt_5d": 6348,
     "total_trade_vol_5d": 13180541,
-    "nav_est": 40.27,
-    "premium_discount_pct": -0.17
+    "nav_est": 40.04,
+    "premium_discount_pct": 0.4
   },
   {
     "meta": {
@@ -7512,7 +7656,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8161-6800",
-      "issuer_address": "臺北市中山區八德路２段３０８號７樓、８樓及９樓"
+      "issuer_address": "臺北市中山區八德路２段３０８號７樓、８樓及９樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00924#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7536,8 +7681,8 @@
     "total_trade_val_5d": 70411029,
     "total_trade_cnt_5d": 1258,
     "total_trade_vol_5d": 2105085,
-    "nav_est": 33.58,
-    "premium_discount_pct": -0.24
+    "nav_est": 33.46,
+    "premium_discount_pct": 0.12
   },
   {
     "meta": {
@@ -7564,7 +7709,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8502-2299",
-      "issuer_address": "台北市中山區明水路698號"
+      "issuer_address": "台北市中山區明水路698號",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00926#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7588,8 +7734,8 @@
     "total_trade_val_5d": 11089091,
     "total_trade_cnt_5d": 277,
     "total_trade_vol_5d": 421802,
-    "nav_est": 26.34,
-    "premium_discount_pct": -0.08
+    "nav_est": 26.24,
+    "premium_discount_pct": 0.3
   },
   {
     "meta": {
@@ -7616,7 +7762,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00927#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7640,8 +7787,8 @@
     "total_trade_val_5d": 395548398,
     "total_trade_cnt_5d": 4641,
     "total_trade_vol_5d": 11348745,
-    "nav_est": 35.19,
-    "premium_discount_pct": -0.48
+    "nav_est": 35.14,
+    "premium_discount_pct": -0.34
   },
   {
     "meta": {
@@ -7652,23 +7799,24 @@
       "type": "國內成分證券指數股票型基金",
       "cat_group": "國內成分股",
       "is_foreign": false,
-      "underlying_index": "臺灣指數公司特選臺灣上市上櫃科技優息指數",
-      "issuer": "復華投信",
+      "underlying_index": "臺灣指數公司特選臺灣科技優息指數",
+      "issuer": "復華證券投資信託股份有限公司",
       "manager": "許忠成",
       "custodian": "台北富邦商業銀行股份有限公司",
       "inception_date": "1120601",
-      "listing_date": "1120609",
+      "listing_date": "2023.06.09",
       "issued_units": "4821139000",
-      "mgmt_fee": "",
+      "mgmt_fee": "0.30%",
       "mgmt_fee_summary": "--",
-      "cust_fee": "",
+      "cust_fee": "0.030%",
       "cust_fee_summary": "--",
-      "freq": "",
+      "freq": "月配 (每月評價分配)",
       "official_url": "",
-      "tax_rate": "",
-      "trade_unit": "",
+      "tax_rate": "千分之一",
+      "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)8161-6800",
-      "issuer_address": "台北市八德路二段308號8樓"
+      "issuer_address": "台北市八德路二段308號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00929#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7692,8 +7840,8 @@
     "total_trade_val_5d": 830705258,
     "total_trade_cnt_5d": 8071,
     "total_trade_vol_5d": 29714585,
-    "nav_est": 28.2,
-    "premium_discount_pct": -0.18
+    "nav_est": 28.25,
+    "premium_discount_pct": -0.35
   },
   {
     "meta": {
@@ -7720,7 +7868,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2361-8110",
-      "issuer_address": "100台北市博愛路17號13樓及14樓"
+      "issuer_address": "100台北市博愛路17號13樓及14樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00930#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7744,8 +7893,8 @@
     "total_trade_val_5d": 31045057,
     "total_trade_cnt_5d": 146,
     "total_trade_vol_5d": 1335410,
-    "nav_est": 23.46,
-    "premium_discount_pct": -0.34
+    "nav_est": 23.33,
+    "premium_discount_pct": 0.21
   },
   {
     "meta": {
@@ -7772,7 +7921,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2175-8388",
-      "issuer_address": "台北市松山區復興北路167號17樓"
+      "issuer_address": "台北市松山區復興北路167號17樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00932#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7796,8 +7946,8 @@
     "total_trade_val_5d": 4659026,
     "total_trade_cnt_5d": 178,
     "total_trade_vol_5d": 272392,
-    "nav_est": 17.21,
-    "premium_discount_pct": -0.29
+    "nav_est": 17.16,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -7824,7 +7974,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00934#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7848,8 +7999,8 @@
     "total_trade_val_5d": 118875037,
     "total_trade_cnt_5d": 798,
     "total_trade_vol_5d": 4285540,
-    "nav_est": 27.86,
-    "premium_discount_pct": -0.29
+    "nav_est": 27.78,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -7876,7 +8027,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00935#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7900,8 +8052,8 @@
     "total_trade_val_5d": 694845410,
     "total_trade_cnt_5d": 5608,
     "total_trade_vol_5d": 12868056,
-    "nav_est": 53.83,
-    "premium_discount_pct": 0.41
+    "nav_est": 53.85,
+    "premium_discount_pct": 0.37
   },
   {
     "meta": {
@@ -7928,7 +8080,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00936#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -7952,8 +8105,8 @@
     "total_trade_val_5d": 24841628,
     "total_trade_cnt_5d": 402,
     "total_trade_vol_5d": 1192337,
-    "nav_est": 20.98,
-    "premium_discount_pct": -0.19
+    "nav_est": 20.99,
+    "premium_discount_pct": -0.24
   },
   {
     "meta": {
@@ -7980,7 +8133,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8502-2299",
-      "issuer_address": "台北市中山區明水路698號"
+      "issuer_address": "台北市中山區明水路698號",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00938#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8004,8 +8158,8 @@
     "total_trade_val_5d": 37608425,
     "total_trade_cnt_5d": 166,
     "total_trade_vol_5d": 1522829,
-    "nav_est": 24.63,
-    "premium_discount_pct": 0.37
+    "nav_est": 24.67,
+    "premium_discount_pct": 0.2
   },
   {
     "meta": {
@@ -8016,23 +8170,24 @@
       "type": "國內成分證券指數股票型基金",
       "cat_group": "國內成分股",
       "is_foreign": false,
-      "underlying_index": "特選臺灣高息動能指數",
-      "issuer": "統一投信",
+      "underlying_index": "臺灣指數公司特選臺灣高息動能指數",
+      "issuer": "統一證券投資信託股份有限公司",
       "manager": "林良一",
       "custodian": "華南商業銀行",
       "inception_date": "1130308",
-      "listing_date": "1130320",
+      "listing_date": "2024.03.20",
       "issued_units": "1179476000",
-      "mgmt_fee": "",
+      "mgmt_fee": "0.30%",
       "mgmt_fee_summary": "--",
-      "cust_fee": "",
+      "cust_fee": "0.030%",
       "cust_fee_summary": "--",
-      "freq": "",
+      "freq": "月配 (每月評價分配)",
       "official_url": "",
-      "tax_rate": "",
-      "trade_unit": "",
+      "tax_rate": "千分之一",
+      "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2747-8388",
-      "issuer_address": "台北市松山區東興路8號8樓"
+      "issuer_address": "台北市松山區東興路8號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00939#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8056,8 +8211,8 @@
     "total_trade_val_5d": 78429342,
     "total_trade_cnt_5d": 738,
     "total_trade_vol_5d": 3547217,
-    "nav_est": 22.04,
-    "premium_discount_pct": 0.27
+    "nav_est": 22.07,
+    "premium_discount_pct": 0.14
   },
   {
     "meta": {
@@ -8069,22 +8224,23 @@
       "cat_group": "國內成分股",
       "is_foreign": false,
       "underlying_index": "臺灣指數公司特選臺灣價值高息指數",
-      "issuer": "元大投信",
+      "issuer": "元大證券投資信託股份有限公司",
       "manager": "邱鉦淵",
       "custodian": "臺灣集中保管結算所股份有限公司",
       "inception_date": "1130318",
-      "listing_date": "1130401",
+      "listing_date": "2024.04.01",
       "issued_units": "5411365000",
-      "mgmt_fee": "",
+      "mgmt_fee": "0.30%",
       "mgmt_fee_summary": "--",
-      "cust_fee": "",
+      "cust_fee": "0.03%",
       "cust_fee_summary": "--",
-      "freq": "",
+      "freq": "月配 (每月評價分配)",
       "official_url": "",
-      "tax_rate": "",
-      "trade_unit": "",
+      "tax_rate": "千分之一",
+      "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00940#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8108,8 +8264,8 @@
     "total_trade_val_5d": 175140045,
     "total_trade_cnt_5d": 2593,
     "total_trade_vol_5d": 14347266,
-    "nav_est": 12.27,
-    "premium_discount_pct": -0.33
+    "nav_est": 12.22,
+    "premium_discount_pct": 0.08
   },
   {
     "meta": {
@@ -8136,7 +8292,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00941#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8160,8 +8317,8 @@
     "total_trade_val_5d": 44453190,
     "total_trade_cnt_5d": 901,
     "total_trade_vol_5d": 1735719,
-    "nav_est": 25.73,
-    "premium_discount_pct": -0.19
+    "nav_est": 25.63,
+    "premium_discount_pct": 0.2
   },
   {
     "meta": {
@@ -8188,7 +8345,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2175-8388",
-      "issuer_address": "台北市松山區復興北路167號17樓"
+      "issuer_address": "台北市松山區復興北路167號17樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00943#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8212,8 +8370,8 @@
     "total_trade_val_5d": 5369915,
     "total_trade_cnt_5d": 107,
     "total_trade_vol_5d": 255914,
-    "nav_est": 21.24,
-    "premium_discount_pct": -0.05
+    "nav_est": 21.23,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -8240,7 +8398,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00944#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8264,8 +8423,8 @@
     "total_trade_val_5d": 1993665,
     "total_trade_cnt_5d": 194,
     "total_trade_vol_5d": 98611,
-    "nav_est": 20.32,
-    "premium_discount_pct": -0.34
+    "nav_est": 20.35,
+    "premium_discount_pct": -0.49
   },
   {
     "meta": {
@@ -8292,7 +8451,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00946#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8316,8 +8476,8 @@
     "total_trade_val_5d": 29556988,
     "total_trade_cnt_5d": 627,
     "total_trade_vol_5d": 2031278,
-    "nav_est": 14.63,
-    "premium_discount_pct": 0.34
+    "nav_est": 14.75,
+    "premium_discount_pct": -0.47
   },
   {
     "meta": {
@@ -8344,7 +8504,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00947#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8368,8 +8529,8 @@
     "total_trade_val_5d": 668889851,
     "total_trade_cnt_5d": 5503,
     "total_trade_vol_5d": 20151400,
-    "nav_est": 33.26,
-    "premium_discount_pct": 0.27
+    "nav_est": 33.45,
+    "premium_discount_pct": -0.3
   },
   {
     "meta": {
@@ -8396,7 +8557,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8161-6800",
-      "issuer_address": "台北市八德路二段308號8樓"
+      "issuer_address": "台北市八德路二段308號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00949#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8420,8 +8582,8 @@
     "total_trade_val_5d": 17230982,
     "total_trade_cnt_5d": 336,
     "total_trade_vol_5d": 804496,
-    "nav_est": 21.47,
-    "premium_discount_pct": -0.37
+    "nav_est": 21.29,
+    "premium_discount_pct": 0.47
   },
   {
     "meta": {
@@ -8448,7 +8610,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00951#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8472,8 +8635,8 @@
     "total_trade_val_5d": 44810775,
     "total_trade_cnt_5d": 619,
     "total_trade_vol_5d": 2554456,
-    "nav_est": 17.73,
-    "premium_discount_pct": -0.45
+    "nav_est": 17.64,
+    "premium_discount_pct": 0.06
   },
   {
     "meta": {
@@ -8500,7 +8663,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8502-2299",
-      "issuer_address": "台北市中山區明水路698號"
+      "issuer_address": "台北市中山區明水路698號",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00952#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8524,8 +8688,8 @@
     "total_trade_val_5d": 37803243,
     "total_trade_cnt_5d": 453,
     "total_trade_vol_5d": 2152183,
-    "nav_est": 17.75,
-    "premium_discount_pct": -0.34
+    "nav_est": 17.77,
+    "premium_discount_pct": -0.45
   },
   {
     "meta": {
@@ -8552,7 +8716,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00954#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8576,8 +8741,8 @@
     "total_trade_val_5d": 50510860,
     "total_trade_cnt_5d": 854,
     "total_trade_vol_5d": 2689587,
-    "nav_est": 18.79,
-    "premium_discount_pct": 0.27
+    "nav_est": 18.85,
+    "premium_discount_pct": -0.05
   },
   {
     "meta": {
@@ -8604,7 +8769,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00956#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8628,8 +8794,8 @@
     "total_trade_val_5d": 2369390,
     "total_trade_cnt_5d": 187,
     "total_trade_vol_5d": 181770,
-    "nav_est": 13.0,
-    "premium_discount_pct": 0.23
+    "nav_est": 13.06,
+    "premium_discount_pct": -0.23
   },
   {
     "meta": {
@@ -8656,7 +8822,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00960#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8680,8 +8847,8 @@
     "total_trade_val_5d": 9074929,
     "total_trade_cnt_5d": 303,
     "total_trade_vol_5d": 477150,
-    "nav_est": 19.09,
-    "premium_discount_pct": -0.26
+    "nav_est": 18.95,
+    "premium_discount_pct": 0.47
   },
   {
     "meta": {
@@ -8708,7 +8875,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2781-9599",
-      "issuer_address": "106台北市大安區忠孝東路四段87號12樓"
+      "issuer_address": "106台北市大安區忠孝東路四段87號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00961#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8732,8 +8900,8 @@
     "total_trade_val_5d": 216760214,
     "total_trade_cnt_5d": 3220,
     "total_trade_vol_5d": 16698431,
-    "nav_est": 13.02,
-    "premium_discount_pct": 0.08
+    "nav_est": 13.0,
+    "premium_discount_pct": 0.23
   },
   {
     "meta": {
@@ -8760,7 +8928,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00962#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8812,7 +8981,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00963#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8836,8 +9006,8 @@
     "total_trade_val_5d": 15297729,
     "total_trade_cnt_5d": 368,
     "total_trade_vol_5d": 1136591,
-    "nav_est": 13.44,
-    "premium_discount_pct": 0.22
+    "nav_est": 13.48,
+    "premium_discount_pct": -0.07
   },
   {
     "meta": {
@@ -8864,7 +9034,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00964#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8888,8 +9059,8 @@
     "total_trade_val_5d": 41615584,
     "total_trade_cnt_5d": 272,
     "total_trade_vol_5d": 3007911,
-    "nav_est": 13.82,
-    "premium_discount_pct": 0.36
+    "nav_est": 13.83,
+    "premium_discount_pct": 0.29
   },
   {
     "meta": {
@@ -8916,7 +9087,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00965#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8940,8 +9112,8 @@
     "total_trade_val_5d": 164176621,
     "total_trade_cnt_5d": 1984,
     "total_trade_vol_5d": 6354672,
-    "nav_est": 25.92,
-    "premium_discount_pct": 0.35
+    "nav_est": 26.02,
+    "premium_discount_pct": -0.04
   },
   {
     "meta": {
@@ -8968,7 +9140,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00971#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -8992,8 +9165,8 @@
     "total_trade_val_5d": 5005243,
     "total_trade_cnt_5d": 169,
     "total_trade_vol_5d": 284973,
-    "nav_est": 17.6,
-    "premium_discount_pct": -0.17
+    "nav_est": 17.51,
+    "premium_discount_pct": 0.34
   },
   {
     "meta": {
@@ -9020,7 +9193,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00972#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9044,8 +9218,8 @@
     "total_trade_val_5d": 3980919,
     "total_trade_cnt_5d": 36,
     "total_trade_vol_5d": 186785,
-    "nav_est": 21.33,
-    "premium_discount_pct": -0.14
+    "nav_est": 21.27,
+    "premium_discount_pct": 0.14
   },
   {
     "meta": {
@@ -9072,7 +9246,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009800#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9124,7 +9299,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009801#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9148,8 +9324,8 @@
     "total_trade_val_5d": 16563148,
     "total_trade_cnt_5d": 310,
     "total_trade_vol_5d": 1344454,
-    "nav_est": 12.34,
-    "premium_discount_pct": 0.08
+    "nav_est": 12.39,
+    "premium_discount_pct": -0.32
   },
   {
     "meta": {
@@ -9176,7 +9352,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009802#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9200,8 +9377,8 @@
     "total_trade_val_5d": 68165135,
     "total_trade_cnt_5d": 838,
     "total_trade_vol_5d": 3742970,
-    "nav_est": 18.2,
-    "premium_discount_pct": -0.05
+    "nav_est": 18.12,
+    "premium_discount_pct": 0.39
   },
   {
     "meta": {
@@ -9228,7 +9405,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2782-1313",
-      "issuer_address": "台北市信義區基隆路一段333號14樓"
+      "issuer_address": "台北市信義區基隆路一段333號14樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009803#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9280,7 +9458,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2509-1088",
-      "issuer_address": "台北市中山區南京東路二段137號6樓"
+      "issuer_address": "台北市中山區南京東路二段137號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009804#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9304,8 +9483,8 @@
     "total_trade_val_5d": 14217357,
     "total_trade_cnt_5d": 274,
     "total_trade_vol_5d": 674525,
-    "nav_est": 21.04,
-    "premium_discount_pct": 0.14
+    "nav_est": 21.16,
+    "premium_discount_pct": -0.43
   },
   {
     "meta": {
@@ -9332,7 +9511,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009805#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9356,8 +9536,8 @@
     "total_trade_val_5d": 34379146,
     "total_trade_cnt_5d": 1064,
     "total_trade_vol_5d": 2128734,
-    "nav_est": 16.13,
-    "premium_discount_pct": 0.19
+    "nav_est": 16.12,
+    "premium_discount_pct": 0.25
   },
   {
     "meta": {
@@ -9384,7 +9564,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2719-6688",
-      "issuer_address": "台北市民生東路4段54號3樓之1"
+      "issuer_address": "台北市民生東路4段54號3樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009808#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9408,8 +9589,8 @@
     "total_trade_val_5d": 13871774,
     "total_trade_cnt_5d": 72,
     "total_trade_vol_5d": 466812,
-    "nav_est": 29.79,
-    "premium_discount_pct": -0.23
+    "nav_est": 29.85,
+    "premium_discount_pct": -0.44
   },
   {
     "meta": {
@@ -9436,7 +9617,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8771-6688",
-      "issuer_address": "台北市敦化南路一段108號8樓"
+      "issuer_address": "台北市敦化南路一段108號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009809#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9460,8 +9642,8 @@
     "total_trade_val_5d": 22261215,
     "total_trade_cnt_5d": 158,
     "total_trade_vol_5d": 1309550,
-    "nav_est": 16.82,
-    "premium_discount_pct": 0.36
+    "nav_est": 16.93,
+    "premium_discount_pct": -0.3
   },
   {
     "meta": {
@@ -9488,7 +9670,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00980A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9512,8 +9695,8 @@
     "total_trade_val_5d": 520013948,
     "total_trade_cnt_5d": 6699,
     "total_trade_vol_5d": 23024046,
-    "nav_est": 22.73,
-    "premium_discount_pct": -0.31
+    "nav_est": 22.59,
+    "premium_discount_pct": 0.31
   },
   {
     "meta": {
@@ -9540,7 +9723,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2782-1313",
-      "issuer_address": "台北市信義區基隆路一段333號14樓"
+      "issuer_address": "台北市信義區基隆路一段333號14樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009810#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9564,8 +9748,8 @@
     "total_trade_val_5d": 3054101,
     "total_trade_cnt_5d": 72,
     "total_trade_vol_5d": 141867,
-    "nav_est": 21.55,
-    "premium_discount_pct": -0.05
+    "nav_est": 21.63,
+    "premium_discount_pct": -0.42
   },
   {
     "meta": {
@@ -9592,7 +9776,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2747-8388",
-      "issuer_address": "台北市松山區東興路8號8樓"
+      "issuer_address": "台北市松山區東興路8號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009811#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9616,8 +9801,8 @@
     "total_trade_val_5d": 34685820,
     "total_trade_cnt_5d": 544,
     "total_trade_vol_5d": 2594851,
-    "nav_est": 13.34,
-    "premium_discount_pct": 0.3
+    "nav_est": 13.41,
+    "premium_discount_pct": -0.22
   },
   {
     "meta": {
@@ -9644,7 +9829,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009812#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9668,8 +9854,8 @@
     "total_trade_val_5d": 2469890,
     "total_trade_cnt_5d": 171,
     "total_trade_vol_5d": 195282,
-    "nav_est": 12.67,
-    "premium_discount_pct": 0.0
+    "nav_est": 12.72,
+    "premium_discount_pct": -0.39
   },
   {
     "meta": {
@@ -9696,7 +9882,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2326-1600",
-      "issuer_address": "台北市信義區松仁路100號28樓"
+      "issuer_address": "台北市信義區松仁路100號28樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009813#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9720,8 +9907,8 @@
     "total_trade_val_5d": 33692255,
     "total_trade_cnt_5d": 471,
     "total_trade_vol_5d": 2966967,
-    "nav_est": 11.36,
-    "premium_discount_pct": 0.0
+    "nav_est": 11.39,
+    "premium_discount_pct": -0.26
   },
   {
     "meta": {
@@ -9732,23 +9919,24 @@
       "type": "國內成分證券指數股票型基金",
       "cat_group": "國內成分股",
       "is_foreign": false,
-      "underlying_index": "臺灣指數公司特選臺灣TOP 50指數",
-      "issuer": "凱基投信",
+      "underlying_index": "臺灣指數公司特選臺灣TOP50指數",
+      "issuer": "凱基證券投資信託股份有限公司",
       "manager": "葉菀婷",
       "custodian": "兆豐國際商業銀行股份有限公司",
       "inception_date": "1150122",
-      "listing_date": "1150203",
+      "listing_date": "2025.10.15",
       "issued_units": "12201344000",
-      "mgmt_fee": "",
+      "mgmt_fee": "0.07%",
       "mgmt_fee_summary": "--",
-      "cust_fee": "",
+      "cust_fee": "0.027%",
       "cust_fee_summary": "--",
-      "freq": "",
+      "freq": "不分配收益",
       "official_url": "",
-      "tax_rate": "",
-      "trade_unit": "",
+      "tax_rate": "千分之一",
+      "trade_unit": "1,000個受益權單位",
       "issuer_phone": "(02)2181-5678",
-      "issuer_address": "台北市中山區明水路698號"
+      "issuer_address": "台北市中山區明水路698號",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009816#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9772,8 +9960,8 @@
     "total_trade_val_5d": 2131235254,
     "total_trade_cnt_5d": 25280,
     "total_trade_vol_5d": 146451103,
-    "nav_est": 14.49,
-    "premium_discount_pct": 0.48
+    "nav_est": 14.58,
+    "premium_discount_pct": -0.14
   },
   {
     "meta": {
@@ -9800,7 +9988,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2700-8399",
-      "issuer_address": "台北市大安區敦化南路二段39號6樓"
+      "issuer_address": "台北市大安區敦化南路二段39號6樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009817#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9824,8 +10013,8 @@
     "total_trade_val_5d": 5561049,
     "total_trade_cnt_5d": 238,
     "total_trade_vol_5d": 595107,
-    "nav_est": 9.32,
-    "premium_discount_pct": 0.21
+    "nav_est": 9.31,
+    "premium_discount_pct": 0.32
   },
   {
     "meta": {
@@ -9852,7 +10041,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2719-6688",
-      "issuer_address": "台北市松山區民生東路四段54號3樓之1"
+      "issuer_address": "台北市松山區民生東路四段54號3樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009818#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9876,8 +10066,8 @@
     "total_trade_val_5d": 8362650,
     "total_trade_cnt_5d": 118,
     "total_trade_vol_5d": 418859,
-    "nav_est": 20.07,
-    "premium_discount_pct": -0.3
+    "nav_est": 19.99,
+    "premium_discount_pct": 0.1
   },
   {
     "meta": {
@@ -9904,7 +10094,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009819#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9928,8 +10119,8 @@
     "total_trade_val_5d": 67826119,
     "total_trade_cnt_5d": 1436,
     "total_trade_vol_5d": 6714529,
-    "nav_est": 10.14,
-    "premium_discount_pct": -0.3
+    "nav_est": 10.06,
+    "premium_discount_pct": 0.5
   },
   {
     "meta": {
@@ -9956,7 +10147,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2747-8388",
-      "issuer_address": "台北市松山區東興路8號8樓"
+      "issuer_address": "台北市松山區東興路8號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00981A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -9980,8 +10172,8 @@
     "total_trade_val_5d": 7491153798,
     "total_trade_cnt_5d": 49215,
     "total_trade_vol_5d": 273265013,
-    "nav_est": 27.62,
-    "premium_discount_pct": -0.14
+    "nav_est": 27.57,
+    "premium_discount_pct": 0.04
   },
   {
     "meta": {
@@ -10008,7 +10200,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8502-2299",
-      "issuer_address": "台北市中山區明水路698號"
+      "issuer_address": "台北市中山區明水路698號",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00981T#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10032,8 +10225,8 @@
     "total_trade_val_5d": 38462290,
     "total_trade_cnt_5d": 368,
     "total_trade_vol_5d": 3237682,
-    "nav_est": 11.92,
-    "premium_discount_pct": -0.34
+    "nav_est": 11.85,
+    "premium_discount_pct": 0.25
   },
   {
     "meta": {
@@ -10060,7 +10253,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009820#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10084,8 +10278,8 @@
     "total_trade_val_5d": 154463754,
     "total_trade_cnt_5d": 759,
     "total_trade_vol_5d": 16090963,
-    "nav_est": 9.58,
-    "premium_discount_pct": 0.42
+    "nav_est": 9.66,
+    "premium_discount_pct": -0.41
   },
   {
     "meta": {
@@ -10112,7 +10306,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009821#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10136,8 +10331,8 @@
     "total_trade_val_5d": 67459828,
     "total_trade_cnt_5d": 1329,
     "total_trade_vol_5d": 5150537,
-    "nav_est": 13.14,
-    "premium_discount_pct": 0.38
+    "nav_est": 13.18,
+    "premium_discount_pct": 0.08
   },
   {
     "meta": {
@@ -10164,7 +10359,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009824#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10188,8 +10384,8 @@
     "total_trade_val_5d": 72738760,
     "total_trade_cnt_5d": 1170,
     "total_trade_vol_5d": 7280463,
-    "nav_est": 10.01,
-    "premium_discount_pct": -0.1
+    "nav_est": 10.04,
+    "premium_discount_pct": -0.4
   },
   {
     "meta": {
@@ -10216,7 +10412,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2326-1600",
-      "issuer_address": "台北市信義區松仁路100號28樓"
+      "issuer_address": "台北市信義區松仁路100號28樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?009826#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10240,8 +10437,8 @@
     "total_trade_val_5d": 584209601,
     "total_trade_cnt_5d": 13352,
     "total_trade_vol_5d": 57362518,
-    "nav_est": 10.17,
-    "premium_discount_pct": 0.1
+    "nav_est": 10.23,
+    "premium_discount_pct": -0.49
   },
   {
     "meta": {
@@ -10268,7 +10465,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00982A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10292,8 +10490,8 @@
     "total_trade_val_5d": 584723418,
     "total_trade_cnt_5d": 7020,
     "total_trade_vol_5d": 27237877,
-    "nav_est": 21.57,
-    "premium_discount_pct": 0.19
+    "nav_est": 21.68,
+    "premium_discount_pct": -0.32
   },
   {
     "meta": {
@@ -10320,7 +10518,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2175-8388",
-      "issuer_address": "台北市松山區復興北路167號17樓"
+      "issuer_address": "台北市松山區復興北路167號17樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00982T#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10344,8 +10543,8 @@
     "total_trade_val_5d": 801238,
     "total_trade_cnt_5d": 19,
     "total_trade_vol_5d": 53756,
-    "nav_est": 14.95,
-    "premium_discount_pct": 0.0
+    "nav_est": 14.88,
+    "premium_discount_pct": 0.47
   },
   {
     "meta": {
@@ -10372,7 +10571,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00983A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10396,8 +10596,8 @@
     "total_trade_val_5d": 6837807,
     "total_trade_cnt_5d": 292,
     "total_trade_vol_5d": 603335,
-    "nav_est": 11.33,
-    "premium_discount_pct": 0.09
+    "nav_est": 11.35,
+    "premium_discount_pct": -0.09
   },
   {
     "meta": {
@@ -10424,7 +10624,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8770-9888",
-      "issuer_address": "台北市中山北路2段42號8樓"
+      "issuer_address": "台北市中山北路2段42號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00984A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10448,8 +10649,8 @@
     "total_trade_val_5d": 46693598,
     "total_trade_cnt_5d": 1457,
     "total_trade_vol_5d": 3239026,
-    "nav_est": 14.52,
-    "premium_discount_pct": -0.48
+    "nav_est": 14.51,
+    "premium_discount_pct": -0.41
   },
   {
     "meta": {
@@ -10476,7 +10677,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00985A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10528,7 +10730,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00986A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10552,8 +10755,8 @@
     "total_trade_val_5d": 1619333,
     "total_trade_cnt_5d": 121,
     "total_trade_vol_5d": 111637,
-    "nav_est": 14.48,
-    "premium_discount_pct": 0.28
+    "nav_est": 14.52,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -10580,7 +10783,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2501-3838",
-      "issuer_address": "台北市中山區南京東路二段167號11樓"
+      "issuer_address": "台北市中山區南京東路二段167號11樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00987A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10604,8 +10808,8 @@
     "total_trade_val_5d": 39332280,
     "total_trade_cnt_5d": 543,
     "total_trade_vol_5d": 2725002,
-    "nav_est": 14.51,
-    "premium_discount_pct": 0.07
+    "nav_est": 14.47,
+    "premium_discount_pct": 0.35
   },
   {
     "meta": {
@@ -10632,7 +10836,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2747-8388",
-      "issuer_address": "台北市松山區東興路8號8樓"
+      "issuer_address": "台北市松山區東興路8號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00988A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10656,8 +10861,8 @@
     "total_trade_val_5d": 656778802,
     "total_trade_cnt_5d": 8991,
     "total_trade_vol_5d": 40541785,
-    "nav_est": 16.16,
-    "premium_discount_pct": 0.43
+    "nav_est": 16.2,
+    "premium_discount_pct": 0.19
   },
   {
     "meta": {
@@ -10684,7 +10889,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8726-8686",
-      "issuer_address": "台北市信義區松智路1號20樓"
+      "issuer_address": "台北市信義區松智路1號20樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00989A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10708,8 +10914,8 @@
     "total_trade_val_5d": 23966550,
     "total_trade_cnt_5d": 173,
     "total_trade_vol_5d": 1431064,
-    "nav_est": 16.82,
-    "premium_discount_pct": -0.24
+    "nav_est": 16.86,
+    "premium_discount_pct": -0.47
   },
   {
     "meta": {
@@ -10736,7 +10942,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2717-5555",
-      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1"
+      "issuer_address": "臺北市松山區敦化南路1段66號4樓、5樓及68號2樓之1",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00990A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10760,8 +10967,8 @@
     "total_trade_val_5d": 200389491,
     "total_trade_cnt_5d": 3615,
     "total_trade_vol_5d": 12982823,
-    "nav_est": 15.51,
-    "premium_discount_pct": -0.13
+    "nav_est": 15.46,
+    "premium_discount_pct": 0.19
   },
   {
     "meta": {
@@ -10788,7 +10995,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8161-6800",
-      "issuer_address": "台北市八德路二段308號8樓"
+      "issuer_address": "台北市八德路二段308號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00991A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10812,8 +11020,8 @@
     "total_trade_val_5d": 3030387017,
     "total_trade_cnt_5d": 19586,
     "total_trade_vol_5d": 186604565,
-    "nav_est": 16.25,
-    "premium_discount_pct": 0.49
+    "nav_est": 16.33,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -10840,7 +11048,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00992A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10864,8 +11073,8 @@
     "total_trade_val_5d": 903577298,
     "total_trade_cnt_5d": 7338,
     "total_trade_vol_5d": 56296494,
-    "nav_est": 16.17,
-    "premium_discount_pct": 0.06
+    "nav_est": 16.12,
+    "premium_discount_pct": 0.37
   },
   {
     "meta": {
@@ -10892,7 +11101,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8770-9888",
-      "issuer_address": "台北市中山北路2段42號8樓"
+      "issuer_address": "台北市中山北路2段42號8樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00993A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10916,8 +11126,8 @@
     "total_trade_val_5d": 72965128,
     "total_trade_cnt_5d": 993,
     "total_trade_vol_5d": 5887345,
-    "nav_est": 12.45,
-    "premium_discount_pct": 0.08
+    "nav_est": 12.52,
+    "premium_discount_pct": -0.48
   },
   {
     "meta": {
@@ -10944,7 +11154,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2504-1000",
-      "issuer_address": "台北市10477民權東路三段6號7樓"
+      "issuer_address": "台北市10477民權東路三段6號7樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00994A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -10968,8 +11179,8 @@
     "total_trade_val_5d": 47248806,
     "total_trade_cnt_5d": 801,
     "total_trade_vol_5d": 3004244,
-    "nav_est": 15.74,
-    "premium_discount_pct": 0.38
+    "nav_est": 15.82,
+    "premium_discount_pct": -0.13
   },
   {
     "meta": {
@@ -10996,7 +11207,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2652-6688",
-      "issuer_address": "台北市南港區經貿二路188號12樓"
+      "issuer_address": "台北市南港區經貿二路188號12樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00995A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -11020,8 +11232,8 @@
     "total_trade_val_5d": 61373254,
     "total_trade_cnt_5d": 852,
     "total_trade_vol_5d": 3844798,
-    "nav_est": 16.1,
-    "premium_discount_pct": -0.5
+    "nav_est": 16.02,
+    "premium_discount_pct": 0.0
   },
   {
     "meta": {
@@ -11048,7 +11260,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2175-8388",
-      "issuer_address": "台北市松山區復興北路167號17樓"
+      "issuer_address": "台北市松山區復興北路167號17樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00996A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -11072,8 +11285,8 @@
     "total_trade_val_5d": 72816283,
     "total_trade_cnt_5d": 1062,
     "total_trade_vol_5d": 5694059,
-    "nav_est": 12.92,
-    "premium_discount_pct": 0.0
+    "nav_est": 12.97,
+    "premium_discount_pct": -0.39
   },
   {
     "meta": {
@@ -11100,7 +11313,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)2706-7688",
-      "issuer_address": "台北市大安區敦化南路二段69號15樓"
+      "issuer_address": "台北市大安區敦化南路二段69號15樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00997A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -11152,7 +11366,8 @@
       "tax_rate": "",
       "trade_unit": "",
       "issuer_phone": "(02)8101-5501",
-      "issuer_address": "台北市信義區信義路五段7號30樓"
+      "issuer_address": "台北市信義區信義路五段7號30樓",
+      "twse_official_url": "https://www.twse.com.tw/zh/products/securities/etf/products/content.html?00999A#domestic"
     },
     "latest": {
       "date": "20260804",
@@ -11176,7 +11391,7 @@
     "total_trade_val_5d": 178936325,
     "total_trade_cnt_5d": 1823,
     "total_trade_vol_5d": 17152501,
-    "nav_est": 10.52,
-    "premium_discount_pct": -0.1
+    "nav_est": 10.51,
+    "premium_discount_pct": 0.0
   }
 ]
