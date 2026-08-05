@@ -145,14 +145,11 @@ def fetch_json(url):
     with urllib.request.urlopen(req, timeout=15) as resp:
         return json.loads(resp.read().decode('utf-8'))
 
-print("1. Fetching ETF Basic Info Metadata from TWSE OpenAPI...")
-info_url = 'https://openapi.twse.com.tw/v1/opendata/t187ap47_L'
-raw_info = fetch_json(info_url)
-print(f"Loaded {len(raw_info)} ETF metadata records.")
-
-# Load existing cached specs if available to avoid unnecessary network delay
-existing_specs = {}
 out_json_path = '/home/jrh/桌面/JRH20260720/etf_data.json'
+
+# Load existing cached dataset & specs if available
+existing_specs = {}
+existing_history = {}
 if os.path.exists(out_json_path):
     try:
         with open(out_json_path, 'r', encoding='utf-8') as f:
@@ -173,11 +170,18 @@ if os.path.exists(out_json_path):
                     'tax_rate': item['meta'].get('tax_rate', ''),
                     'trade_unit': item['meta'].get('trade_unit', '')
                 }
-    except Exception:
-        pass
+                if item.get('history'):
+                    existing_history[c] = item['history']
+    except Exception as e:
+        print("Notice loading cached json:", e)
 
 is_friday = datetime.date.today().weekday() == 4
 force_spec_fetch = os.environ.get('FORCE_SPEC_FETCH') == '1' or is_friday
+
+print("1. Fetching ETF Basic Info Metadata from TWSE OpenAPI...")
+info_url = 'https://openapi.twse.com.tw/v1/opendata/t187ap47_L'
+raw_info = fetch_json(info_url)
+print(f"Loaded {len(raw_info)} ETF metadata records.")
 
 etf_meta = {}
 for item in raw_info:
@@ -232,96 +236,59 @@ for item in raw_info:
         'issuer_address': item.get('經理公司地址', '').strip(),
     }
 
-def fetch_valid_trading_days(n=5, start_date=None):
-    valid_dates = []
-    if start_date:
-        if isinstance(start_date, str):
-            curr = datetime.datetime.strptime(start_date.replace('-', ''), "%Y%m%d").date()
-        else:
-            curr = start_date
-    else:
-        curr = datetime.date.today()
-        
-    attempts = 0
-    while len(valid_dates) < n and attempts < 25:
-        d_str = curr.strftime('%Y%m%d')
-        url = f"https://www.twse.com.tw/rwd/zh/ETFReport/ETFDaily?date={d_str}&response=json"
-        try:
-            req = urllib.request.Request(url, headers=headers)
-            with urllib.request.urlopen(req, timeout=6) as resp:
-                data = json.loads(resp.read().decode('utf-8'))
-                if data.get('stat') == 'OK' and data.get('data'):
-                    valid_dates.append(d_str)
-        except Exception:
-            pass
-        curr -= datetime.timedelta(days=1)
-        attempts += 1
-        time.sleep(0.05)
-    return valid_dates
+print("2. Fetching TWSE OpenAPI STOCK_DAY_ALL daily quotes...")
+stock_day_url = 'https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL'
+day_all = fetch_json(stock_day_url)
+print(f"Loaded {len(day_all)} stock daily quotes from OpenAPI.")
 
-valid_days = fetch_valid_trading_days(5)
-print(f"2. Dynamically fetched recent 5 valid TWSE trading days: {valid_days}")
-
-daily_reports = {}
-for d_str in valid_days:
-    url = f"https://www.twse.com.tw/rwd/zh/ETFReport/ETFDaily?date={d_str}&response=json"
-    try:
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            data = json.loads(resp.read().decode('utf-8'))
-            if data.get('stat') == 'OK' and data.get('data'):
-                daily_reports[d_str] = data['data']
-                print(f"  Date {d_str}: {len(data['data'])} records")
-    except Exception as e:
-        print(f"Error fetching date {d_str}: {e}")
-    time.sleep(0.05)
-
-all_codes = set()
-for d_str, records in daily_reports.items():
-    for r in records:
-        if len(r) > 1:
-            code = r[0].strip()
-            if code in etf_meta:
-                all_codes.add(code)
-
-print(f"Total ETFs in daily report history: {len(all_codes)}")
+day_dict = {d['Code']: d for d in day_all}
 
 compiled_etfs = []
-for code in all_codes:
-    meta = etf_meta[code]
-    history = []
+for code, meta in etf_meta.items():
+    history = existing_history.get(code, []).copy()
     
-    for d_str in reversed(valid_days):
-        records = daily_reports.get(d_str, [])
-        record = next((r for r in records if r[0].strip() == code), None)
-        if record:
-            close_price = safe_float(record[2])
-            change_str = record[3].strip() if len(record) > 3 else '0.0'
-            trade_volume = safe_int(record[4]) if len(record) > 4 else 0
-            trade_value = safe_int(record[5]) if len(record) > 5 else 0
-            trade_count = safe_int(record[6]) if len(record) > 6 else 0
-            
-            clean_chg = re.sub(r'<[^>]+>', '', change_str).strip()
-            if '+' in change_str or (not clean_chg.startswith('-') and float(re.sub(r'[^\d.]', '', clean_chg) or 0) > 0):
-                if not clean_chg.startswith('+'):
-                    clean_chg = '+' + clean_chg
-            elif '-' in change_str:
-                if not clean_chg.startswith('-'):
-                    clean_chg = '-' + clean_chg
+    if code in day_dict:
+        r = day_dict[code]
+        raw_date = r.get('Date', '')
+        if len(raw_date) == 7:
+            roc_year = int(raw_date[:3]) + 1911
+            d_str = f"{roc_year}{raw_date[3:]}"
+        else:
+            d_str = datetime.date.today().strftime('%Y%m%d')
 
-            history.append({
-                'date': d_str,
-                'close': close_price,
-                'change': clean_chg,
-                'trade_volume': trade_volume,
-                'trade_value': trade_value,
-                'trade_count': trade_count
-            })
-            
+        close_price = safe_float(r.get('ClosingPrice'))
+        change_str = str(r.get('Change', '0.0')).strip()
+        trade_volume = safe_int(r.get('TradeVolume'))
+        trade_value = safe_int(r.get('TradeValue'))
+        trade_count = safe_int(r.get('Transaction'))
+
+        clean_chg = re.sub(r'<[^>]+>', '', change_str).strip()
+        if '+' in change_str or (not clean_chg.startswith('-') and float(re.sub(r'[^\d.]', '', clean_chg) or 0) > 0):
+            if not clean_chg.startswith('+'):
+                clean_chg = '+' + clean_chg
+        elif '-' in change_str:
+            if not clean_chg.startswith('-'):
+                clean_chg = '-' + clean_chg
+
+        today_item = {
+            'date': d_str,
+            'close': close_price,
+            'change': clean_chg,
+            'trade_volume': trade_volume,
+            'trade_value': trade_value,
+            'trade_count': trade_count
+        }
+
+        # Deduplicate history by date
+        history = [h for h in history if h['date'] != d_str]
+        history.append(today_item)
+    
     if not history:
         continue
 
     history.sort(key=lambda x: x['date'])
+    # Keep last 5 trading days
+    history = history[-5:]
     
     latest = history[-1]
     close_latest = latest['close']
@@ -359,7 +326,6 @@ for code in all_codes:
 
 print(f"Compiled {len(compiled_etfs)} Equity ETF items successfully.")
 
-out_json_path = '/home/jrh/桌面/JRH20260720/etf_data.json'
 with open(out_json_path, 'w', encoding='utf-8') as f:
     json.dump(compiled_etfs, f, ensure_ascii=False, indent=2)
 
