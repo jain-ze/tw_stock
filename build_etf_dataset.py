@@ -232,13 +232,13 @@ for item in raw_info:
         'issuer_address': item.get('經理公司地址', '').strip(),
     }
 
-print("2. Dynamically fetching recent 5 valid TWSE trading days...")
-def fetch_valid_trading_days(n=5):
+print("2. Dynamically fetching recent 6 valid TWSE trading days (T-5 to T for 5 full intervals)...")
+def fetch_valid_trading_days(n=6):
     valid_dates = []
     curr = datetime.date.today()
     attempts = 0
     reports = {}
-    while len(valid_dates) < n and attempts < 15:
+    while len(valid_dates) < n and attempts < 18:
         d_str = curr.strftime('%Y%m%d')
         url = f"https://www.twse.com.tw/rwd/zh/ETFReport/ETFDaily?date={d_str}&response=json"
         req_headers = headers.copy()
@@ -257,8 +257,8 @@ def fetch_valid_trading_days(n=5):
         time.sleep(0.05)
     return valid_dates, reports
 
-valid_days, daily_reports = fetch_valid_trading_days(5)
-print(f"Fetched 5 valid TWSE trading days: {valid_days}")
+valid_days, daily_reports = fetch_valid_trading_days(6)
+print(f"Fetched 6 valid TWSE trading days (Base T-5 to T): {valid_days}")
 
 all_codes = set()
 for d_str, records in daily_reports.items():
@@ -268,7 +268,7 @@ for d_str, records in daily_reports.items():
             if code in etf_meta:
                 all_codes.add(code)
 
-print(f"Total ETFs matched in 5-day daily reports: {len(all_codes)}")
+print(f"Total ETFs matched in 6-day daily reports: {len(all_codes)}")
 
 compiled_etfs = []
 for code in all_codes:
@@ -323,14 +323,17 @@ for code in all_codes:
             close_start = h['close']
             break
             
+    # Calculate exact 5-day return across 5 price change intervals (using T-5 base day close)
     if close_start > 0 and close_latest > 0:
         return_5d = ((close_latest - close_start) / close_start) * 100.0
     else:
         return_5d = 0.0
         
-    total_trade_val_5d = sum(item['trade_value'] for item in history)
-    total_trade_cnt_5d = sum(item['trade_count'] for item in history)
-    total_trade_vol_5d = sum(item['trade_volume'] for item in history)
+    # Sum cumulative trade volume & value over the 5 recent trading days (T-4 to T, i.e. history[1:])
+    history_5d_active = history[1:] if len(history) >= 6 else history
+    total_trade_val_5d = sum(item['trade_value'] for item in history_5d_active)
+    total_trade_cnt_5d = sum(item['trade_count'] for item in history_5d_active)
+    total_trade_vol_5d = sum(item['trade_volume'] for item in history_5d_active)
     
     h_val = abs(hash(code)) % 100
     offset = (h_val - 50) / 10000.0
