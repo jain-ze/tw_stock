@@ -7,26 +7,11 @@ import re
 import datetime
 import time
 
-cj = http.cookiejar.CookieJar()
-class RedirectHandler(urllib.request.HTTPRedirectHandler):
-    def redirect_request(self, req, fp, code, msg, headers, newurl):
-        return urllib.request.HTTPRedirectHandler.redirect_request(self, req, fp, code, msg, headers, newurl)
-
-opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj), RedirectHandler())
-
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
     'Accept': 'application/json, text/javascript, */*; q=0.01',
     'X-Requested-With': 'XMLHttpRequest'
 }
-
-# Establish TWSE session cookies
-try:
-    init_url = 'https://www.twse.com.tw/zh/ETF/etfDaily.html'
-    opener.open(urllib.request.Request(init_url, headers=headers), timeout=10)
-    print("Established TWSE official session.")
-except Exception as e:
-    print("TWSE session notice:", e)
 
 def clean_html(text):
     if not text:
@@ -66,7 +51,7 @@ def fetch_twse_official_spec(code):
     for attempt in range(2):
         try:
             req = urllib.request.Request(url, headers=req_headers)
-            with opener.open(req, timeout=6) as resp:
+            with urllib.request.urlopen(req, timeout=10) as resp:
                 data = json.loads(resp.read().decode('utf-8'))
                 if data.get('stat') == 'ok' and 'tables' in data and data['tables']:
                     rows = data['tables'][0].get('data', [])
@@ -238,23 +223,31 @@ def fetch_valid_trading_days(n=6):
     curr = datetime.date.today()
     attempts = 0
     reports = {}
-    while len(valid_dates) < n and attempts < 18:
+    while len(valid_dates) < n and attempts < 25:
         d_str = curr.strftime('%Y%m%d')
         url = f"https://www.twse.com.tw/rwd/zh/ETFReport/ETFDaily?date={d_str}&response=json"
-        req_headers = headers.copy()
-        req_headers['Referer'] = 'https://www.twse.com.tw/zh/ETF/etfDaily.html'
-        try:
-            req = urllib.request.Request(url, headers=req_headers)
-            with opener.open(req, timeout=6) as resp:
-                data = json.loads(resp.read().decode('utf-8'))
-                if data.get('stat') == 'OK' and data.get('data'):
-                    valid_dates.append(d_str)
-                    reports[d_str] = data['data']
-        except Exception as e:
-            pass
+        req_headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
+        }
+        
+        # Retry up to 3 times per date
+        for retry in range(3):
+            try:
+                req = urllib.request.Request(url, headers=req_headers)
+                with urllib.request.urlopen(req, timeout=10) as resp:
+                    data = json.loads(resp.read().decode('utf-8'))
+                    if data.get('stat') == 'OK' and data.get('data'):
+                        valid_dates.append(d_str)
+                        reports[d_str] = data['data']
+                        break
+                    else:
+                        time.sleep(0.3)
+            except Exception as e:
+                time.sleep(0.5)
+                
         curr -= datetime.timedelta(days=1)
         attempts += 1
-        time.sleep(0.05)
+        time.sleep(0.3)
     return valid_dates, reports
 
 valid_days, daily_reports = fetch_valid_trading_days(6)
