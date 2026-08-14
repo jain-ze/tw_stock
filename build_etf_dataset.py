@@ -223,35 +223,43 @@ def fetch_valid_trading_days(n=6):
     curr = datetime.date.today()
     attempts = 0
     reports = {}
-    while len(valid_dates) < n and attempts < 25:
+    while len(valid_dates) < n and attempts < 40:
         d_str = curr.strftime('%Y%m%d')
         url = f"https://www.twse.com.tw/rwd/zh/ETFReport/ETFDaily?date={d_str}&response=json"
         req_headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
         }
         
-        # Retry up to 3 times per date
-        for retry in range(3):
+        # Retry up to 5 times per date with backoff
+        for retry in range(5):
             try:
                 req = urllib.request.Request(url, headers=req_headers)
                 with urllib.request.urlopen(req, timeout=10) as resp:
                     data = json.loads(resp.read().decode('utf-8'))
-                    if data.get('stat') == 'OK' and data.get('data'):
+                    stat = data.get('stat', '')
+                    if stat == 'OK' and data.get('data'):
                         valid_dates.append(d_str)
                         reports[d_str] = data['data']
                         break
+                    elif '沒有符合條件' in stat or 'No Data' in stat:
+                        # Non-trading day (weekend/holiday), skip date
+                        break
                     else:
-                        time.sleep(0.3)
+                        # Server busy or rate limit, wait and retry
+                        time.sleep(1.0)
             except Exception as e:
-                time.sleep(0.5)
+                time.sleep(1.0)
                 
         curr -= datetime.timedelta(days=1)
         attempts += 1
-        time.sleep(0.3)
+        time.sleep(0.4)
     return valid_dates, reports
 
 valid_days, daily_reports = fetch_valid_trading_days(6)
-print(f"Fetched 6 valid TWSE trading days (Base T-5 to T): {valid_days}")
+print(f"Fetched {len(valid_days)} valid TWSE trading days (Base T-5 to T): {valid_days}")
+
+if len(valid_days) < 6:
+    raise RuntimeError(f"Failed to fetch 6 valid trading days! Only got {len(valid_days)}: {valid_days}")
 
 all_codes = set()
 for d_str, records in daily_reports.items():
