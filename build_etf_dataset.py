@@ -219,25 +219,32 @@ for item in raw_info:
 
 print("2. Dynamically fetching recent 6 valid TWSE trading days (T-5 to T for 5 full intervals)...")
 def fetch_valid_trading_days(n=6):
+    import requests
     valid_dates = []
     curr = datetime.date.today()
     attempts = 0
     reports = {}
-    while len(valid_dates) < n and attempts < 40:
+    
+    session = requests.Session()
+    session.headers.update({
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+        'Accept': 'application/json, text/javascript, */*; q=0.01',
+        'Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+        'Referer': 'https://www.twse.com.tw/zh/products/securities/etf/products/list.html'
+    })
+    
+    while len(valid_dates) < n and attempts < 35:
         d_str = curr.strftime('%Y%m%d')
         url = f"https://www.twse.com.tw/rwd/zh/ETFReport/ETFDaily?date={d_str}&response=json"
-        req_headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
-        }
         
-        # Retry up to 5 times per date with backoff
-        for retry in range(5):
+        for retry in range(4):
             try:
-                req = urllib.request.Request(url, headers=req_headers)
-                with urllib.request.urlopen(req, timeout=10) as resp:
-                    data = json.loads(resp.read().decode('utf-8'))
+                resp = session.get(url, timeout=12, allow_redirects=False)
+                if resp.status_code == 200:
+                    data = resp.json()
                     stat = data.get('stat', '')
-                    if stat == 'OK' and data.get('data'):
+                    has_data = bool(data.get('data'))
+                    if stat == 'OK' and has_data:
                         valid_dates.append(d_str)
                         reports[d_str] = data['data']
                         break
@@ -245,14 +252,26 @@ def fetch_valid_trading_days(n=6):
                         # Non-trading day (weekend/holiday), skip date
                         break
                     else:
-                        # Server busy or rate limit, wait and retry
-                        time.sleep(1.0)
+                        time.sleep(2.0)
+                elif resp.status_code in (307, 308, 428):
+                    print(f"TWSE WAF status {resp.status_code} for {d_str}, backing off 3s and refreshing session...")
+                    time.sleep(3.0)
+                    session = requests.Session()
+                    session.headers.update({
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+                        'Accept': 'application/json, text/javascript, */*; q=0.01',
+                        'Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+                        'Referer': 'https://www.twse.com.tw/zh/products/securities/etf/products/list.html'
+                    })
+                else:
+                    time.sleep(2.0)
             except Exception as e:
-                time.sleep(1.0)
+                time.sleep(2.0)
                 
         curr -= datetime.timedelta(days=1)
         attempts += 1
-        time.sleep(0.4)
+        time.sleep(1.5)
+        
     return valid_dates, reports
 
 valid_days, daily_reports = fetch_valid_trading_days(6)
