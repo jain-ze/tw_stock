@@ -233,44 +233,70 @@ def fetch_valid_trading_days(n=6):
         'Referer': 'https://www.twse.com.tw/zh/products/securities/etf/products/list.html'
     })
     
-    while len(valid_dates) < n and attempts < 35:
+    while len(valid_dates) < n and attempts < 45:
+        # Skip Saturday (5) and Sunday (6) immediately without HTTP requests
+        if curr.weekday() >= 5:
+            curr -= datetime.timedelta(days=1)
+            attempts += 1
+            continue
+            
         d_str = curr.strftime('%Y%m%d')
-        url = f"https://www.twse.com.tw/rwd/zh/ETFReport/ETFDaily?date={d_str}&response=json"
         
-        for retry in range(4):
+        # Primary endpoint: ETFDaily
+        url_etf = f"https://www.twse.com.tw/rwd/zh/ETFReport/ETFDaily?date={d_str}&response=json"
+        fetched_data = None
+        
+        for retry in range(2):
             try:
-                resp = session.get(url, timeout=12, allow_redirects=False)
+                resp = session.get(url_etf, timeout=8, allow_redirects=False)
                 if resp.status_code == 200:
                     data = resp.json()
                     stat = data.get('stat', '')
-                    has_data = bool(data.get('data'))
-                    if stat == 'OK' and has_data:
-                        valid_dates.append(d_str)
-                        reports[d_str] = data['data']
+                    if stat == 'OK' and data.get('data'):
+                        fetched_data = data['data']
                         break
                     elif '沒有符合條件' in stat or 'No Data' in stat:
-                        # Non-trading day (weekend/holiday), skip date
                         break
-                    else:
-                        time.sleep(2.0)
-                elif resp.status_code in (307, 308, 428):
-                    print(f"TWSE WAF status {resp.status_code} for {d_str}, backing off 3s and refreshing session...")
-                    time.sleep(3.0)
-                    session = requests.Session()
-                    session.headers.update({
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
-                        'Accept': 'application/json, text/javascript, */*; q=0.01',
-                        'Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
-                        'Referer': 'https://www.twse.com.tw/zh/products/securities/etf/products/list.html'
-                    })
-                else:
-                    time.sleep(2.0)
-            except Exception as e:
-                time.sleep(2.0)
+            except Exception:
+                pass
+            time.sleep(1.0)
+            
+        # Secondary fallback endpoint: afterTrading/MI_INDEX (ALLBUT0999) if ETFDaily failed or got WAF 307
+        if not fetched_data:
+            url_mi = f"https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date={d_str}&type=ALLBUT0999&response=json"
+            try:
+                resp_mi = session.get(url_mi, timeout=8, allow_redirects=False)
+                if resp_mi.status_code == 200:
+                    data_mi = resp_mi.json()
+                    if data_mi.get('stat') == 'OK' and data_mi.get('tables'):
+                        t8 = None
+                        for t in data_mi.get('tables', []):
+                            if t.get('title') and '每日收盤行情' in t.get('title'):
+                                t8 = t
+                                break
+                        if not t8 and len(data_mi.get('tables', [])) > 8:
+                            t8 = data_mi['tables'][8]
+                        if t8 and t8.get('data'):
+                            # Convert MI_INDEX row to ETFDaily format for ETF items
+                            mi_etf_rows = []
+                            for row in t8['data']:
+                                code = row[0].strip()
+                                if code.startswith('00'):
+                                    # Format: [Code, Name, Volume, Count, Value, Open, High, Low, Close, Dir, Diff, Last, ...]
+                                    mi_etf_rows.append([row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11]])
+                            if mi_etf_rows:
+                                fetched_data = mi_etf_rows
+            except Exception:
+                pass
                 
+        if fetched_data:
+            valid_dates.append(d_str)
+            reports[d_str] = fetched_data
+            print(f"Successfully fetched trading day {d_str} (Records: {len(fetched_data)})")
+            
         curr -= datetime.timedelta(days=1)
         attempts += 1
-        time.sleep(1.5)
+        time.sleep(1.0)
         
     return valid_dates, reports
 
