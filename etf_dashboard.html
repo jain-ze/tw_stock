@@ -724,7 +724,7 @@
                 <div class="kpi-sub" id="kpi-top-value-name">--</div>
             </div>
             <div class="kpi-card gold">
-                <div class="kpi-label">📊 5日成交筆數冠軍 (前100強)</div>
+                <div class="kpi-label">📊 5日成交張數冠軍 (前100強)</div>
                 <div class="kpi-value" id="kpi-top-count" style="color:var(--gold)">--</div>
                 <div class="kpi-sub" id="kpi-top-count-name">--</div>
             </div>
@@ -749,7 +749,7 @@
             <button class="tab-btn green-tab active" onclick="switchTab('gainers')">🚀 1. 近五日漲幅排行榜 (前100名)</button>
             <button class="tab-btn red-tab" onclick="switchTab('losers')">📉 2. 近五日跌幅排行榜 (前100名)</button>
             <button class="tab-btn purple-tab" onclick="switchTab('value')">💰 3. 成交金額排行榜 (前100名)</button>
-            <button class="tab-btn gold-tab" onclick="switchTab('count')">📊 4. 成交筆數排行榜 (前100名)</button>
+            <button class="tab-btn gold-tab" onclick="switchTab('count')">📊 4. 成交張數排行榜 (前100名)</button>
         </div>
 
         <!-- Table Display (Wrapped in table-responsive for mobile scrolling) -->
@@ -766,7 +766,7 @@
                             <th style="width: 100px; text-align: right;">最新漲跌</th>
                             <th style="width: 110px; text-align: right;">近5日漲跌幅</th>
                             <th style="width: 130px; text-align: right;">5日成交金額</th>
-                            <th style="width: 120px; text-align: right;">5日成交筆數</th>
+                            <th style="width: 120px; text-align: right;">5日成交張數</th>
                             <th style="width: 100px; text-align: center;">5日走勢</th>
                             <th style="width: 110px; text-align: center;">詳細資訊</th>
                         </tr>
@@ -831,8 +831,8 @@
 
                 <!-- 6-Day Interactive Chart with Single-Day Value & Transactions -->
                 <div class="section-heading">
-                    <span>📈 近六個交易日價格走勢、單日成交金額與成交筆數圖表</span>
-                    <span style="font-size: 12px; color: var(--muted); font-weight: normal;">(涵蓋 5 個完整漲跌變動區間，以 T-5 日為基準比較點)</span>
+                    <span>📈 近六個交易日價格走勢、單日成交金額與成交張數圖表</span>
+                    <span style="font-size: 12px; color: var(--muted); font-weight: normal;">(涵蓋 5 個完整價差區間，以 T-5 日為基準比較點)</span>
                 </div>
                 <div class="chart-box">
                     <canvas id="detail-chart" class="chart-canvas"></canvas>
@@ -840,7 +840,7 @@
 
                 <!-- 6-Day Daily Trading Breakdown Table (Wrapped in table-responsive) -->
                 <div class="section-heading">
-                    <span>📋 6 個交易日【單日成交金額與成交筆數】明細表 (含 5 個完整價差區間)</span>
+                    <span>📋 6 個交易日【單日成交金額與成交張數】明細表 (含 5 個完整價差區間)</span>
                 </div>
                 <div class="table-responsive">
                     <table class="daily-table">
@@ -853,7 +853,7 @@
                                 <th>收盤價</th>
                                 <th>漲跌價差</th>
                                 <th style="color:var(--purple)">💰 單日成交金額</th>
-                                <th style="color:var(--gold)">📊 單日成交筆數</th>
+                                <th style="color:var(--gold)">📊 單日成交張數</th>
                                 <th>成交張數(千股)</th>
                             </tr>
                         </thead>
@@ -952,7 +952,7 @@
             } else if (currentTab === 'value') {
                 list.sort((a, b) => b.total_trade_val_5d - a.total_trade_val_5d);
             } else if (currentTab === 'count') {
-                list.sort((a, b) => b.total_trade_cnt_5d - a.total_trade_cnt_5d);
+                list.sort((a, b) => b.total_trade_vol_5d - a.total_trade_vol_5d);
             }
 
             return list;
@@ -998,15 +998,16 @@
                 if (elValueName) elValueName.innerText = `${topVal.meta.code} ${topVal.meta.name}`;
             }
 
-            // Card 4: Top 5-Day Trade Count
-            const sortedCount = allList.slice().sort((a, b) => b.total_trade_cnt_5d - a.total_trade_cnt_5d);
+            // Card 4: Top 5-Day Trade Volume (Zhang)
+            const sortedCount = allList.slice().sort((a, b) => b.total_trade_vol_5d - a.total_trade_vol_5d);
             if (sortedCount.length > 0) {
                 const topCnt = sortedCount[0];
                 const elCount = document.getElementById('kpi-top-count');
                 const elCountName = document.getElementById('kpi-top-count-name');
                 if (elCount) {
-                    const cntWan = (topCnt.total_trade_cnt_5d / 10000.0).toFixed(1);
-                    elCount.innerText = `${Number(cntWan).toLocaleString()} 萬筆`;
+                    const volZhang = (topCnt.total_trade_vol_5d / 1000.0);
+                    const volStr = volZhang >= 10000 ? (volZhang / 10000.0).toFixed(1) + ' 萬張' : Number(volZhang.toFixed(0)).toLocaleString() + ' 張';
+                    elCount.innerText = volStr;
                 }
                 if (elCountName) elCountName.innerText = `${topCnt.meta.code} ${topCnt.meta.name}`;
             }
@@ -1063,7 +1064,8 @@
                 else if (chgStr.includes('-')) chgClass = 'val-down';
 
                 const tradeValYi = (item.total_trade_val_5d / 100000000.0).toFixed(2);
-                const tradeCntWan = (item.total_trade_cnt_5d / 10004.0).toFixed(1);
+                const tradeVolZhang = (item.total_trade_vol_5d / 1000.0);
+                const tradeVolStr = tradeVolZhang >= 10000 ? (tradeVolZhang / 10000.0).toFixed(1) + ' 萬張' : Number(tradeVolZhang.toFixed(0)).toLocaleString() + ' 張';
 
                 // Mini Sparkline SVG
                 const sparkSvg = createSparklineSvg(item.history);
@@ -1082,7 +1084,7 @@
                     <td style="text-align: right;" class="${chgClass}">${chgStr}</td>
                     <td style="text-align: right;" class="${retClass}">${ret5d > 0 ? '+' : ''}${ret5d.toFixed(2)}%</td>
                     <td style="text-align: right; font-weight: 700;">${tradeValYi} 億</td>
-                    <td style="text-align: right; font-weight: 700;">${tradeCntWan} 萬筆</td>
+                    <td style="text-align: right; font-weight: 700;">${tradeVolStr}</td>
                     <td style="text-align: center;">${sparkSvg}</td>
                     <td style="text-align: center;">
                         <button class="btn-detail" onclick="event.stopPropagation(); openModal('${item.meta.code}')">詳細資訊</button>
@@ -1187,10 +1189,10 @@
             document.getElementById('m-custodian').innerHTML = renderSpecVal(item.meta.custodian, code);
             document.getElementById('m-listing').innerHTML = renderSpecVal(item.meta.listing_date, code);
 
-            // Populate Daily Breakdown Table (Single-day Trade Value & Transactions)
+            // Populate Daily Breakdown Table
             renderDailyTable(item.history);
 
-            // Draw Canvas Chart with Single-day Trade Value & Transactions Annotations
+            // Draw Canvas Chart
             drawDetailChart(item.history);
 
             document.getElementById('modal-overlay').classList.add('active');
@@ -1208,16 +1210,14 @@
             const tbody = document.getElementById('m-daily-tbody');
             tbody.innerHTML = '';
             
-            // Base date (T-5) for reference
             const baseDate = history.length > 0 ? history[0].date : '';
-            
-            // Sort date descending for breakdown table
             const sorted = history.slice().reverse();
             sorted.forEach(h => {
                 const tr = document.createElement('tr');
                 const dStr = h.date.substring(0,4) + '/' + h.date.substring(4,6) + '/' + h.date.substring(6,8);
                 const valYi = (h.trade_value / 100000000.0).toFixed(2);
-                const volZhang = (h.trade_volume / 1000.0).toFixed(1);
+                const volZhangNum = (h.trade_volume / 1000.0);
+                const volZhangStr = volZhangNum >= 10000 ? (volZhangNum / 10000.0).toFixed(1) + ' 萬張' : Number(volZhangNum.toFixed(0)).toLocaleString() + ' 張';
                 
                 let chgClass = 'val-flat';
                 if (h.change.includes('+')) chgClass = 'val-up';
@@ -1234,8 +1234,8 @@
                     <td style="font-weight:800;">$${h.close.toFixed(2)}</td>
                     <td class="${chgClass}">${h.change}</td>
                     <td style="font-weight:800; color:var(--purple);">${valYi} 億元</td>
-                    <td style="font-weight:800; color:var(--gold);">${h.trade_count.toLocaleString()} 筆</td>
-                    <td>${volZhang} 張</td>
+                    <td style="font-weight:800; color:var(--gold);">${volZhangStr}</td>
+                    <td>${volZhangNum.toFixed(1)} 張</td>
                 `;
                 tbody.appendChild(tr);
             });
@@ -1245,7 +1245,6 @@
             const canvas = document.getElementById('detail-chart');
             const ctx = canvas.getContext('2d');
             
-            // High resolution canvas
             const rect = canvas.getBoundingClientRect();
             canvas.width = rect.width * 2;
             canvas.height = rect.height * 2;
@@ -1253,7 +1252,6 @@
 
             const w = rect.width;
             const h = rect.height;
-
             ctx.clearRect(0, 0, w, h);
 
             if (!history || history.length === 0) return;
@@ -1261,12 +1259,11 @@
             const dates = history.map(h => h.date.substring(4,6) + '/' + h.date.substring(6,8));
             const closes = history.map(h => h.close);
             const tradeValuesYi = history.map(h => (h.trade_value / 100000000.0));
-            const tradeCounts = history.map(h => h.trade_count);
+            const tradeVolumesZhang = history.map(h => (h.trade_volume / 1000.0));
 
             const minPrice = Math.min(...closes) * 0.99;
             const maxPrice = Math.max(...closes) * 1.01;
             const priceRange = maxPrice - minPrice || 1;
-
             const maxVal = Math.max(...tradeValuesYi) || 1;
 
             const paddingLeft = 40;
@@ -1286,7 +1283,6 @@
                 ctx.lineTo(w - paddingRight, y);
                 ctx.stroke();
 
-                // Y-axis label
                 const val = (maxPrice - (priceRange / 4) * i).toFixed(2);
                 ctx.fillStyle = '#8b949e';
                 ctx.font = '10px sans-serif';
@@ -1294,7 +1290,6 @@
                 ctx.fillText('$' + val, paddingLeft - 4, y + 3);
             }
 
-            // Calculate x and y points
             const points = closes.map((p, i) => {
                 const x = paddingLeft + (chartW / (closes.length - 1)) * i;
                 const y = paddingTop + chartH - ((p - minPrice) / priceRange) * chartH;
@@ -1303,11 +1298,10 @@
                     price: p, 
                     date: dates[i], 
                     valYi: tradeValuesYi[i], 
-                    cnt: tradeCounts[i] 
+                    cnt: tradeVolumesZhang[i] 
                 };
             });
 
-            // Draw Single-day Trade Value Bars (Background)
             points.forEach(p => {
                 const barH = (p.valYi / maxVal) * (chartH * 0.4);
                 const barW = Math.min(26, chartW / 6);
@@ -1318,7 +1312,6 @@
                 ctx.strokeRect(p.x - barW/2, paddingTop + chartH - barH, barW, barH);
             });
 
-            // Price Line Gradient Fill
             const isUp = closes[closes.length - 1] >= closes[0];
             const lineColor = isUp ? '#3fb950' : '#ff7b72';
 
@@ -1337,7 +1330,6 @@
             ctx.fillStyle = grad;
             ctx.fill();
 
-            // Price Line
             ctx.beginPath();
             ctx.moveTo(points[0].x, points[0].y);
             for (let i = 1; i < points.length; i++) {
