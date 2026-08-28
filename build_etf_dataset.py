@@ -343,13 +343,24 @@ for code in all_codes:
                 raise ValueError(f"🚨 [數據異常熔斷] 0050 ({d_str}) 單日成交股數異常過低 ({trade_volume} 股)！請檢查 API 欄位對應！")
             # -------------------------------------------------------------
             
-            clean_chg = re.sub(r'<[^>]+>', '', change_str).strip()
-            if '+' in change_str or (not clean_chg.startswith('-') and float(re.sub(r'[^\d.]', '', clean_chg) or 0) > 0):
-                if not clean_chg.startswith('+'):
-                    clean_chg = '+' + clean_chg
-            elif '-' in change_str:
-                if not clean_chg.startswith('-'):
-                    clean_chg = '-' + clean_chg
+            # Format exact price change string (record[9] = direction sign, record[10] = price difference)
+            dir_str = record[9].strip() if len(record) > 9 else ''
+            diff_val = 0.0
+            if len(record) > 10:
+                val_str = str(record[10]).replace(',', '').strip()
+                try:
+                    diff_val = float(val_str)
+                except:
+                    diff_val = 0.0
+
+            if diff_val == 0.0:
+                clean_chg = "0.00"
+            elif '+' in dir_str or 'red' in dir_str:
+                clean_chg = f"+{diff_val:.2f}"
+            elif '-' in dir_str or 'green' in dir_str:
+                clean_chg = f"-{diff_val:.2f}"
+            else:
+                clean_chg = f"{diff_val:+.2f}"
 
             history.append({
                 'date': d_str,
