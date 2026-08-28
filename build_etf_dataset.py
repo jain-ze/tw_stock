@@ -156,8 +156,7 @@ if os.path.exists(out_json_path):
     except Exception as e:
         print("Notice loading cached json:", e)
 
-is_friday = datetime.date.today().weekday() == 4
-force_spec_fetch = os.environ.get('FORCE_SPEC_FETCH') == '1' or is_friday
+force_spec_fetch = os.environ.get('FORCE_SPEC_FETCH') == '1'
 
 print("1. Fetching ETF Basic Info Metadata from TWSE OpenAPI...")
 info_url = 'https://openapi.twse.com.tw/v1/opendata/t187ap47_L'
@@ -325,11 +324,11 @@ for code in all_codes:
         records = daily_reports.get(d_str, [])
         record = next((r for r in records if r[0].strip() == code), None)
         if record and len(record) >= 10:
-            # TWSE ETFDaily Fields:
-            # 0: 證券代號, 1: 證券名稱, 2: 成交金額, 3: 成交股數, 4: 成交筆數, 5: 開盤價, 6: 最高價, 7: 最低價, 8: 收盤價, 9: 漲跌價差
-            trade_value = safe_int(record[2])
-            trade_volume = safe_int(record[3])
-            trade_count = safe_int(record[4])
+            # TWSE Official Fields Mapping:
+            # 0: 證券代號, 1: 證券名稱, 2: 成交股數, 3: 成交筆數, 4: 成交金額, 5: 開盤價, 6: 最高價, 7: 最低價, 8: 收盤價, 9: 漲跌價差
+            trade_volume = safe_int(record[2])  # 成交股數 (Volume in shares)
+            trade_count = safe_int(record[3])   # 成交筆數 (Transaction count)
+            trade_value = safe_int(record[4])   # 成交金額 (Value in NTD)
             open_price = safe_float(record[5])
             high_price = safe_float(record[6])
             low_price = safe_float(record[7])
