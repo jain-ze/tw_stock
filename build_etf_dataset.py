@@ -335,6 +335,14 @@ for code in all_codes:
             close_price = safe_float(record[8])
             change_str = record[9].strip()
             
+            # --- 🛡️ 數據正確性與欄位自動熔斷驗證 (Data Sanity Assertions) ---
+            if trade_value > 0 and trade_volume > 0 and close_price > 1.0:
+                if trade_value < (trade_volume * close_price * 0.4):
+                    raise ValueError(f"🚨 [數據異常熔斷] {code} ({d_str}) 欄位對應異常！成交金額({trade_value}) 小於 成交股數({trade_volume}) * 股價({close_price})")
+            if code == '0050' and trade_volume < 1000000 and close_price > 50:
+                raise ValueError(f"🚨 [數據異常熔斷] 0050 ({d_str}) 單日成交股數異常過低 ({trade_volume} 股)！請檢查 API 欄位對應！")
+            # -------------------------------------------------------------
+            
             clean_chg = re.sub(r'<[^>]+>', '', change_str).strip()
             if '+' in change_str or (not clean_chg.startswith('-') and float(re.sub(r'[^\d.]', '', clean_chg) or 0) > 0):
                 if not clean_chg.startswith('+'):
