@@ -158,10 +158,38 @@ if os.path.exists(out_json_path):
 
 force_spec_fetch = os.environ.get('FORCE_SPEC_FETCH') == '1'
 
-print("1. Fetching ETF Basic Info Metadata from TWSE OpenAPI...")
+print("1. Fetching ETF Basic Info Metadata from TWSE & TPEx OpenAPI...")
 info_url = 'https://openapi.twse.com.tw/v1/opendata/t187ap47_L'
 raw_info = fetch_json(info_url)
-print(f"Loaded {len(raw_info)} ETF metadata records.")
+
+# Merge TPEx (櫃買中心上櫃) Equity ETFs if not present in TWSE list (e.g. 00411A, 00998A)
+try:
+    existing_twse_codes = set(item.get('基金代號', '').strip() for item in raw_info)
+    tpex_close_url = 'https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes'
+    tpex_raw = fetch_json(tpex_close_url)
+    added_tpex_cnt = 0
+    for item in tpex_raw:
+        code = item.get('SecuritiesCompanyCode', '').strip()
+        name = item.get('CompanyName', '').strip()
+        if code.startswith('00') and code not in existing_twse_codes:
+            if any(k in name for k in ['美債', '公債', '公司債', '投等債', '高收益債', '金融債', '債', 'B', 'N']):
+                continue
+            is_for = '是' if any(k in name for k in ['前沿', '美', '日', '全球', '海外', '亞太']) else '否'
+            raw_info.append({
+                '基金代號': code,
+                '基金簡稱': name,
+                '基金類型': '主動式交易所交易基金(股票)' if code.endswith('A') else '上櫃股票型ETF',
+                '是否包含國外成分股': is_for,
+                '標的指數/追蹤指數名稱': '不適用' if code.endswith('A') else '上櫃成分股指數',
+                '經理公司名稱': name[2:4] + '投信' if name.startswith('主動') else name[:2] + '投信',
+                '保管機構': '依證交所/櫃買公告',
+                '成立日期': '1150820',
+                '上市日期': '1150826'
+            })
+            added_tpex_cnt += 1
+    print(f"Loaded {len(raw_info)} ETF metadata records (TWSE + {added_tpex_cnt} TPEx upper-market ETFs like 00411A).")
+except Exception as e:
+    print(f"Notice fetching TPEx metadata: {e}")
 
 etf_meta = {}
 for item in raw_info:
@@ -252,8 +280,24 @@ def fetch_valid_trading_days(n=6):
                     data = resp.json()
                     stat = data.get('stat', '')
                     if stat == 'OK' and data.get('data'):
-                        fetched_data = data['data']
-                        break
+                        # Normalize ETFDaily format to standard schema: [Code, Name, Volume, Count, Value, Open, High, Low, Close, Dir, Diff]
+                        norm_rows = []
+                        for r in data['data']:
+                            code = r[0].strip()
+                            if code.startswith('00'):
+                                val = r[2]  # 成交金額
+                                vol = r[3]  # 成交股數
+                                cnt = r[4]  # 成交筆數
+                                op = r[5]
+                                hp = r[6]
+                                lp = r[7]
+                                cp = r[8]
+                                diff_str = r[9]
+                                d_sym = '+' if str(diff_str).startswith('+') else ('-' if str(diff_str).startswith('-') else '')
+                                norm_rows.append([code, r[1], vol, cnt, val, op, hp, lp, cp, d_sym, diff_str])
+                        if norm_rows:
+                            fetched_data = norm_rows
+                            break
                     elif '沒有符合條件' in stat or 'No Data' in stat:
                         break
             except Exception:
@@ -288,6 +332,33 @@ def fetch_valid_trading_days(n=6):
             except Exception:
                 pass
                 
+        # Supplement TPEx upper-market ETFs (e.g. 00411A) from TPEx OpenAPI for the latest trading day
+        if fetched_data is not None and len(valid_dates) == 0:
+            try:
+                tpex_close_url = 'https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes'
+                tpex_resp = session.get(tpex_close_url, timeout=6)
+                if tpex_resp.status_code == 200:
+                    tpex_raw = tpex_resp.json()
+                    existing_codes = set(r[0].strip() for r in fetched_data)
+                    added_tpex_cnt = 0
+                    for item in tpex_raw:
+                        code = item.get('SecuritiesCompanyCode', '').strip()
+                        name = item.get('CompanyName', '').strip()
+                        if code.startswith('00') and code not in existing_codes:
+                            vol = item.get('TradingShares', '0')
+                            cnt = item.get('TransactionNumber', '0')
+                            val = item.get('TransactionAmount', '0')
+                            op = item.get('Open', '0.00')
+                            hp = item.get('High', '0.00')
+                            lp = item.get('Low', '0.00')
+                            cp = item.get('Close', '0.00')
+                            chg_v = item.get('Change', '0.00')
+                            d_sym = '+' if str(chg_v).startswith('+') else ('-' if str(chg_v).startswith('-') else '')
+                            fetched_data.append([code, name, vol, cnt, val, op, hp, lp, cp, d_sym, chg_v])
+                            added_tpex_cnt += 1
+            except Exception:
+                pass
+
         if fetched_data:
             valid_dates.append(d_str)
             reports[d_str] = fetched_data
