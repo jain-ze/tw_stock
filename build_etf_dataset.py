@@ -429,12 +429,10 @@ for code in all_codes:
 
             if diff_val == 0.0:
                 clean_chg = "0.00"
-            elif '+' in dir_str or 'red' in dir_str:
-                clean_chg = f"+{diff_val:.2f}"
-            elif '-' in dir_str or 'green' in dir_str:
-                clean_chg = f"-{diff_val:.2f}"
+            elif '-' in dir_str or 'green' in dir_str or diff_val < 0:
+                clean_chg = f"-{abs(diff_val):.2f}"
             else:
-                clean_chg = f"{diff_val:+.2f}"
+                clean_chg = f"+{abs(diff_val):.2f}"
 
             history.append({
                 'date': d_str,
