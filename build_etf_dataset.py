@@ -124,9 +124,12 @@ def safe_int(val):
     except:
         return 0
 
+import ssl
+
 def fetch_json(url):
     req = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(req, timeout=15) as resp:
+    ctx = ssl._create_unverified_context()
+    with urllib.request.urlopen(req, timeout=15, context=ctx) as resp:
         return json.loads(resp.read().decode('utf-8'))
 
 out_json_path = '/home/jrh/桌面/JRH20260720/etf_data.json'
