@@ -23,4 +23,5 @@
 >    - **[防範 3] 大盤籌碼表未同步當日盤後最新數據**：`build_html_report.py` 必須動態讀取當日產出之 `TWSE_TPEX_Market_5Day_YYYYMMDD.csv`，且驗證第一列日期為當日日期。
 >    - **[防範 4] 上櫃 (TPEx) 股票型/主動式 ETF 遺漏**：`build_etf_dataset.py` 必須同時向證交所 (TWSE) 與櫃買中心 (TPEx) OpenAPI 雙源擷取，確保 00411A (統一前沿科技)、00998A (復華金融股息) 等上櫃主動式/股票型 ETF 全數自動納入，且所有 API 來源資料必須轉置為統一標準 Schema。
 >    - **[防範 5] 大盤籌碼表多目錄 CSV 檔相容**：`build_html_report.py` 必須同時檢查 `OUTPUT_DIR` 與 `SUB_DIR` 兩處路徑，且併入 `TWSE_MI_MARGN_5Day_YYYYMMDD.csv` 動態解析，確保大盤、三大法人與融資融券 5 日數據全數呈現。
->    - **[防範 6] 上櫃 ETF 6 日歷史數據逐日抓取**：`build_etf_dataset.py` 必須逐日向櫃買中心 `stk_quote_result.php?l=zh-tw&d={roc_date}` 擷取上櫃行情，確保 00411A 等標的擁有完整 6 個交易日歷程。
+>    - **[防範 6] 上櫃 ETF 6 日歷史數據逐日抓取**：`build_etf_dataset.py` 必須逐日擷取上櫃行情。
+>    - **[防範 7] 櫃買 API 歷史日期參數忽略防護 (持久化快取)**：櫃買中心 (TPEx) 行情 API 會忽視歷史日期參數 `d=` 並強制回傳最新快照。系統必須建立 `etf_history_cache.json` 每日持久化累積保存真實行情，嚴禁將當日快照覆蓋至歷史日期，確保上櫃 ETF 歷史趨勢與折線圖 100% 精確動態呈現。
