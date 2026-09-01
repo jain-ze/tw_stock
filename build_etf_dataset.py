@@ -7,6 +7,9 @@ import re
 import datetime
 import time
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SUB_DIR = os.path.join(BASE_DIR, '近5日台股成交金額TOP20深度分析')
+
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
     'Accept': 'application/json, text/javascript, */*; q=0.01',
@@ -283,6 +286,15 @@ def fetch_valid_trading_days(n=6):
     curr = datetime.date.today()
     attempts = 0
     reports = {}
+
+    cache_file = os.path.join(BASE_DIR, 'etf_history_cache.json')
+    etf_history_cache = {}
+    if os.path.exists(cache_file):
+        try:
+            with open(cache_file, 'r', encoding='utf-8') as f:
+                etf_history_cache = json.load(f)
+        except Exception:
+            etf_history_cache = {}
     
     session = requests.Session()
     session.headers.update({
@@ -335,7 +347,7 @@ def fetch_valid_trading_days(n=6):
             except Exception:
                 pass
             time.sleep(1.0)
-            
+        
         # Secondary fallback endpoint: afterTrading/MI_INDEX (ALLBUT0999) if ETFDaily failed or got WAF 307
         if not fetched_data:
             url_mi = f"https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date={d_str}&type=ALLBUT0999&response=json"
@@ -364,37 +376,46 @@ def fetch_valid_trading_days(n=6):
             except Exception:
                 pass
                 
-        # Supplement TPEx upper-market ETFs (e.g. 00411A) from TPEx daily close quotes API for EVERY trading day d_str
         if fetched_data is not None:
-            try:
-                y = int(d_str[:4]) - 1911
-                m = d_str[4:6]
-                d = d_str[6:8]
-                roc_date = f"{y}/{m}/{d}"
-                tpex_close_url = f"https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw&d={roc_date}"
-                tpex_resp = session.get(tpex_close_url, timeout=8, verify=False)
-                if tpex_resp.status_code == 200:
-                    tpex_json = tpex_resp.json()
-                    if tpex_json.get('tables') and len(tpex_json['tables']) > 0:
-                        existing_codes = set(r[0].strip() for r in fetched_data)
-                        added_tpex_cnt = 0
-                        for row in tpex_json['tables'][0].get('data', []):
-                            code = row[0].strip()
-                            if code.startswith('00') and code not in existing_codes:
-                                name = row[1].strip()
-                                cp = row[2]
-                                diff_raw = row[3].strip()
-                                op = row[4]
-                                hp = row[5]
-                                lp = row[6]
-                                vol = row[8]
-                                val = row[9]
-                                cnt = row[10]
-                                d_sym = '+' if '+' in diff_raw else ('-' if '-' in diff_raw else '')
-                                fetched_data.append([code, name, vol, cnt, val, op, hp, lp, cp, d_sym, diff_raw])
-                                added_tpex_cnt += 1
-            except Exception:
-                pass
+            # 1. Update TWSE fetched rows into cache
+            for r in fetched_data:
+                code = r[0].strip()
+                etf_history_cache.setdefault(code, {})[d_str] = r
+
+            # 2. Handle TPEx upper-market ETFs (e.g. 00411A)
+            existing_codes = set(r[0].strip() for r in fetched_data)
+            
+            if len(valid_dates) == 0:
+                # Latest trading day: fetch fresh TPEx snapshot and update cache
+                try:
+                    tpex_close_url = 'https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw'
+                    tpex_resp = session.get(tpex_close_url, timeout=8, verify=False)
+                    if tpex_resp.status_code == 200:
+                        tpex_json = tpex_resp.json()
+                        if tpex_json.get('tables') and len(tpex_json['tables']) > 0:
+                            for row in tpex_json['tables'][0].get('data', []):
+                                code = row[0].strip()
+                                if code.startswith('00') and code not in existing_codes:
+                                    name = row[1].strip()
+                                    cp = row[2]
+                                    diff_raw = row[3].strip()
+                                    op = row[4]
+                                    hp = row[5]
+                                    lp = row[6]
+                                    vol = row[8]
+                                    val = row[9]
+                                    cnt = row[10]
+                                    d_sym = '+' if '+' in diff_raw else ('-' if '-' in diff_raw else '')
+                                    norm_r = [code, name, vol, cnt, val, op, hp, lp, cp, d_sym, diff_raw]
+                                    fetched_data.append(norm_r)
+                                    etf_history_cache.setdefault(code, {})[d_str] = norm_r
+                except Exception:
+                    pass
+            else:
+                # Historical trading day: look up persistent cache for TPEx ETFs
+                for code, history in etf_history_cache.items():
+                    if code not in existing_codes and d_str in history:
+                        fetched_data.append(history[d_str])
 
         if fetched_data:
             valid_dates.append(d_str)
@@ -404,6 +425,17 @@ def fetch_valid_trading_days(n=6):
         curr -= datetime.timedelta(days=1)
         attempts += 1
         time.sleep(1.0)
+
+    # Save persistent cache back to disk
+    try:
+        with open(cache_file, 'w', encoding='utf-8') as f:
+            json.dump(etf_history_cache, f, ensure_ascii=False, indent=2)
+        sub_cache = os.path.join(SUB_DIR, 'etf_history_cache.json')
+        with open(sub_cache, 'w', encoding='utf-8') as f:
+            json.dump(etf_history_cache, f, ensure_ascii=False, indent=2)
+        print("Saved updated etf_history_cache.json to persistent disk storage.")
+    except Exception as e:
+        print(f"Error saving etf_history_cache.json: {e}")
         
     return valid_dates, reports
 
