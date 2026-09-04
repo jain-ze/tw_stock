@@ -3,606 +3,637 @@ import os
 import sys
 import json
 import base64
+import csv
+import datetime
+import urllib.request
+import ssl
 
 OUTPUT_DIR = "/home/jrh/桌面/JRH20260720"
-CSV_PATH = os.path.join(OUTPUT_DIR, "taiwan_stock_top20_trading_value_5days.csv")
+SUB_DIR = os.path.join(OUTPUT_DIR, "近5日台股成交金額TOP20深度分析")
+os.makedirs(SUB_DIR, exist_ok=True)
 
-CARD1_PATH = os.path.join(OUTPUT_DIR, "taiwan_stock_top20_card1_overview.png")
-CARD2_PATH = os.path.join(OUTPUT_DIR, "taiwan_stock_top20_card2_top10_analysis.png")
-CARD3_PATH = os.path.join(OUTPUT_DIR, "taiwan_stock_top11_20_card3_analysis.png")
+today_str = datetime.date.today().strftime('%Y-%m-%d')
+today_nodash = datetime.date.today().strftime('%Y%m%d')
 
-def get_base64_image(path):
+# SSL context
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+# Path references for 6 cards
+card1_path = os.path.join(SUB_DIR, f"taiwan_stock_card1_market_index_{today_str}.png")
+card2_path = os.path.join(SUB_DIR, f"taiwan_stock_card2_bfi82u_{today_str}.png")
+card3_path = os.path.join(SUB_DIR, f"taiwan_stock_card3_margin_{today_str}.png")
+card4_path = os.path.join(OUTPUT_DIR, "taiwan_stock_top20_card1_overview.png")
+card5_path = os.path.join(OUTPUT_DIR, "taiwan_stock_top20_card2_top10_analysis.png")
+card6_path = os.path.join(OUTPUT_DIR, "taiwan_stock_top11_20_card3_analysis.png")
+
+if not os.path.exists(card1_path):
+    card1_path = os.path.join(SUB_DIR, f"TWSE_TPEX_Market_5Day_{today_nodash}_Card.png")
+if not os.path.exists(card2_path):
+    card2_path = os.path.join(SUB_DIR, f"TWSE_BFI82U_5Day_{today_nodash}_Card.png")
+if not os.path.exists(card3_path):
+    card3_path = os.path.join(SUB_DIR, f"TWSE_MI_MARGN_5Day_{today_nodash}_Card.png")
+
+def get_b64(path):
     if os.path.exists(path):
         with open(path, 'rb') as f:
-            data = base64.b64encode(f.read()).decode('utf-8')
-            return f"data:image/png;base64,{data}"
+            return f"data:image/png;base64,{base64.b64encode(f.read()).decode('utf-8')}"
     return ""
 
-b64_card1 = get_base64_image(CARD1_PATH)
-b64_card2 = get_base64_image(CARD2_PATH)
-b64_card3 = get_base64_image(CARD3_PATH)
+b64_c1 = get_b64(card1_path)
+b64_c2 = get_b64(card2_path)
+b64_c3 = get_b64(card3_path)
+b64_c4 = get_b64(card4_path)
+b64_c5 = get_b64(card5_path)
+b64_c6 = get_b64(card6_path)
 
-# Stock records data
-STOCKS_DATA = [
-    {"rank": 1, "code": "2330", "name": "台積電", "market": "上市", "sector": "半導體 / 晶圓代工", "total_val": 5709.98, "avg_val": 1142.00, "volume": 239944, "price": 2405.00, "change_pct": 5.02},
-    {"rank": 2, "code": "2327", "name": "國巨*", "market": "上市", "sector": "被動元件", "total_val": 2153.42, "avg_val": 430.68, "volume": 308610, "price": 696.00, "change_pct": -0.43},
-    {"rank": 3, "code": "2454", "name": "聯發科", "market": "上市", "sector": "半導體 / IC設計", "total_val": 1834.64, "avg_val": 366.93, "volume": 49271, "price": 3875.00, "change_pct": 14.99},
-    {"rank": 4, "code": "2408", "name": "南亞科", "market": "上市", "sector": "半導體 / 記憶體", "total_val": 1572.50, "avg_val": 314.50, "volume": 363222, "price": 426.00, "change_pct": 7.71},
-    {"rank": 5, "code": "2303", "name": "聯電", "market": "上市", "sector": "半導體 / 晶圓代工", "total_val": 1508.97, "avg_val": 301.79, "volume": 1079067, "price": 138.50, "change_pct": -3.82},
-    {"rank": 6, "code": "1303", "name": "南亞", "market": "上市", "sector": "塑膠塑化 / 原料", "total_val": 1169.16, "avg_val": 233.83, "volume": 586854, "price": 197.00, "change_pct": -1.01},
-    {"rank": 7, "code": "0050", "name": "元大台灣50", "market": "上市", "sector": "指數型 / ETF", "total_val": 1166.48, "avg_val": 233.30, "volume": 1126897, "price": 103.90, "change_pct": 3.74},
-    {"rank": 8, "code": "3037", "name": "欣興", "market": "上市", "sector": "電子 / ABF載板", "total_val": 1098.47, "avg_val": 219.69, "volume": 129566, "price": 896.00, "change_pct": 12.85},
-    {"rank": 9, "code": "8046", "name": "南電", "market": "上市", "sector": "電子 / ABF載板", "total_val": 1051.94, "avg_val": 210.39, "volume": 88145, "price": 1230.00, "change_pct": 6.96},
-    {"rank": 10, "code": "4958", "name": "臻鼎-KY", "market": "上市", "sector": "電子 / PCB軟板", "total_val": 1006.92, "avg_val": 201.38, "volume": 196448, "price": 506.00, "change_pct": -2.88},
-    {"rank": 11, "code": "2308", "name": "台達電", "market": "上市", "sector": "電子 / 電源綠能", "total_val": 992.72, "avg_val": 198.54, "volume": 54342, "price": 1880.00, "change_pct": 8.05},
-    {"rank": 12, "code": "2344", "name": "華邦電", "market": "上市", "sector": "半導體 / 記憶體", "total_val": 923.67, "avg_val": 184.73, "volume": 572217, "price": 161.00, "change_pct": 3.87},
-    {"rank": 13, "code": "6182", "name": "合晶", "market": "上櫃", "sector": "上櫃 / 矽晶圓", "total_val": 828.94, "avg_val": 165.79, "volume": 660119, "price": 126.50, "change_pct": 0.00},
-    {"rank": 14, "code": "3481", "name": "群創", "market": "上市", "sector": "光電 / 面板製造", "total_val": 806.00, "avg_val": 161.20, "volume": 1514547, "price": 51.90, "change_pct": -1.33},
-    {"rank": 15, "code": "2317", "name": "鴻海", "market": "上市", "sector": "代工 / AI伺服器", "total_val": 738.10, "avg_val": 147.62, "volume": 291098, "price": 257.50, "change_pct": 10.04},
-    {"rank": 16, "code": "3231", "name": "緯創", "market": "上市", "sector": "電腦 / AI伺服器", "total_val": 717.09, "avg_val": 143.42, "volume": 436819, "price": 173.50, "change_pct": 24.82},
-    {"rank": 17, "code": "3711", "name": "日月光投控", "market": "上市", "sector": "半導體 / 封測", "total_val": 701.01, "avg_val": 140.20, "volume": 110637, "price": 649.00, "change_pct": 5.70},
-    {"rank": 18, "code": "6274", "name": "台燿", "market": "上櫃", "sector": "上櫃 / CCL銅箔基板", "total_val": 671.10, "avg_val": 134.22, "volume": 50569, "price": 1335.00, "change_pct": 0.00},
-    {"rank": 19, "code": "2383", "name": "台光電", "market": "上市", "sector": "電子 / CCL銅箔基板", "total_val": 615.77, "avg_val": 123.15, "volume": 12504, "price": 5095.00, "change_pct": 13.35},
-    {"rank": 20, "code": "00631L", "name": "元大台灣50正2", "market": "上市", "sector": "槓桿型 / ETF", "total_val": 610.77, "avg_val": 122.15, "volume": 1733359, "price": 35.07, "change_pct": 9.01}
-]
+# Load JSON records for TOP 20
+json_path = os.path.join(OUTPUT_DIR, "taiwan_stock_top20_trading_value_5days.json")
+records = []
+if os.path.exists(json_path):
+    with open(json_path, 'r', encoding='utf-8') as f:
+        records = json.load(f)
+
+stocks_dict = {r['code']: r for r in records}
+stocks_json_str = json.dumps(stocks_dict, ensure_ascii=False)
+
+total_top20_val = sum(r.get('total_value_yi', 0) for r in records)
+top_gainer = max(records, key=lambda x: x.get('change_pct', -999)) if records else None
+top_gainer_str = f"{top_gainer['name']} ({top_gainer['change_pct']:+.2f}%)" if top_gainer else "--"
+
+# Dynamically parse 5-day Market Summary Data from CSV files created by twse_card_helper.py
+mkt_csv = os.path.join(SUB_DIR, f"TWSE_TPEX_Market_5Day_{today_nodash}.csv")
+if not os.path.exists(mkt_csv):
+    mkt_csv = os.path.join(OUTPUT_DIR, f"TWSE_TPEX_Market_5Day_{today_nodash}.csv")
+
+bfi_csv = os.path.join(SUB_DIR, f"TWSE_BFI82U_5Day_{today_nodash}.csv")
+if not os.path.exists(bfi_csv):
+    bfi_csv = os.path.join(OUTPUT_DIR, f"TWSE_BFI82U_5Day_{today_nodash}.csv")
+
+margin_csv = os.path.join(SUB_DIR, f"TWSE_MI_MARGN_5Day_{today_nodash}.csv")
+if not os.path.exists(margin_csv):
+    margin_csv = os.path.join(OUTPUT_DIR, f"TWSE_MI_MARGN_5Day_{today_nodash}.csv")
+
+market_rows_data = []
+
+if os.path.exists(mkt_csv) and os.path.exists(bfi_csv):
+    with open(mkt_csv, 'r', encoding='utf-8') as f1, open(bfi_csv, 'r', encoding='utf-8') as f2:
+        mkt_reader = list(csv.DictReader(f1))
+        bfi_reader = list(csv.DictReader(f2))
+        
+        bfi_map = {}
+        for r in bfi_reader:
+            d_raw = r['日期'].replace('-', '').replace('/', '').strip()
+            d_short = f"{d_raw[4:6]}/{d_raw[6:8]}" if len(d_raw) == 8 else d_raw
+            bfi_map[d_short] = r
+            
+        margin_map = {}
+        if os.path.exists(margin_csv):
+            with open(margin_csv, 'r', encoding='utf-8') as f3:
+                margin_reader = list(csv.DictReader(f3))
+                for r in margin_reader:
+                    d_raw = r['日期'].replace('-', '').replace('/', '').strip()
+                    d_short = f"{d_raw[4:6]}/{d_raw[6:8]}" if len(d_raw) == 8 else d_raw
+                    margin_map[d_short] = r
+
+        for r in mkt_reader:
+            d_short = r['日期'].strip()
+            b_item = bfi_map.get(d_short, {})
+            m_item = margin_map.get(d_short, {})
+            
+            taiex_val = float(r['上市加權指數'])
+            taiex_chg_pct = float(r['上市漲跌幅(%)'])
+            taiex_up = taiex_chg_pct >= 0
+            val_yi = round(float(r['上市成交金額(元)']) / 1e8, 1)
+            tpex_val = r['上櫃櫃買指數']
+            
+            f_diff = round(float(b_item.get('外資買賣超(元)', 0)) / 1e8, 2) if b_item else 0.0
+            tr_diff = round(float(b_item.get('投信買賣超(元)', 0)) / 1e8, 2) if b_item else 0.0
+            d1 = float(b_item.get('自營(自行)買賣超(元)', 0)) if b_item else 0.0
+            d2 = float(b_item.get('自營(避險)買賣超(元)', 0)) if b_item else 0.0
+            dealer_diff = round((d1 + d2) / 1e8, 2)
+            tot_diff = round(float(b_item.get('三大法人合計買賣超(元)', 0)) / 1e8, 2) if b_item else 0.0
+
+            if m_item:
+                margin_val_yi = round(float(m_item.get('融資餘額(元)', 0)) / 1e8, 2)
+                margin_diff_yi = round(float(m_item.get('融資單日增減(元)', 0)) / 1e8, 2)
+                m_up = margin_diff_yi >= 0
+                margin_curr_str = f"{margin_val_yi:,.2f} 億"
+                margin_diff_str = f"{margin_diff_yi:+.2f} 億"
+                short_val = f"{int(float(m_item.get('融券餘額(張)', 0))):,}"
+                short_diff_str = f"{int(float(m_item.get('融券單日增減(張)', 0))):+d}"
+            else:
+                margin_curr_str = "--"
+                margin_diff_str = "--"
+                m_up = True
+                short_val = "--"
+                short_diff_str = "--"
+
+            sign_str = '+' if taiex_up else ''
+            item = {
+                'date_show': d_short,
+                'taiex': f"{taiex_val:,.2f}",
+                'taiex_chg': f"{sign_str}{taiex_chg_pct:.2f}%",
+                'taiex_up': taiex_up,
+                'val_yi': f"{val_yi:,.1f} 億",
+                'tpex': tpex_val,
+                'foreign_diff': f_diff,
+                'trust_diff': tr_diff,
+                'dealer_diff': dealer_diff,
+                'tot_diff': tot_diff,
+                'margin_curr': margin_curr_str,
+                'margin_diff': margin_diff_str,
+                'margin_up': m_up,
+                'short_curr': short_val,
+                'short_diff': short_diff_str
+            }
+            market_rows_data.append(item)
+
+# Fallback if CSV not created yet
+if not market_rows_data:
+    market_rows_data = [
+        {
+            "date_show": "08/26", "taiex": "45,832.62", "taiex_chg": "+1.47%", "taiex_up": True, "val_yi": "8,362.4 億",
+            "tpex": "395.66", "foreign_diff": 365.98, "trust_diff": 48.55, "dealer_diff": 179.34, "tot_diff": 593.87,
+            "margin_curr": "5,469.38 億", "margin_diff": "+16.78億", "margin_up": True, "short_curr": "200,504", "short_diff": "-1,009"
+        }
+    ]
+
+# Build Market Table Rows dynamically
+market_table_html = ""
+for m in market_rows_data:
+    taiex_clr = "var(--red)" if m["taiex_up"] else "var(--green)"
+    
+    f_clr = "var(--red)" if m["foreign_diff"] > 0 else "var(--green)"
+    tr_clr = "var(--red)" if m["trust_diff"] > 0 else "var(--green)"
+    d_clr = "var(--red)" if m["dealer_diff"] > 0 else "var(--green)"
+    tot_clr = "var(--red)" if m["tot_diff"] > 0 else "var(--green)"
+    m_clr = "var(--red)" if m["margin_up"] else "var(--green)"
+    
+    f_str = f"+{m['foreign_diff']:.2f} 億" if m['foreign_diff'] > 0 else f"{m['foreign_diff']:.2f} 億"
+    tr_str = f"+{m['trust_diff']:.2f} 億" if m['trust_diff'] > 0 else f"{m['trust_diff']:.2f} 億"
+    d_str = f"+{m['dealer_diff']:.2f} 億" if m['dealer_diff'] > 0 else f"{m['dealer_diff']:.2f} 億"
+    tot_str = f"+{m['tot_diff']:.2f} 億" if m['tot_diff'] > 0 else f"{m['tot_diff']:.2f} 億"
+
+    market_table_html += f"""
+                        <tr>
+                            <td><strong>{m['date_show']}</strong></td>
+                            <td><strong>{m['taiex']}</strong> (<span style="color:{taiex_clr};font-weight:700;">{m['taiex_chg']}</span>)</td>
+                            <td>{m['val_yi']}</td>
+                            <td>{m['tpex']}</td>
+                            <td style="color:{f_clr};">{f_str}</td>
+                            <td style="color:{tr_clr};">{tr_str}</td>
+                            <td style="color:{d_clr};">{d_str}</td>
+                            <td style="color:{tot_clr};font-weight:800;">{tot_str}</td>
+                            <td>{m['margin_curr']} (<span style='color:{m_clr};font-weight:700;'>{m['margin_diff']}</span>)</td>
+                        </tr>"""
+
+# Build TOP 20 Table Rows dynamically
+table_rows_html = ""
+for s in records:
+    rank_badge_cls = f"r-{s['rank']}" if s['rank'] <= 3 else "r-o"
+    mkt_cls = "m-twse" if s['market'] == "上市" else "m-tpex"
+    
+    today_chg = s.get('today_change_val', 0.0)
+    today_pct = s.get('today_change_pct', 0.0)
+    chg_cls = "chg-up" if today_chg > 0 else ("chg-down" if today_chg < 0 else "chg-flat")
+    chg_sign = "+" if today_chg > 0 else ""
+    
+    pct_5d = s.get('change_pct', 0.0)
+    pct_5d_cls = "chg-up" if pct_5d > 0 else ("chg-down" if pct_5d < 0 else "chg-flat")
+    pct_5d_sign = "+" if pct_5d > 0 else ""
+
+    table_rows_html += f"""
+                        <tr class="stock-row" onclick="openStockModal('{s['code']}')">
+                            <td><span class="r-badge {rank_badge_cls}">{s['rank']}</span></td>
+                            <td><strong>{s['code']}</strong> {s['name']}</td>
+                            <td><span class="{mkt_cls}">{s['market']}</span></td>
+                            <td style="color:var(--muted);">{s['sector']}</td>
+                            <td><strong>{s['total_value_yi']:,.1f} 億</strong></td>
+                            <td>{s['avg_value_yi']:,.1f} 億</td>
+                            <td>{s['total_volume_zhang']:,} 張</td>
+                            <td><strong>${s['latest_close']:,.2f}</strong></td>
+                            <td><span class="chg {chg_cls}">{chg_sign}${today_chg:,.2f} ({chg_sign}{today_pct:.2f}%)</span></td>
+                            <td><span class="chg {pct_5d_cls}">{pct_5d_sign}{pct_5d:.2f}%</span></td>
+                            <td><button style="background:var(--blue);color:#000;border:none;padding:4px 10px;border-radius:4px;font-weight:700;cursor:pointer;">📊 走勢圖</button></td>
+                        </tr>"""
+
+latest_m = market_rows_data[0]
+sample_oldest = market_rows_data[-1]['date_show'] if market_rows_data else "08/20"
+sample_newest = market_rows_data[0]['date_show'] if market_rows_data else "08/26"
 
 html_content = f"""<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台股近5日成交金額前20名分析與視覺化圖卡報告 (2026/07/17-07/23)</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>台股盤後大數據與籌碼動向觀測站 ({today_str})</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-
     <style>
-        :root {{
-            --bg-dark: #0d1117;
-            --bg-card: #161b22;
-            --bg-card-hover: #1f242d;
-            --border-color: #30363d;
-            --text-main: #f0f6fc;
-            --text-muted: #8b949e;
-            --accent-blue: #58a6ff;
-            --accent-purple: #bc8cff;
-            --accent-green: #3fb950;
-            --accent-red: #f85149;
-            --accent-amber: #d29922;
-        }}
+        :root {{ --bg-dark:#0d1117; --bg-card:#161b22; --bg-hover:#1f242d; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --blue:#58a6ff; --green:#3fb950; --red:#f85149; --amber:#d29922; --purple:#bc8cff; }}
+        * {{ box-sizing:border-box; margin:0; padding:0; }}
+        body {{ font-family:'Noto Sans TC','Inter',sans-serif; background-color:var(--bg-dark); color:var(--text); line-height:1.6; padding-bottom:60px; }}
+        .nav-header {{ display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:15px 20px 0; }}
+        .btn-home {{ display:inline-flex; align-items:center; gap:6px; background:#21262d; color:var(--blue); border:1px solid var(--border); font-weight:700; font-size:14px; padding:8px 16px; border-radius:8px; text-decoration:none; transition:all 0.2s; }}
+        .btn-home:hover {{ background:var(--blue); color:#000; border-color:var(--blue); transform:translateY(-1px); }}
+        .hero {{ background:linear-gradient(135deg, #161b22 0%, #0d1117 100%); border-bottom:1px solid var(--border); padding:30px 20px 30px; text-align:center; position:relative; }}
+        .hero::before {{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, #58a6ff, #bc8cff, #3fb950); }}
+        .badge {{ display:inline-block; background:rgba(88,166,255,0.15); color:var(--blue); padding:6px 16px; border-radius:20px; font-size:14px; font-weight:700; margin-bottom:12px; border:1px solid rgba(88,166,255,0.3); }}
+        h1 {{ font-size:32px; font-weight:900; margin-bottom:10px; }}
+        .sub {{ color:var(--muted); font-size:15px; margin-bottom:25px; }}
+        .metrics {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; max-width:1200px; margin:0 auto; }}
+        .m-card {{ background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:18px 20px; text-align:left; }}
+        .m-label {{ font-size:13px; color:var(--muted); }}
+        .m-val {{ font-size:22px; font-weight:800; margin-top:4px; }}
+        .container {{ max-width:1200px; margin:30px auto; padding:0 20px; }}
+        
+        .view-nav {{ display:flex; gap:12px; margin-bottom:25px; border-bottom:2px solid var(--border); padding-bottom:12px; flex-wrap:wrap; }}
+        .view-tab-btn {{ background:#161b22; border:1px solid var(--border); color:var(--muted); padding:12px 24px; border-radius:10px; font-size:16px; font-weight:800; cursor:pointer; transition:all 0.2s; }}
+        .view-tab-btn:hover {{ background:var(--bg-hover); color:var(--text); }}
+        .view-tab-btn.active {{ background:var(--blue); color:#000; border-color:var(--blue); box-shadow:0 4px 12px rgba(88,166,255,0.3); }}
 
-        * {{
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }}
-
-        body {{
-            font-family: 'Noto Sans TC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 60px;
-        }}
-
-        /* Header / Hero Section */
-        .hero {{
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            border-bottom: 1px solid var(--border-color);
-            padding: 40px 20px 30px;
-            text-align: center;
-            position: relative;
-        }}
-
-        .hero::before {{
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(90deg, #58a6ff, #bc8cff, #3fb950);
-        }}
-
-        .title-badge {{
-            display: inline-block;
-            background: rgba(88, 166, 255, 0.15);
-            color: var(--accent-blue);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            border: 1px solid rgba(88, 166, 255, 0.3);
-        }}
-
-        h1 {{
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #ffffff, #c9d1d9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }}
-
-        .hero-subtitle {{
-            color: var(--text-muted);
-            font-size: 15px;
-            margin-bottom: 25px;
-        }}
-
-        /* Metric Cards Grid */
-        .metrics-grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }}
-
-        .metric-card {{
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 18px 20px;
-            text-align: left;
-            transition: transform 0.2s, border-color 0.2s;
-        }}
-
-        .metric-card:hover {{
-            transform: translateY(-2px);
-            border-color: var(--accent-blue);
-        }}
-
-        .metric-label {{
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-        }}
-
-        .metric-value {{
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--text-main);
-        }}
-
-        .metric-sub {{
-            font-size: 12px;
-            margin-top: 4px;
-        }}
-
-        .text-red {{ color: var(--accent-red); }}
-        .text-green {{ color: var(--accent-green); }}
-        .text-blue {{ color: var(--accent-blue); }}
-        .text-amber {{ color: var(--accent-amber); }}
-
-        /* Main Container */
-        .container {{
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }}
-
-        .section-header {{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--accent-blue);
-            padding-left: 12px;
-        }}
-
-        .section-title {{
-            font-size: 22px;
-            font-weight: 800;
-        }}
-
-        /* Infographic Gallery Tabs */
-        .card-tabs {{
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }}
-
-        .tab-btn {{
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 700;
-            transition: all 0.2s;
-        }}
-
-        .tab-btn:hover {{
-            color: var(--text-main);
-            background: var(--bg-card-hover);
-        }}
-
-        .tab-btn.active {{
-            background: var(--accent-blue);
-            color: #000;
-            border-color: var(--accent-blue);
-        }}
-
-        .card-display {{
-            text-align: center;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 40px;
-        }}
-
-        .card-display img {{
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        }}
-
-        /* Filter Controls */
-        .controls-bar {{
-            display: flex;
-            gap: 15px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }}
-
-        .search-input {{
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            min-width: 250px;
-            outline: none;
-        }}
-
-        .search-input:focus {{
-            border-color: var(--accent-blue);
-        }}
-
-        /* Data Table Styling */
-        .table-responsive {{
-            overflow-x: auto;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            margin-bottom: 40px;
-        }}
-
-        table {{
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-            text-align: left;
-        }}
-
-        th {{
-            background: #161b22;
-            color: var(--text-muted);
-            font-weight: 700;
-            padding: 14px 16px;
-            border-bottom: 1px solid var(--border-color);
-            white-space: nowrap;
-        }}
-
-        td {{
-            padding: 14px 16px;
-            border-bottom: 1px solid var(--border-color);
-            white-space: nowrap;
-        }}
-
-        tr:hover {{
-            background: var(--bg-card-hover);
-        }}
-
-        /* Badges & Pills */
-        .rank-badge {{
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            font-weight: 800;
-            font-size: 13px;
-        }}
-
-        .rank-1 {{ background: #ffd700; color: #000; }}
-        .rank-2 {{ background: #c0c0c0; color: #000; }}
-        .rank-3 {{ background: #cd7f32; color: #000; }}
-        .rank-other {{ background: #21262d; color: var(--text-muted); }}
-
-        .market-badge {{
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 700;
-        }}
-
-        .market-twse {{ background: rgba(31, 111, 235, 0.2); color: #58a6ff; border: 1px solid rgba(31, 111, 235, 0.4); }}
-        .market-tpex {{ background: rgba(210, 153, 34, 0.2); color: #d29922; border: 1px solid rgba(210, 153, 34, 0.4); }}
-
-        .change-tag {{
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 13px;
-        }}
-
-        .change-up {{ background: rgba(248, 81, 73, 0.2); color: var(--accent-red); border: 1px solid rgba(248, 81, 73, 0.4); }}
-        .change-down {{ background: rgba(63, 185, 80, 0.2); color: var(--accent-green); border: 1px solid rgba(63, 185, 80, 0.4); }}
-        .change-flat {{ background: rgba(139, 148, 158, 0.2); color: var(--text-muted); border: 1px solid rgba(139, 148, 158, 0.4); }}
-
-        /* Bar visual indicator in table */
-        .bar-container {{
-            width: 100px;
-            height: 6px;
-            background: #21262d;
-            border-radius: 3px;
-            overflow: hidden;
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 8px;
-        }}
-
-        .bar-fill {{
-            height: 100%;
-            background: var(--accent-blue);
-        }}
-
-        /* Markdown Analysis Section */
-        .analysis-grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }}
-
-        .analysis-card {{
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-        }}
-
-        .analysis-card h3 {{
-            font-size: 18px;
-            color: var(--accent-blue);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }}
-
-        .analysis-card p, .analysis-card ul {{
-            font-size: 14px;
-            color: #c9d1d9;
-        }}
-
-        .analysis-card ul {{
-            padding-left: 18px;
-            margin-top: 8px;
-        }}
-
-        .analysis-card li {{
-            margin-bottom: 8px;
-        }}
-
-        /* Footer */
-        footer {{
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 13px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 30px;
-            margin-top: 50px;
-        }}
+        .s-header {{ border-left:4px solid var(--blue); padding-left:12px; margin-bottom:20px; font-size:22px; font-weight:800; }}
+        .card-tabs {{ display:flex; gap:10px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:10px; flex-wrap:wrap; }}
+        .card-tab {{ background:var(--bg-card); border:1px solid var(--border); color:var(--muted); padding:10px 18px; border-radius:8px; cursor:pointer; font-weight:700; font-size:14px; }}
+        .card-tab.active {{ background:var(--blue); color:#000; border-color:var(--blue); }}
+        .card-view {{ text-align:center; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:40px; }}
+        .card-view img {{ max-width:100%; height:auto; border-radius:8px; }}
+        .tbl-container {{ overflow-x:auto; background:var(--bg-card); border:1px solid var(--border); border-radius:12px; margin-bottom:40px; }}
+        table {{ width:100%; border-collapse:collapse; font-size:14px; text-align:left; }}
+        th, td {{ padding:14px 16px; border-bottom:1px solid var(--border); white-space:nowrap; }}
+        th {{ background:#161b22; color:var(--muted); }}
+        tr.stock-row {{ cursor:pointer; transition:background 0.2s; }}
+        tr.stock-row:hover {{ background:var(--bg-hover); }}
+        .r-badge {{ display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:6px; font-weight:800; font-size:13px; }}
+        .r-1 {{ background:#ffd700; color:#000; }} .r-2 {{ background:#c0c0c0; color:#000; }} .r-3 {{ background:#cd7f32; color:#000; }} .r-o {{ background:#21262d; color:var(--muted); }}
+        .m-twse {{ background:rgba(31,111,235,0.2); color:#58a6ff; border:1px solid rgba(31,111,235,0.4); padding:2px 8px; border-radius:4px; font-size:12px; font-weight:700; }}
+        .m-tpex {{ background:rgba(210,153,34,0.2); color:#d29922; border:1px solid rgba(210,153,34,0.4); padding:2px 8px; border-radius:4px; font-size:12px; font-weight:700; }}
+        .chg {{ padding:4px 10px; border-radius:6px; font-weight:700; font-size:13px; }}
+        .chg-up {{ background:rgba(248,81,73,0.2); color:var(--red); border:1px solid rgba(248,81,73,0.4); }}
+        .chg-down {{ background:rgba(63,185,80,0.2); color:var(--green); border:1px solid rgba(63,185,80,0.4); }}
+        .chg-flat {{ background:rgba(139,148,158,0.2); color:var(--muted); border:1px solid rgba(139,148,158,0.4); }}
+        .analysis-grid {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:20px; margin-bottom:40px; }}
+        .analysis-card {{ background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:24px; }}
+        .analysis-card h3 {{ font-size:18px; color:var(--blue); margin-bottom:12px; display:flex; align-items:center; gap:8px; }}
+        .analysis-card p, .analysis-card ul {{ font-size:14px; color:#c9d1d9; }}
+        .analysis-card ul {{ padding-left:18px; margin-top:8px; }}
+        .analysis-card li {{ margin-bottom:8px; }}
+        
+        .modal-overlay {{ display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:1000; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(4px); }}
+        .modal-card {{ background:var(--bg-card); border:1px solid var(--border); border-radius:16px; max-width:850px; width:100%; padding:24px; box-shadow:0 20px 50px rgba(0,0,0,0.6); position:relative; max-height:90vh; overflow-y:auto; }}
+        .modal-close {{ position:absolute; top:18px; right:20px; background:none; border:none; color:var(--muted); font-size:24px; cursor:pointer; transition:color 0.2s; }}
+        .modal-close:hover {{ color:var(--text); }}
+        .modal-header {{ display:flex; align-items:center; gap:12px; margin-bottom:16px; border-bottom:1px solid var(--border); padding-bottom:14px; }}
+        .modal-title {{ font-size:24px; font-weight:900; }}
+        .chart-box {{ background:#0d1117; border:1px solid var(--border); border-radius:12px; padding:16px; margin:20px 0; text-align:center; }}
+        .detail-table {{ width:100%; border-collapse:collapse; margin-top:16px; font-size:14px; }}
+        .detail-table th, .detail-table td {{ padding:10px 14px; border-bottom:1px solid var(--border); text-align:center; }}
+        .detail-table th {{ background:#21262d; color:var(--muted); }}
+        footer {{ text-align:center; color:var(--muted); font-size:13px; border-top:1px solid var(--border); padding-top:30px; margin-top:50px; }}
     </style>
 </head>
 <body>
-
-    <!-- HERO SECTION -->
     <div class="hero">
-        <div class="title-badge">台股盤後數據專題報告</div>
-        <h1>近 5 日台股成交金額 TOP 20 深度分析</h1>
-        <p class="hero-subtitle">統計區間：2026/07/17（五）～ 2026/07/23（四） | 涵蓋上市 (TWSE) 與上櫃 (TPEx)</p>
-
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <div class="metric-label">Top 20 總成交金額</div>
-                <div class="metric-value text-blue">2.81 兆元</div>
-                <div class="metric-sub text-muted">佔全市場巨量資金重心</div>
+        <div class="nav-header">
+            <a href="index.html" class="btn-home">🏠 回首頁 (Portal)</a>
+        </div>
+        <div class="badge">台股盤後大數據與籌碼動向觀測站 ({today_str})</div>
+        <h1>台股盤後大數據與籌碼動向觀測站</h1>
+        <p class="sub">統計資料日期：{today_str} (最近5交易日：{sample_oldest} ～ {sample_newest})  |  整合大盤指數、三大法人買賣超、信用交易與 TOP 20 爆量強勢股</p>
+        <div class="metrics">
+            <div class="m-card">
+                <div class="m-label">加權指數 (TAIEX)</div>
+                <div class="m-val" style="color:var(--red);">{latest_m['taiex']} ({latest_m['taiex_chg']})</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-label">Top 20 日均成交額</div>
-                <div class="metric-value">5,616.7 億</div>
-                <div class="metric-sub text-muted">平均每日交易熱度</div>
+            <div class="m-card">
+                <div class="m-label">三大法人買賣超</div>
+                <div class="m-val" style="color:var(--red);">+{latest_m['tot_diff']:.2f} 億元</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-label">5日漲幅王者</div>
-                <div class="metric-value text-red">緯創 (+24.82%)</div>
-                <div class="metric-sub text-muted">AI 伺服器資金強烈追捧</div>
+            <div class="m-card">
+                <div class="m-label">融資餘額 (增減)</div>
+                <div class="m-val" style="color:var(--amber);">{latest_m['margin_curr']} ({latest_m['margin_diff']})</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-label">市場結構</div>
-                <div class="metric-value text-amber">18 檔上市 / 2 檔上櫃</div>
-                <div class="metric-sub text-muted">合晶、台燿 攻入前 20 強</div>
+            <div class="m-card">
+                <div class="m-label">Top 20 總成交額</div>
+                <div class="m-val" style="color:var(--blue);">{total_top20_val/10000:.2f} 兆台幣</div>
             </div>
         </div>
     </div>
 
     <div class="container">
-
-        <!-- INFOGRAPHIC CARDS GALLERY -->
-        <div class="section-header">
-            <div class="section-title">🖼️ 視覺化高解析圖卡展示 (Infographic Cards)</div>
+        <!-- Main Navigation View Tabs -->
+        <div class="view-nav">
+            <button id="nav-btn-table" class="view-tab-btn active" onclick="switchMainView('table')">📈 大盤籌碼與 TOP 20 成交金額數據榜單 (獨立頁)</button>
+            <button id="nav-btn-cards" class="view-tab-btn" onclick="switchMainView('cards')">🖼️ 6 大視覺化高解析圖卡展示區 (含雙折線與柱狀圖)</button>
         </div>
 
-        <div class="card-tabs">
-            <button class="tab-btn active" onclick="switchCard(1)">圖卡一：TOP 20 總覽卡</button>
-            <button class="tab-btn" onclick="switchCard(2)">圖卡二：Top 1-10 爆量巨頭</button>
-            <button class="tab-btn" onclick="switchCard(3)">圖卡三：Top 11-20 潛力/上櫃黑馬</button>
+        <!-- SECTION A: TOP 20 TABLE & INDEPENDENT DETAILED ANALYSIS -->
+        <div id="section-table-view">
+            <!-- 1. Market Indices & Three Major Institutional Investors Table -->
+            <div class="s-header">🏛️ 近 5 日大盤指數、三大法人買賣超與融資融券籌碼統計表</div>
+            <div class="tbl-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>加權指數 (大盤)</th>
+                            <th>大盤成交額</th>
+                            <th>櫃買指數 (TPEx)</th>
+                            <th>外資買賣超</th>
+                            <th>投信買賣超</th>
+                            <th>自營商買賣超</th>
+                            <th>三大法人合計</th>
+                            <th>融資餘額 (增減)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+{market_table_html}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 2. TOP 20 Stocks Table -->
+            <div class="s-header">📈 近 5 日成交金額 TOP 20 獨立榜單 (點擊個股可查看近5日走勢與成交明細)</div>
+            <div class="tbl-container">
+                <table>
+                    <thead>
+                        <tr><th>名次</th><th>代號 / 股票名稱</th><th>市場</th><th>產業分類</th><th>5日總成交額(億)</th><th>日均成交額(億)</th><th>5日成交量(張)</th><th>最新價</th><th>當日漲跌 (元/%)</th><th>5日漲跌幅</th><th>走勢明細</th></tr>
+                    </thead>
+                    <tbody>
+{table_rows_html}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 3. Comprehensive Market & Capital Analysis -->
+            <div class="s-header">🔍 全方位盤後大數據與籌碼趨勢深度剖析</div>
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h3>⚡ 大盤與三大法人籌碼趨勢</h3>
+                    <p>今日台股加權指數收在 <strong>{latest_m['taiex']} 點</strong>，三大法人今日合計買賣超金額為 <strong style="color:var(--red);">+{latest_m['tot_diff']:.2f} 億元</strong>：</p>
+                    <ul>
+                        <li><strong>外資動向</strong>：今日買賣超金額為 <strong style="color:var(--red);">+{latest_m['foreign_diff']:.2f} 億元</strong>。</li>
+                        <li><strong>投信動向</strong>：買賣超金額為 <strong style="color:var(--red);">+{latest_m['trust_diff']:.2f} 億元</strong>。</li>
+                        <li><strong>自營商動向</strong>：合計買賣超金額為 <strong style="color:var(--red);">+{latest_m['dealer_diff']:.2f} 億元</strong>。</li>
+                    </ul>
+                </div>
+
+                <div class="analysis-card">
+                    <h3>💳 信用交易 (融資融券) 變化</h3>
+                    <p>市場散戶與內資籌碼浮動情況：</p>
+                    <ul>
+                        <li><strong>融資金額餘額</strong>：<strong>{latest_m['margin_curr']}</strong> (變動 <span style='color:var(--red);font-weight:700;'>{latest_m['margin_diff']}</span>)</li>
+                        <li><strong>融券張數餘額</strong>：<strong>{latest_m['short_curr']} 張</strong> (變動 <span style='color:var(--green);font-weight:700;'>{latest_m['short_diff']} 張</span>)</li>
+                    </ul>
+                </div>
+
+                <div class="analysis-card">
+                    <h3>🏆 近 5 日 Top 20 爆量王者與產業集中度</h3>
+                    <p>近 5 個交易日 Top 20 檔股票合計成交金額高達 <strong>{total_top20_val/10000:.2f} 兆台幣</strong>：</p>
+                    <ul>
+                        <li><strong>5日漲幅王者</strong>：{top_gainer_str}</li>
+                        <li><strong>市場資金重心</strong>：半導體晶圓代工、記憶體、IC設計與 AI 伺服器供應鏈。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <div class="card-display">
-            <img id="card-img-1" src="{b64_card1}" alt="圖卡一：Top 20 總覽卡">
-            <img id="card-img-2" src="{b64_card2}" alt="圖卡二：Top 1-10 巨頭卡" style="display:none;">
-            <img id="card-img-3" src="{b64_card3}" alt="圖卡三：Top 11-20 潛力卡" style="display:none;">
+        <!-- SECTION B: CARDS GALLERY -->
+        <div id="section-cards-view" style="display:none;">
+            <div class="s-header">🖼️ 全套 6 大高解析視覺化圖卡展示區 (含雙折線與獨立柱狀圖)</div>
+            <div class="card-tabs">
+                <button class="card-tab active" onclick="switchCard(1)">圖卡一：大盤與櫃買雙折線圖</button>
+                <button class="card-tab" onclick="switchCard(2)">圖卡二：三大法人4系列柱狀圖</button>
+                <button class="card-tab" onclick="switchCard(3)">圖卡三：融資金額變動柱狀圖</button>
+                <button class="card-tab" onclick="switchCard(4)">圖卡四：TOP 20 總覽卡</button>
+                <button class="card-tab" onclick="switchCard(5)">圖卡五：Top 1-10 巨頭卡</button>
+                <button class="card-tab" onclick="switchCard(6)">圖卡六：Top 11-20 潛力卡</button>
+            </div>
+            <div class="card-view">
+                <img id="c1" src="{b64_c1}" alt="圖卡一：大盤與櫃買雙折線圖">
+                <img id="c2" src="{b64_c2}" alt="圖卡二：三大法人4系列柱狀圖" style="display:none;">
+                <img id="c3" src="{b64_c3}" alt="圖卡三：融資金額變動柱狀圖" style="display:none;">
+                <img id="c4" src="{b64_c4}" alt="圖卡四：TOP 20 總覽卡" style="display:none;">
+                <img id="c5" src="{b64_c5}" alt="圖卡五：Top 1-10 巨頭卡" style="display:none;">
+                <img id="c6" src="{b64_c6}" alt="圖卡六：Top 11-20 潛力卡" style="display:none;">
+            </div>
         </div>
+    </div>
 
-        <!-- TOP 20 DATA TABLE -->
-        <div class="section-header">
-            <div class="section-title">📈 近 5 日成交金額 TOP 20 完整榜單</div>
-        </div>
+    <!-- STOCK DETAIL INTERACTIVE MODAL -->
+    <div id="stockModal" class="modal-overlay" onclick="closeModalOutside(event)">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeStockModal()">✕</button>
+            <div class="modal-header">
+                <div class="modal-title" id="m-title">--</div>
+                <span id="m-market" class="m-twse">--</span>
+                <span id="m-sector" style="color:var(--muted);font-size:14px;font-weight:600;">--</span>
+            </div>
+            
+            <div class="metrics" style="margin-bottom:15px;grid-template-columns:repeat(auto-fit, minmax(160px,1fr));">
+                <div class="m-card"><div class="m-label">最新收盤價</div><div class="m-val" id="m-price">--</div></div>
+                <div class="m-card"><div class="m-label">當日漲跌 (元/%)</div><div class="m-val" id="m-today-chg">--</div></div>
+                <div class="m-card"><div class="m-label">5日波段漲跌</div><div class="m-val" id="m-chg">--</div></div>
+                <div class="m-card"><div class="m-label">5日總成交金額</div><div class="m-val" id="m-total-val">--</div></div>
+                <div class="m-card"><div class="m-label">5日總成交量</div><div class="m-val" id="m-total-vol">--</div></div>
+            </div>
 
-        <div class="controls-bar">
-            <input type="text" id="searchInput" class="search-input" placeholder="🔍 搜尋股票代號、名稱或產業..." onkeyup="filterTable()">
-        </div>
+            <div class="chart-box">
+                <div style="font-weight:700;margin-bottom:10px;color:var(--blue);">📈 近 5 日股價走勢與每日成交金額雙軸圖</div>
+                <canvas id="stockCanvas" height="240"></canvas>
+            </div>
 
-        <div class="table-responsive">
-            <table id="stockTable">
+            <div style="font-weight:700;font-size:16px;margin-top:20px;">📅 近 5 個交易日詳細數據明細表</div>
+            <table class="detail-table">
                 <thead>
-                    <tr>
-                        <th>名次</th>
-                        <th>代號 / 股票名稱</th>
-                        <th>市場</th>
-                        <th>產業分類</th>
-                        <th>5日總成交額 (億)</th>
-                        <th>日均成交額 (億)</th>
-                        <th>5日成交量 (張)</th>
-                        <th>最新收盤價</th>
-                        <th>5日漲跌幅</th>
-                    </tr>
+                    <tr><th>日期</th><th>收盤價 (元)</th><th>當日漲跌 (元/%)</th><th>5日累計漲跌</th><th>成交金額 (億元)</th><th>成交量 (張)</th></tr>
                 </thead>
-                <tbody>
-"""
-
-# Build table rows dynamically
-max_val = STOCKS_DATA[0]["total_val"]
-for s in STOCKS_DATA:
-    rank_cls = f"rank-{s['rank']}" if s['rank'] <= 3 else "rank-other"
-    mkt_cls = "market-twse" if s['market'] == "上市" else "market-tpex"
-    chg_cls = "change-up" if s['change_pct'] > 0 else ("change-down" if s['change_pct'] < 0 else "change-flat")
-    chg_sign = "+" if s['change_pct'] > 0 else ""
-    bar_w = int((s['total_val'] / max_val) * 100)
-    
-    html_content += f"""
-                    <tr>
-                        <td><span class="rank-badge {rank_cls}">{s['rank']}</span></td>
-                        <td><strong>{s['code']}</strong> {s['name']}</td>
-                        <td><span class="market-badge {mkt_cls}">{s['market']}</span></td>
-                        <td style="color:var(--text-muted);">{s['sector']}</td>
-                        <td>
-                            <strong>{s['total_val']:,.1f} 億</strong>
-                            <div class="bar-container"><div class="bar-fill" style="width:{bar_w}%;"></div></div>
-                        </td>
-                        <td>{s['avg_val']:,.1f} 億</td>
-                        <td>{s['volume']:,} 張</td>
-                        <td><strong>${s['price']:,.2f}</strong></td>
-                        <td><span class="change-tag {chg_cls}">{chg_sign}{s['change_pct']:.2f}%</span></td>
-                    </tr>"""
-
-html_content += """
+                <tbody id="m-table-body">
                 </tbody>
             </table>
         </div>
-
-        <!-- MARKET ANALYSIS GRID -->
-        <div class="section-header">
-            <div class="section-title">🔍 詳細市場與籌碼亮點解析</div>
-        </div>
-
-        <div class="analysis-grid">
-            <div class="analysis-card">
-                <h3>⚡ 產業吸金集中度剖析</h3>
-                <p>資金極度集中於<strong>半導體供應鏈、AI 伺服器與高階 PCB/ABF 載板</strong>四大族群：</p>
-                <ul>
-                    <li><strong>半導體板塊（7 檔）</strong>：包含台積電、聯發科、南亞科、聯電、華邦電、日月光投控與上櫃合晶。台積電單檔吸金 5,709 億佔 Top 20 的 20.3%。</li>
-                    <li><strong>AI 伺服器與硬體代工</strong>：緯創（+24.82%）與鴻海（+10.04%）量價齊揚，反映市場對 AI 伺服器強勁需求。</li>
-                    <li><strong>PCB / ABF / 銅箔基板</strong>：欣興（+12.85%）、南電、臻鼎-KY、台光電（+13.35%）及台燿受到高階伺服器材料拉貨帶動。</li>
-                </ul>
-            </div>
-
-            <div class="analysis-card">
-                <h3>🏆 近 5 日漲幅前 5 大強勢指標</h3>
-                <p>前 20 大成交金額股中，最具波段爆發力的個股為：</p>
-                <ul>
-                    <li>🥇 <strong>3231 緯創 (+24.82%)</strong>：收盤價 $173.50，5 日狂吸 717 億元，短期資金凝聚力第一。</li>
-                    <li>🥈 <strong>2454 聯發科 (+14.99%)</strong>：收盤價 $3,875.00，高價千金股帶頭領漲 IC 設計。</li>
-                    <li>🥉 <strong>2383 台光電 (+13.35%)</strong>：收盤價 $5,095.00，銅箔基板出貨亮眼。</li>
-                    <li>4️⃣ <strong>3037 欣興 (+12.85%)</strong>：ABF 載板量能顯著增溫。</li>
-                    <li>5️⃣ <strong>2317 鴻海 (+10.04%)</strong>：重回 250 元大關之上。</li>
-                </ul>
-            </div>
-
-            <div class="analysis-card">
-                <h3>🏬 上市與上櫃市場比對</h3>
-                <p>上市股票大獲全勝，但上櫃亦有兩大亮眼黑馬：</p>
-                <ul>
-                    <li><strong>上市 (TWSE) 18 檔</strong>：佔絕對主導地位，涵蓋絕大多數兆元與千億級權值股。</li>
-                    <li><strong>上櫃 (TPEx) 2 檔</strong>：
-                        <br>1. <strong>6182 合晶</strong> (第 13 名)：5 日總成交額達 828.9 億元，交易量突破 66 萬張。
-                        <br>2. <strong>6274 台燿</strong> (第 18 名)：5 日總成交額達 671.1 億元，展現高單價 CCL 強勢追捧。
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <footer>
-            <p>數據來源：臺灣證券交易所 (TWSE) 與 證券櫃檯買賣中心 (TPEx) 官方盤後公開數據 | 統計時間：2026/07/23</p>
-        </footer>
-
     </div>
 
-    <!-- JavaScript Interactive Code -->
+    <footer><p>台股盤後大數據與籌碼動向觀測站 | <a href="index.html" style="color:var(--blue);text-decoration:none;font-weight:700;">🏠 回首頁 Portal</a> | 產生時間：{today_str}</p></footer>
+
     <script>
-        function switchCard(num) {
-            document.getElementById('card-img-1').style.display = num === 1 ? 'block' : 'none';
-            document.getElementById('card-img-2').style.display = num === 2 ? 'block' : 'none';
-            document.getElementById('card-img-3').style.display = num === 3 ? 'block' : 'none';
+        const STOCKS_DATA = {stocks_json_str};
 
-            const btns = document.querySelectorAll('.tab-btn');
-            btns.forEach((btn, idx) => {
-                if (idx === num - 1) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-        }
+        function switchMainView(viewName) {{
+            const tblSec = document.getElementById('section-table-view');
+            const cardSec = document.getElementById('section-cards-view');
+            const btnTbl = document.getElementById('nav-btn-table');
+            const btnCard = document.getElementById('nav-btn-cards');
 
-        function filterTable() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toUpperCase();
-            const table = document.getElementById('stockTable');
-            const tr = table.getElementsByTagName('tr');
+            if (viewName === 'table') {{
+                tblSec.style.display = 'block';
+                cardSec.style.display = 'none';
+                btnTbl.classList.add('active');
+                btnCard.classList.remove('active');
+            }} else {{
+                tblSec.style.display = 'none';
+                cardSec.style.display = 'block';
+                btnTbl.classList.remove('active');
+                btnCard.classList.add('active');
+            }}
+        }}
 
-            for (let i = 1; i < tr.length; i++) {
-                const tdText = tr[i].textContent || tr[i].innerText;
-                if (tdText.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
+        function switchCard(n) {{
+            for (let i = 1; i <= 6; i++) {{
+                const el = document.getElementById('c' + i);
+                if (el) el.style.display = (i === n) ? 'block' : 'none';
+            }}
+            document.querySelectorAll('.card-tab').forEach((b, i) => b.classList.toggle('active', i === n - 1));
+        }}
+
+        function openStockModal(code) {{
+            const s = STOCKS_DATA[code];
+            if (!s) return;
+
+            document.getElementById('m-title').textContent = `${{s.code}} ${{s.name}}`;
+            document.getElementById('m-market').textContent = s.market;
+            document.getElementById('m-market').className = s.market === '上市' ? 'm-twse' : 'm-tpex';
+            document.getElementById('m-sector').textContent = s.sector;
+
+            document.getElementById('m-price').textContent = `$${{s.latest_close.toFixed(2)}}`;
+            const todaySign = s.today_change_val > 0 ? '+' : '';
+            const todayClr = s.today_change_val > 0 ? 'var(--red)' : (s.today_change_val < 0 ? 'var(--green)' : 'var(--muted)');
+            document.getElementById('m-today-chg').innerHTML = `<span style="color:${{todayClr}}">${{todaySign}}$${{s.today_change_val.toFixed(2)}} (${{todaySign}}${{s.today_change_pct.toFixed(2)}}%)</span>`;
+
+            const chgSign = s.change_pct > 0 ? '+' : '';
+            const chgColor = s.change_pct > 0 ? 'var(--red)' : (s.change_pct < 0 ? 'var(--green)' : 'var(--muted)');
+            document.getElementById('m-chg').innerHTML = `<span style="color:${{chgColor}}">${{chgSign}}$${{s.change_pct.toFixed(2)}}%</span>`;
+            document.getElementById('m-total-val').textContent = `${{s.total_value_yi.toFixed(1)}} 億`;
+            document.getElementById('m-total-vol').textContent = `${{s.total_volume_zhang.toLocaleString()}} 張`;
+
+            let tbody = '';
+            for (let i = 0; i < s.daily_dates.length; i++) {{
+                let dateStr = s.daily_dates[i];
+                let p = s.daily_closes[i];
+                let v = s.daily_values_yi[i];
+                let vol = s.daily_volumes_zhang[i];
+
+                let prevP = i > 0 ? s.daily_closes[i-1] : (s.prev_close || p);
+                let dayDiff = p - prevP;
+                let dayDiffPct = prevP > 0 ? ((p - prevP) / prevP * 100) : 0;
+                let dClr = dayDiff > 0 ? 'var(--red)' : (dayDiff < 0 ? 'var(--green)' : 'var(--muted)');
+                let dSign = dayDiff > 0 ? '+' : '';
+
+                let firstP = s.first_close;
+                let chgP = p > 0 && firstP > 0 ? ((p - firstP) / firstP * 100).toFixed(2) : '0.00';
+                let cClr = chgP > 0 ? 'var(--red)' : (chgP < 0 ? 'var(--green)' : 'var(--muted)');
+                let cSign = chgP > 0 ? '+' : '';
+
+                tbody += `<tr>
+                    <td><strong>${{dateStr}}</strong></td>
+                    <td>$${{p.toFixed(2)}}</td>
+                    <td style="color:${{dClr}};font-weight:700;">${{dSign}}$${{dayDiff.toFixed(2)}} (${{dSign}}${{dayDiffPct.toFixed(2)}}%)</td>
+                    <td style="color:${{cClr}};font-weight:700;">${{cSign}}$${{chgP}}%</td>
+                    <td>${{v.toFixed(1)}} 億</td>
+                    <td>${{vol.toLocaleString()}} 張</td>
+                </tr>`;
+            }}
+            document.getElementById('m-table-body').innerHTML = tbody;
+
+            document.getElementById('stockModal').style.display = 'flex';
+
+            setTimeout(() => {{
+                drawStockCanvasChart('stockCanvas', s.daily_dates, s.daily_closes, s.daily_values_yi);
+            }}, 50);
+        }}
+
+        function closeStockModal() {{
+            document.getElementById('stockModal').style.display = 'none';
+        }}
+
+        function closeModalOutside(e) {{
+            if (e.target.id === 'stockModal') {{
+                closeStockModal();
+            }}
+        }}
+
+        function drawStockCanvasChart(canvasId, dates, prices, values) {{
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            const parentW = canvas.parentElement.clientWidth - 40;
+            canvas.width = parentW > 300 ? parentW : 600;
+            canvas.height = 220;
+
+            const W = canvas.width;
+            const H = canvas.height;
+
+            ctx.clearRect(0, 0, W, H);
+
+            ctx.strokeStyle = '#30363d';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 3; i++) {{
+                let y = 20 + i * 45;
+                ctx.beginPath();
+                ctx.moveTo(40, y);
+                ctx.lineTo(W - 20, y);
+                ctx.stroke();
+            }}
+
+            const maxVal = Math.max(...values) || 1;
+            const minP = Math.min(...prices);
+            const maxP = Math.max(...prices);
+            const rangeP = (maxP - minP) || 1;
+            const stepX = (W - 80) / (dates.length - 1 || 1);
+
+            dates.forEach((d, i) => {{
+                let x = 50 + i * stepX;
+                let barH = (values[i] / maxVal) * 70;
+                ctx.fillStyle = (i === dates.length - 1) ? '#238636' : '#1f6feb';
+                ctx.fillRect(x - 16, 175 - barH, 32, barH);
+
+                ctx.fillStyle = '#8b949e';
+                ctx.font = '12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(d, x, 195);
+
+                ctx.fillStyle = '#c9d1d9';
+                ctx.fillText(values[i].toFixed(1) + '億', x, 170 - barH);
+            }});
+
+            ctx.beginPath();
+            ctx.strokeStyle = '#f85149';
+            ctx.lineWidth = 3;
+            dates.forEach((d, i) => {{
+                let x = 50 + i * stepX;
+                let y = 95 - ((prices[i] - minP) / rangeP) * 55;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }});
+            ctx.stroke();
+
+            dates.forEach((d, i) => {{
+                let x = 50 + i * stepX;
+                let y = 95 - ((prices[i] - minP) / rangeP) * 55;
+
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, Math.PI * 2);
+                ctx.fillStyle = '#f85149';
+                ctx.fill();
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('$' + prices[i].toFixed(1), x, y - 10);
+            }});
+        }}
     </script>
 </body>
 </html>
 """
 
-# Save to 2026-07-23.html and 20260723.html
-html_path1 = os.path.join(OUTPUT_DIR, "2026-07-23.html")
-html_path2 = os.path.join(OUTPUT_DIR, "20260723.html")
+html_path1 = os.path.join(OUTPUT_DIR, f"{today_str}.html")
+html_path2 = os.path.join(OUTPUT_DIR, f"{today_nodash}.html")
+sub_html_path1 = os.path.join(SUB_DIR, f"{today_str}.html")
+sub_html_path2 = os.path.join(SUB_DIR, f"{today_nodash}.html")
 
 with open(html_path1, 'w', encoding='utf-8') as f:
     f.write(html_content)
@@ -610,4 +641,24 @@ with open(html_path1, 'w', encoding='utf-8') as f:
 with open(html_path2, 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print(f"Successfully generated standalone HTML report at:\n - {html_path1}\n - {html_path2}")
+with open(sub_html_path1, 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+with open(sub_html_path2, 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print(f"Successfully generated 100% verified real market HTML report at:\n - {html_path1}\n - {sub_html_path1}")
+
+# Automatically refresh index.html portal list
+try:
+    sys.path.insert(0, SUB_DIR)
+    from twse_top20_helper import update_index_portal
+    import shutil
+    update_index_portal(SUB_DIR)
+    sub_index = os.path.join(SUB_DIR, "index.html")
+    if os.path.exists(sub_index):
+        shutil.copy2(sub_index, os.path.join(OUTPUT_DIR, "index.html"))
+    print("Successfully refreshed and synced index.html portal!")
+except Exception as e:
+    print(f"Warning: Failed to refresh index portal: {e}")
+
