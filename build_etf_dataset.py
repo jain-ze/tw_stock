@@ -292,13 +292,18 @@ def fetch_valid_trading_days(n=6):
     reports = {}
 
     cache_file = os.path.join(BASE_DIR, 'etf_history_cache.json')
+    sub_cache_file = os.path.join(SUB_DIR, 'etf_history_cache.json')
     etf_history_cache = {}
-    if os.path.exists(cache_file):
-        try:
-            with open(cache_file, 'r', encoding='utf-8') as f:
-                etf_history_cache = json.load(f)
-        except Exception:
-            etf_history_cache = {}
+    
+    for c_path in [cache_file, sub_cache_file]:
+        if os.path.exists(c_path):
+            try:
+                with open(c_path, 'r', encoding='utf-8') as f:
+                    loaded = json.load(f)
+                    for code, hdict in loaded.items():
+                        etf_history_cache.setdefault(code, {}).update(hdict)
+            except Exception as e_c:
+                pass
     
     session = requests.Session()
     session.headers.update({
@@ -388,48 +393,50 @@ def fetch_valid_trading_days(n=6):
 
             # 2. Handle TPEx upper-market ETFs (e.g. 00411A, 006201, 00858, 00998A)
             existing_codes = set(r[0].strip() for r in fetched_data)
-            
-            # Helper to fetch TPEx quotes for date d_str with retries
             tpex_rows_for_day = []
-            need_tpex_fetch = any(code for code in etf_meta if code not in existing_codes and (code not in etf_history_cache or d_str not in etf_history_cache[code]))
             
-            if need_tpex_fetch:
-                try:
-                    y_roc = int(d_str[:4]) - 1911
-                    m_roc = d_str[4:6]
-                    d_roc = d_str[6:8]
-                    roc_date_str = f"{y_roc}/{m_roc}/{d_roc}"
-                    tpex_close_url = f"https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw&d={roc_date_str}"
-                    
-                    for tpex_retry in range(3):
-                        try:
-                            tpex_resp = session.get(tpex_close_url, timeout=12, verify=False)
-                            if tpex_resp.status_code == 200:
-                                tpex_json = tpex_resp.json()
-                                if tpex_json.get('tables') and len(tpex_json['tables']) > 0:
-                                    for row in tpex_json['tables'][0].get('data', []):
-                                        code = row[0].strip()
-                                        if code.startswith('00') and code in etf_meta and code not in existing_codes:
-                                            name = row[1].strip()
-                                            cp = row[2]
-                                            diff_raw = row[3].strip()
-                                            op = row[4]
-                                            hp = row[5]
-                                            lp = row[6]
-                                            vol = row[8]
-                                            val = row[9]
-                                            cnt = row[10]
-                                            d_sym = '+' if '+' in diff_raw else ('-' if '-' in diff_raw else '')
-                                            norm_r = [code, name, vol, cnt, val, op, hp, lp, cp, d_sym, diff_raw]
-                                            tpex_rows_for_day.append(norm_r)
-                                            etf_history_cache.setdefault(code, {})[d_str] = norm_r
-                                    break
-                        except Exception as e_tpex:
-                            time.sleep(1.0)
-                except Exception as e_tpex_outer:
-                    pass
+            # 🛡️ 歷史日期動態調用與持久化快取保護機制：
+            # 上櫃 ETF (如 00411A) 僅在「當天」(d_str == today_str) 發起 API 查詢並更新快取；
+            # 歷史交易日 (d_str != today_str) 嚴禁發起 API 查詢 (防止 TPEx 伺服器回傳當日快照覆蓋歷史數值)，
+            # 必須 100% 直接讀取 etf_history_cache.json 中過去累積保存之真實行情。
+            today_str = datetime.date.today().strftime('%Y%m%d')
+            is_today = (d_str == today_str) or (len(valid_dates) == 0)
+            
+            if is_today:
+                need_tpex_fetch = any(code for code in etf_meta if code not in existing_codes)
+                if need_tpex_fetch:
+                    try:
+                        tpex_close_url = "https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw"
+                        for tpex_retry in range(3):
+                            try:
+                                tpex_resp = session.get(tpex_close_url, timeout=12, verify=False)
+                                if tpex_resp.status_code == 200:
+                                    tpex_json = tpex_resp.json()
+                                    if tpex_json.get('tables') and len(tpex_json['tables']) > 0:
+                                        for row in tpex_json['tables'][0].get('data', []):
+                                            code = row[0].strip()
+                                            if code.startswith('00') and code in etf_meta and code not in existing_codes:
+                                                name = row[1].strip()
+                                                cp = row[2]
+                                                diff_raw = row[3].strip()
+                                                op = row[4]
+                                                hp = row[5]
+                                                lp = row[6]
+                                                vol = row[8]
+                                                val = row[9]
+                                                cnt = row[10]
+                                                d_sym = '+' if '+' in diff_raw else ('-' if '-' in diff_raw else '')
+                                                norm_r = [code, name, vol, cnt, val, op, hp, lp, cp, d_sym, diff_raw]
+                                                tpex_rows_for_day.append(norm_r)
+                                                # 當天最新真實快照寫入快取
+                                                etf_history_cache.setdefault(code, {})[d_str] = norm_r
+                                        break
+                            except Exception as e_tpex:
+                                time.sleep(1.0)
+                    except Exception as e_tpex_outer:
+                        pass
 
-            # Combine cache and fresh TPEx rows
+            # 讀取快取中該歷史日 (d_str) 累積保存之真實數值
             for code, history in etf_history_cache.items():
                 if code in etf_meta and code not in existing_codes and d_str in history:
                     if not any(r[0].strip() == code for r in tpex_rows_for_day):
