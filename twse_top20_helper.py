@@ -292,7 +292,7 @@ def fetch_top20_stocks_data(dates):
         m = d[4:6]
         day = d[6:8]
         tpex_d = f"{y}/{m}/{day}"
-        url_tpex = f"https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw&d={tpex_d}"
+        url_tpex = f"https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?date={tpex_d}&response=json"
         try:
             req = urllib.request.Request(url_tpex, headers=headers)
             with urllib.request.urlopen(req, context=ctx, timeout=8) as resp:

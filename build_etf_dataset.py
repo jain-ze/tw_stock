@@ -202,7 +202,7 @@ try:
                 })
                 added_tpex_cnt += 1
     else:
-        fallback_url = 'https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw'
+        fallback_url = 'https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?response=json'
         fb_data = fetch_json(fallback_url)
         if fb_data.get('tables') and len(fb_data['tables']) > 0:
             for row in fb_data['tables'][0].get('data', []):
@@ -406,7 +406,7 @@ def fetch_valid_trading_days(n=6):
                 need_tpex_fetch = any(code for code in etf_meta if code not in existing_codes)
                 if need_tpex_fetch:
                     try:
-                        tpex_close_url = "https://www.tpex.org.tw/web/stock/aftertrading/daily_close_quotes/stk_quote_result.php?l=zh-tw"
+                        tpex_close_url = f"https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?date={d_str[:4]}/{d_str[4:6]}/{d_str[6:]}&response=json"
                         for tpex_retry in range(3):
                             try:
                                 tpex_resp = session.get(tpex_close_url, timeout=12, verify=False)
