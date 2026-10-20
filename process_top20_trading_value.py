@@ -52,9 +52,37 @@ SECTOR_MAP = {
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'}
 
-dates = ['20260723', '20260722', '20260721', '20260720', '20260717']
+def fetch_recent_twse_trading_days(n=5):
+    valid_dates = []
+    curr = datetime.date.today()
+    attempts = 0
+    while len(valid_dates) < n and attempts < 20:
+        d_str = curr.strftime('%Y%m%d')
+        url_check = f"https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date={d_str}&type=ALLBUT0999&response=json"
+        for retry in range(3):
+            try:
+                req_c = urllib.request.Request(url_check, headers=headers)
+                with urllib.request.urlopen(req_c, context=ctx, timeout=10) as resp_c:
+                    data_c = json.loads(resp_c.read().decode('utf-8'))
+                    stat_c = data_c.get('stat', '')
+                    if stat_c == 'OK' and data_c.get('tables'):
+                        valid_dates.append(d_str)
+                        break
+                    elif '沒有符合條件' in stat_c:
+                        break
+                    else:
+                        time.sleep(1.0)
+            except Exception:
+                time.sleep(1.0)
+        curr -= datetime.timedelta(days=1)
+        attempts += 1
+        time.sleep(0.5)
+    return valid_dates
+
+dates = fetch_recent_twse_trading_days(5)
+print(f"Dynamically fetched recent 5 TWSE trading days: {dates}")
 
 stocks = {}
 
@@ -97,12 +125,14 @@ for d in dates:
                             'total_value': 0,
                             'total_volume': 0,
                             'daily_values': {},
-                            'daily_closes': {}
+                            'daily_closes': {},
+                            'daily_volumes': {}
                         }
                     stocks[code]['total_value'] += value
                     stocks[code]['total_volume'] += volume
                     stocks[code]['daily_values'][d] = value
                     stocks[code]['daily_closes'][d] = close
+                    stocks[code]['daily_volumes'][d] = volume
     except Exception as e:
         print(f"   [!] TWSE error on {d}: {e}")
         
@@ -112,39 +142,45 @@ for d in dates:
     day = d[6:8]
     tpex_d = f"{y}/{m}/{day}"
     url_tpex = f"https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?date={tpex_d}&response=json"
-    try:
-        req = urllib.request.Request(url_tpex, headers=headers)
-        with urllib.request.urlopen(req, context=ctx, timeout=10) as resp:
-            data = json.loads(resp.read().decode('utf-8'))
-            t0 = data.get('tables', [{}])[0]
-            if t0 and t0.get('data'):
-                for row in t0['data']:
-                    code = row[0].strip()
-                    name = row[1].strip()
-                    try:
-                        close_str = row[2].replace(',', '')
-                        close = float(close_str) if (close_str != '--' and close_str != '---') else 0.0
-                        volume = int(row[8].replace(',', ''))
-                        value = int(row[9].replace(',', ''))
-                    except Exception:
-                        continue
-                    
-                    if code not in stocks:
-                        stocks[code] = {
-                            'code': code,
-                            'name': name,
-                            'market': '上櫃',
-                            'total_value': 0,
-                            'total_volume': 0,
-                            'daily_values': {},
-                            'daily_closes': {}
-                        }
-                    stocks[code]['total_value'] += value
-                    stocks[code]['total_volume'] += volume
-                    stocks[code]['daily_values'][d] = value
-                    stocks[code]['daily_closes'][d] = close
-    except Exception as e:
-        print(f"   [!] TPEx error on {tpex_d}: {e}")
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url_tpex, headers=headers)
+            with urllib.request.urlopen(req, context=ctx, timeout=12) as resp:
+                data = json.loads(resp.read().decode('utf-8'))
+                t0 = data.get('tables', [{}])[0]
+                if t0 and t0.get('data'):
+                    for row in t0['data']:
+                        code = row[0].strip()
+                        name = row[1].strip()
+                        try:
+                            close_str = row[2].replace(',', '')
+                            close = float(close_str) if (close_str != '--' and close_str != '---') else 0.0
+                            volume = int(row[8].replace(',', ''))
+                            value = int(row[9].replace(',', ''))
+                        except Exception:
+                            continue
+                        
+                        if code not in stocks:
+                            stocks[code] = {
+                                'code': code,
+                                'name': name,
+                                'market': '上櫃',
+                                'total_value': 0,
+                                'total_volume': 0,
+                                'daily_values': {},
+                                'daily_closes': {},
+                                'daily_volumes': {}
+                            }
+                        stocks[code]['total_value'] += value
+                        stocks[code]['total_volume'] += volume
+                        stocks[code]['daily_values'][d] = value
+                        stocks[code]['daily_closes'][d] = close
+                        stocks[code]['daily_volumes'][d] = volume
+            break
+        except Exception as e:
+            if attempt == 2:
+                print(f"   [!] TPEx error on {tpex_d}: {e}")
+            time.sleep(1.0)
 
     time.sleep(0.3)
 
@@ -159,16 +195,24 @@ for idx, item in enumerate(ranked, 1):
     avg_val_yi = total_val_yi / 5
     total_vol_zhang = item['total_volume'] // 1000
     
-    latest_close = item['daily_closes'].get('20260723', 0.0)
-    first_close = item['daily_closes'].get('20260717', 0.0)
+    latest_close = item['daily_closes'].get(dates[0], 0.0)
+    first_close = item['daily_closes'].get(dates[-1], 0.0)
     change_val = latest_close - first_close
     change_pct = (change_val / first_close * 100) if first_close > 0 else 0.0
     
     sector = SECTOR_MAP.get(c, "一般產業")
     
-    daily_vals = [item['daily_values'].get(d, 0) / 1e8 for d in reversed(dates)] # chronologically 7/17 -> 7/23
+    daily_vals = [item['daily_values'].get(d, 0) / 1e8 for d in reversed(dates)] # chronologically
     daily_closes = [item['daily_closes'].get(d, 0.0) for d in reversed(dates)]
+    daily_vols = [item['daily_volumes'].get(d, 0) // 1000 for d in reversed(dates)]
     
+    prev_close = daily_closes[-2] if len(daily_closes) >= 2 else first_close
+    today_change_val = latest_close - prev_close if prev_close > 0 else 0.0
+    today_change_pct = (today_change_val / prev_close * 100) if prev_close > 0 else 0.0
+
+    # Format MM/DD dates
+    formatted_dates = [f"{d[4:6]}/{d[6:8]}" for d in reversed(dates)]
+
     rec = {
         'rank': idx,
         'code': c,
@@ -179,15 +223,20 @@ for idx, item in enumerate(ranked, 1):
         'avg_value_yi': round(avg_val_yi, 2),
         'total_volume_zhang': total_vol_zhang,
         'latest_close': latest_close,
+        'prev_close': prev_close,
+        'today_change_val': round(today_change_val, 2),
+        'today_change_pct': round(today_change_pct, 2),
         'first_close': first_close,
         'change_val': round(change_val, 2),
         'change_pct': round(change_pct, 2),
+        'daily_dates': formatted_dates,
         'daily_values_yi': [round(v, 2) for v in daily_vals],
-        'daily_closes': daily_closes
+        'daily_closes': daily_closes,
+        'daily_volumes_zhang': daily_vols
     }
     final_records.append(rec)
 
-# Export to CSV
+# Export to CSV & JSON
 csv_path = os.path.join(OUTPUT_DIR, "taiwan_stock_top20_trading_value_5days.csv")
 with open(csv_path, 'w', newline='', encoding='utf-8-sig') as f:
     writer = csv.writer(f)
@@ -203,6 +252,11 @@ with open(csv_path, 'w', newline='', encoding='utf-8-sig') as f:
             r['latest_close'], r['first_close'], r['change_val'], f"{r['change_pct']:+.2f}%"
         ])
 print(f"Saved CSV to {csv_path}")
+
+json_path = os.path.join(OUTPUT_DIR, "taiwan_stock_top20_trading_value_5days.json")
+with open(json_path, 'w', encoding='utf-8') as f:
+    json.dump(final_records, f, ensure_ascii=False, indent=2)
+print(f"Saved JSON to {json_path}")
 
 # ==================== CARD 1 RENDERING (Top 20 Overview) ====================
 def draw_card1_overview(records, out_path):

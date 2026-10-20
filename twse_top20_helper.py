@@ -253,39 +253,43 @@ def fetch_top20_stocks_data(dates):
     for d in dates:
         # TWSE
         url_twse = f"https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date={d}&type=ALLBUT0999&response=json"
-        try:
-            req = urllib.request.Request(url_twse, headers=headers)
-            with urllib.request.urlopen(req, context=ctx, timeout=8) as resp:
-                data = json.loads(resp.read().decode('utf-8'))
-                t8 = None
-                for t in data.get('tables', []):
-                    if t.get('title') and '每日收盤行情' in t.get('title'):
-                        t8 = t
-                        break
-                if not t8 and len(data.get('tables', [])) > 8:
-                    t8 = data['tables'][8]
-                
-                if t8 and t8.get('data'):
-                    for row in t8['data']:
-                        code = row[0].strip()
-                        name = row[1].strip()
-                        try:
-                            volume = int(row[2].replace(',', ''))
-                            value = int(row[4].replace(',', ''))
-                            close_str = row[8].replace(',', '')
-                            close = float(close_str) if (close_str != '--' and close_str != '---') else 0.0
-                        except Exception:
-                            continue
-                        
-                        if code not in stocks:
-                            stocks[code] = {'code': code, 'name': name, 'market': '上市', 'total_value': 0, 'total_volume': 0, 'daily_values': {}, 'daily_closes': {}, 'daily_volumes': {}}
-                        stocks[code]['total_value'] += value
-                        stocks[code]['total_volume'] += volume
-                        stocks[code]['daily_values'][d] = value
-                        stocks[code]['daily_closes'][d] = close
-                        stocks[code]['daily_volumes'][d] = volume
-        except Exception as e:
-            print(f"[!] TWSE stock error on {d}: {e}")
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(url_twse, headers=headers)
+                with urllib.request.urlopen(req, context=ctx, timeout=12) as resp:
+                    data = json.loads(resp.read().decode('utf-8'))
+                    t8 = None
+                    for t in data.get('tables', []):
+                        if t.get('title') and '每日收盤行情' in t.get('title'):
+                            t8 = t
+                            break
+                    if not t8 and len(data.get('tables', [])) > 8:
+                        t8 = data['tables'][8]
+                    
+                    if t8 and t8.get('data'):
+                        for row in t8['data']:
+                            code = row[0].strip()
+                            name = row[1].strip()
+                            try:
+                                volume = int(row[2].replace(',', ''))
+                                value = int(row[4].replace(',', ''))
+                                close_str = row[8].replace(',', '')
+                                close = float(close_str) if (close_str != '--' and close_str != '---') else 0.0
+                            except Exception:
+                                continue
+                            
+                            if code not in stocks:
+                                stocks[code] = {'code': code, 'name': name, 'market': '上市', 'total_value': 0, 'total_volume': 0, 'daily_values': {}, 'daily_closes': {}, 'daily_volumes': {}}
+                            stocks[code]['total_value'] += value
+                            stocks[code]['total_volume'] += volume
+                            stocks[code]['daily_values'][d] = value
+                            stocks[code]['daily_closes'][d] = close
+                            stocks[code]['daily_volumes'][d] = volume
+                break
+            except Exception as e:
+                if attempt == 2:
+                    print(f"[!] TWSE stock error on {d}: {e}")
+                time.sleep(1.0)
 
         # TPEx
         y = int(d[:4]) - 1911
@@ -293,32 +297,36 @@ def fetch_top20_stocks_data(dates):
         day = d[6:8]
         tpex_d = f"{y}/{m}/{day}"
         url_tpex = f"https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?date={tpex_d}&response=json"
-        try:
-            req = urllib.request.Request(url_tpex, headers=headers)
-            with urllib.request.urlopen(req, context=ctx, timeout=8) as resp:
-                data = json.loads(resp.read().decode('utf-8'))
-                t0 = data.get('tables', [{}])[0]
-                if t0 and t0.get('data'):
-                    for row in t0['data']:
-                        code = row[0].strip()
-                        name = row[1].strip()
-                        try:
-                            close_str = row[2].replace(',', '')
-                            close = float(close_str) if (close_str != '--' and close_str != '---') else 0.0
-                            volume = int(row[8].replace(',', ''))
-                            value = int(row[9].replace(',', ''))
-                        except Exception:
-                            continue
-                        
-                        if code not in stocks:
-                            stocks[code] = {'code': code, 'name': name, 'market': '上櫃', 'total_value': 0, 'total_volume': 0, 'daily_values': {}, 'daily_closes': {}, 'daily_volumes': {}}
-                        stocks[code]['total_value'] += value
-                        stocks[code]['total_volume'] += volume
-                        stocks[code]['daily_values'][d] = value
-                        stocks[code]['daily_closes'][d] = close
-                        stocks[code]['daily_volumes'][d] = volume
-        except Exception as e:
-            print(f"[!] TPEx stock error on {tpex_d}: {e}")
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(url_tpex, headers=headers)
+                with urllib.request.urlopen(req, context=ctx, timeout=12) as resp:
+                    data = json.loads(resp.read().decode('utf-8'))
+                    t0 = data.get('tables', [{}])[0]
+                    if t0 and t0.get('data'):
+                        for row in t0['data']:
+                            code = row[0].strip()
+                            name = row[1].strip()
+                            try:
+                                close_str = row[2].replace(',', '')
+                                close = float(close_str) if (close_str != '--' and close_str != '---') else 0.0
+                                volume = int(row[8].replace(',', ''))
+                                value = int(row[9].replace(',', ''))
+                            except Exception:
+                                continue
+                            
+                            if code not in stocks:
+                                stocks[code] = {'code': code, 'name': name, 'market': '上櫃', 'total_value': 0, 'total_volume': 0, 'daily_values': {}, 'daily_closes': {}, 'daily_volumes': {}}
+                            stocks[code]['total_value'] += value
+                            stocks[code]['total_volume'] += volume
+                            stocks[code]['daily_values'][d] = value
+                            stocks[code]['daily_closes'][d] = close
+                            stocks[code]['daily_volumes'][d] = volume
+                break
+            except Exception as e:
+                if attempt == 2:
+                    print(f"[!] TPEx stock error on {tpex_d}: {e}")
+                time.sleep(1.0)
 
         time.sleep(0.2)
 
